@@ -1,0 +1,124 @@
+//$ Colors -------------------------------------
+$clr-black: hsl(0, 0%, 0%);
+$clr-black-800: hsla(0, 0%, 0%, 0.8);
+$clr-black-500: hsla(0, 0%, 0%, 0.5);
+$clr-black-300: hsla(0, 0%, 0%, 0.3);
+$clr-black-200: hsla(0, 0%, 0%, 0.2);
+$clr-black-100: hsla(0, 0%, 0%, 0.1);
+
+$clr-white: hsl(0, 0%, 100%);
+$clr-white-900: hsl(0, 0%, 90%);
+$clr-white-700: hsl(0, 0%, 75%);
+$clr-white-600: hsla(0, 0%, 100%, 0.6);
+$clr-white-400: hsla(0, 0%, 100%, 0.4);
+$clr-white-300: hsla(0, 0%, 100%, 0.349);
+$clr-white-200: hsla(0, 0%, 100%, 0.2);
+$clr-white-090: hsla(0, 0%, 100%, 0.09);
+
+$clr-grey: hsl(210, 11%, 15%);
+$clr-grey-700: hsl(210, 11%, 70%);
+$clr-grey-500: hsl(210, 11%, 50%);
+$clr-grey-300: hsl(210, 11%, 30%);
+$clr-grey-100: hsla(210, 11%, 10%, 0.8);
+
+$clr-primary: hsl(347, 72%, 56%);
+$clr-primary-800: hsl(347, 72%, 80%);
+$clr-primary-600: hsl(347, 72%, 60%);
+$clr-primary-400: hsl(347, 72%, 40%);
+$clr-primary-300: hsl(347, 73%, 30%);
+
+$clr-secondary: hsl(45, 97%, 54%);
+$clr-secondary-800: hsl(45, 97%, 80%);
+$clr-secondary-600: hsl(45, 97%, 60%);
+$clr-secondary-400: hsl(45, 97%, 40%);
+$clr-secondary-300: hsl(45, 97%, 30%);
+
+//$ Fonts -------------------------------------
+
+//* Font family
+$font-default: 'Nunito', sans-serif;
+
+//* Font weights
+$fw-default: 400;
+$fw-bold: calc($fw-default + 400); // 800
+$fw-tiny: calc($fw-default - 200); // 200
+
+$fw-btn: 800;
+
+$fw-heading-bulky: $fw-bold; // 800
+$fw-heading-medium: calc($fw-heading-bulky - 200); // 600
+$fw-heading-tiny: calc($fw-heading-bulky - 500); // 300
+
+$fw-text-bulky: calc($fw-default + 200); // 600
+$fw-text-medium: calc($fw-text-bulky - 100); // 500
+$fw-text-tiny: calc($fw-text-bulky - 300); // 300
+$fw-text-tiniest: calc($fw-text-bulky - 400); // 100
+
+//* Font sizes
+$fs-default: 1.5rem;
+$fs-big: calc($fs-default + 3rem); // 4.5rem
+$fs-small: calc($fs-default - 0.4rem); // 1.1rem
+
+$fs-btn: 1.44rem;
+
+$fs-heading-biggest: $fs-big; // 4.5rem
+$fs-heading-big: calc($fs-heading-biggest - 0.5rem); // 4rem
+$fs-heading-medium: calc($fs-heading-biggest - 1.5rem); // 3rem
+$fs-heading-small: calc($fs-heading-biggest - 2.5rem); // 2rem
+
+$fs-text-biggest: calc($fs-default + 0.5rem); // 2rem
+$fs-text-big: calc($fs-text-biggest - 0.2rem); // 1.8rem
+$fs-text-medium: calc($fs-text-biggest - 0.7rem); // 1.3rem
+$fs-text-small: calc($fs-text-biggest - 1rem); // 1rem
+$fs-text-smallest: calc($fs-text-biggest - 1.2rem); // 0.8rem
+
+//$ Border radius -------------------------------------
+$border-radius: 1rem;
+$border-radius-btn: 50rem;
+$border-radius-circle: 50%;
+
+//$ Paddings -------------------------------------
+$padding-biggest: 10rem;
+$padding-big: 8rem;
+$padding-medium: 4rem;
+$padding-small: 2rem;
+
+//$ Widths -------------------------------------
+
+//* Text
+$text-width-longest: 70ch;
+$text-width-medium: 45ch;
+
+//* Btn
+$btn-width-longest: 18rem;
+$btn-width-medium: 10rem;
+
+//$ Transitions -------------------------------------
+$transition-slow: all 0.75s linear;
+$transition-medium: all 0.3s linear;
+$transition-fast: all 0.15s linear;
+
+//$ Box shadows -------------------------------------
+$box-shadow-darkest: 0 0 5rem $clr-black-800;
+$box-shadow-dark: 0 0 5rem $clr-black-500;
+$box-shadow-medium: 0 0 5rem $clr-black-200;
+$box-shadow-light: 0 0 5rem $clr-black-100;
+
+$box-shadow-btn-down: 0 1rem 2rem hsla(0, 0%, 0%, 0.15);
+
+//$ Borders -------------------------------------
+
+//* White
+$border-white-thick: 0.4rem solid $clr-white;
+$border-white-medium: 0.2rem solid $clr-white;
+$border-white-tiny: 0.1rem solid $clr-white;
+
+//* Primary
+$border-primary-thick: 0.4rem solid $clr-primary;
+$border-primary-medium: 0.2rem solid $clr-primary;
+$border-primary-tiny: 0.1rem solid $clr-primary;
+
+//* Secondary
+$border-secondary-thick: 0.4rem solid $clr-secondary;
+$border-secondary-medium: 0.2rem solid $clr-secondary;
+$border-secondary-tiny: 0.1rem solid $clr-secondary;

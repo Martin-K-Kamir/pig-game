@@ -1,0 +1,30 @@
+.copyright {
+  @include flex-col-center;
+  position: absolute;
+  bottom: 1rem;
+
+  &__text {
+    width: $text-width-medium;
+    text-align: center;
+
+    font-weight: $fw-text-bulky;
+    font-size: $fs-text-small;
+    word-spacing: 0.12rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__icons {
+    @include flex-align-center(1.5rem);
+  }
+
+  &__icon {
+    width: 2rem;
+    fill: $clr-white;
+  }
+
+  // Make logo bit bigger and in better position with other icons
+  & #website {
+    width: 2.33rem;
+    transform: translate(0.1rem, 0.1rem);
+  }
+}

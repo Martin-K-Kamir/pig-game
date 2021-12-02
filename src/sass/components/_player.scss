@@ -1,0 +1,71 @@
+.player {
+  @include flex-col-center;
+  flex: 50%;
+  padding: $padding-big;
+  transition: $transition-medium;
+
+  &--active,
+  &--winner {
+    & .player__name {
+      font-weight: $fw-heading-bulky;
+    }
+
+    & .player__score {
+      font-weight: $fw-bold;
+    }
+
+    & .current-box {
+      opacity: 1;
+    }
+  }
+
+  &--active {
+    background-color: $clr-white-600;
+  }
+
+  &--winner {
+    background-color: $clr-white;
+  }
+
+  &__status {
+    height: 2.7rem;
+  }
+
+  &__name {
+    position: relative;
+    letter-spacing: 0.1rem;
+    word-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: $clr-grey;
+    font-weight: calc($fw-heading-bulky - 400);
+    font-size: $fs-heading-big;
+  }
+
+  &__playing,
+  &__winner {
+    color: $clr-grey;
+    font-size: $fs-text-big;
+    font-weight: $fw-text-medium;
+  }
+
+  &__playing {
+    animation: pulsing 1s linear infinite alternate;
+  }
+
+  &__score {
+    margin-bottom: auto;
+    font-size: 10rem;
+    font-weight: $fw-tiny;
+    color: $clr-grey;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    opacity: 40%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}

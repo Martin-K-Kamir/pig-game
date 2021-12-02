@@ -1,0 +1,47 @@
+.credits {
+  @include glossy-bg($padding-big);
+  @include animation(pop-in);
+  display: grid;
+
+  &__heading {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__divider {
+    @include divider(0.5rem, 1.5rem);
+  }
+
+  &__creators-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 1rem;
+    column-gap: 2.5rem;
+  }
+
+  &__creator {
+    &--role,
+    &--name {
+      font-size: $fs-text-big;
+    }
+
+    &--role {
+      text-align: right;
+      font-weight: $fw-bold;
+      grid-column: 1 / 2;
+      color: $clr-secondary;
+    }
+
+    &--name {
+      text-align: left;
+      font-weight: $fw-tiny;
+      grid-column: 2 / 3;
+    }
+  }
+
+  & .btn {
+    margin-top: 3rem;
+    justify-self: center;
+  }
+}

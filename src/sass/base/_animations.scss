@@ -1,0 +1,64 @@
+.bounce-in--first {
+  @include animation(bounce-in, 0.2s);
+}
+
+.bounce-in--second {
+  @include animation(bounce-in, 0.2s, 0.2s, backwards);
+}
+
+.bounce-out--first {
+  @include animation(bounce-out, 0.2s, 0s, both);
+}
+
+.bounce-out--second {
+  @include animation(bounce-out, 0.2s, 0.2s, both);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(85%);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0%;
+    transform: scale(50%);
+  }
+
+  60% {
+    transform: scale(120%);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: scale(100%);
+  }
+}
+
+@keyframes bounce-out {
+  0% {
+    opacity: 100%;
+    transform: scale(100%);
+  }
+
+  60% {
+    transform: scale(120%);
+  }
+
+  100% {
+    opacity: 0%;
+    transform: scale(50%);
+  }
+}

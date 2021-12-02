@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+@import 'base/animations';
+@import 'base/base';
+@import 'base/reset';
+@import 'base/utilities';
+
+@import 'components/btn';
+@import 'components/current-box';
+@import 'components/dice';
+@import 'components/exit';
+@import 'components/panel-bar';
+@import 'components/pause-modal';
+@import 'components/player';
+@import 'components/scrollbar.scss';
+@import 'components/victory-bar';
+
+@import 'layout/copyright';
+@import 'layout/credits';
+@import 'layout/dark-mode';
+@import 'layout/game-menu';
+@import 'layout/game-modes';
+@import 'layout/game-rules';
+@import 'layout/game-window';
+@import 'layout/navbar';

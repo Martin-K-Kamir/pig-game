@@ -1,0 +1,25 @@
+html {
+  font-size: 62.5%;
+}
+
+h2 {
+  font-weight: $fw-heading-bulky;
+  font-size: $fs-heading-medium;
+}
+
+button {
+  border-radius: $border-radius-btn;
+}
+
+.body-container {
+  @include flex-col-center;
+  position: relative;
+  min-height: 100vh;
+  font-family: $font-default;
+  font-size: $fs-default;
+  font-weight: $fw-default;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  color: $clr-white;
+  background-color: $clr-primary;
+}

@@ -1,0 +1,48 @@
+.dark-mode {
+  background-color: $clr-grey;
+
+  & .menu,
+  & .game-modes,
+  & .game-rules,
+  & .credits {
+    @include glossy-bg($padding-value: $padding-big, $light-theme: false);
+  }
+
+  & .game-window {
+    @include glossy-bg($padding-value: 0, $light-theme: false);
+  }
+
+  & .victory-bar,
+  & .player--winner {
+    background-color: $clr-white-900;
+  }
+
+  & .navbar__note {
+    color: $clr-white;
+    background-color: $clr-black-200;
+  }
+
+  & .game-modes__heading,
+  & .credits__creator--role,
+  & .game-rules__heading {
+    color: $clr-primary-800;
+  }
+
+  & .player__score,
+  & .player__name {
+    color: $clr-primary;
+  }
+
+  & .game-countdown__timer {
+    color: $clr-white-900;
+  }
+
+  & .player--active {
+    background-color: $clr-white-700;
+  }
+
+  & .game-modes__btn:hover {
+    color: $clr-primary-800;
+    border: 0.4rem solid $clr-primary-800;
+  }
+}

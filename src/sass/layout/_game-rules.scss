@@ -1,0 +1,31 @@
+.game-rules {
+  @include glossy-bg($padding-big);
+  @include animation(pop-in);
+  height: 69vh;
+  overflow: auto;
+
+  &__heading {
+    color: $clr-secondary;
+
+    &:not(:first-child) {
+      margin-top: 6rem;
+    }
+  }
+
+  &__divider {
+    @include divider(0.5rem, 1.5rem);
+  }
+
+  &__text,
+  &__list-item {
+    width: $text-width-longest;
+  }
+
+  &__list {
+    padding-left: 1.5rem;
+  }
+
+  & .btn {
+    margin-top: 6rem;
+  }
+}

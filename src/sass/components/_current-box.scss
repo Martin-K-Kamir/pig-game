@@ -1,0 +1,18 @@
+.current-box {
+  width: 65%;
+  padding: $padding-small;
+  opacity: 0.8;
+  text-align: center;
+  color: $clr-white-900;
+  background-color: $clr-grey;
+  border-radius: $border-radius;
+
+  &__label {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__score {
+    font-size: calc($fs-default + 2rem); // 3.5rem
+  }
+}

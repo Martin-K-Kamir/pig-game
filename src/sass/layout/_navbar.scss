@@ -1,0 +1,39 @@
+//$ ok
+.navbar {
+  @include flex-justify-center(1rem);
+  user-select: none;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+
+  & .btn-round {
+    position: relative;
+  }
+
+  & .btn-round .icon {
+    @include size-same(2rem);
+    color: $clr-white;
+  }
+
+  & .btn-round:hover .note {
+    opacity: 1;
+  }
+
+  & .btn-round .note {
+    position: absolute;
+    bottom: -3.5rem;
+  }
+}
+
+// own file
+.note {
+  opacity: 0;
+  white-space: nowrap;
+  text-transform: lowercase;
+  font-size: $fs-text-small;
+  color: $clr-white;
+
+  background-color: $clr-grey;
+  border-radius: $border-radius;
+  padding: 0.5rem 1rem;
+}

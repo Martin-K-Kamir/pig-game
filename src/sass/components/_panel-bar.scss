@@ -1,0 +1,21 @@
+.panel-bar {
+  @include flex-col-center;
+  position: absolute;
+  margin: 0 auto;
+  top: 10rem;
+  left: 0;
+  right: 0;
+
+  &__btns-container {
+    @include flex-col-center(3rem);
+    transform: translateY(10.6rem);
+  }
+
+  &__swap-container {
+    height: 4.8rem;
+    transform: translateY(3rem);
+
+    display: flex;
+    gap: 3rem;
+  }
+}

@@ -1,0 +1,51 @@
+.btn {
+  @include flex-me(center, center, 1rem);
+  width: $btn-width-longest;
+  padding: 1.55rem 0;
+  transition: transform 0.15s; //// ?????????
+  font-size: $fs-btn;
+  font-weight: $fw-btn;
+  text-transform: uppercase;
+  color: $clr-grey;
+  background-color: $clr-white;
+
+  &:active {
+    transform: translateY(0.3rem);
+    box-shadow: $box-shadow-btn-down;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &__icon {
+    width: 2.1rem;
+  }
+
+  // swap and exit needs more work
+  &--swap {
+    width: $btn-width-medium;
+    color: $clr-white;
+    background-color: $clr-grey;
+    transition: $transition-fast;
+  }
+
+  &--exit {
+    width: $btn-width-medium;
+    color: $clr-white;
+    background-color: $clr-grey;
+  }
+}
+
+//$ ok
+.btn-round {
+  @include flex-me(center, center);
+  @include size-same(3.2rem);
+  background-color: $clr-white-200;
+  border-radius: $border-radius-circle;
+  transition: $transition-fast;
+
+  &:hover {
+    background-color: $clr-white-300;
+  }
+}

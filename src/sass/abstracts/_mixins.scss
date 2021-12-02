@@ -1,0 +1,106 @@
+@mixin glossy-bg(
+  $padding-value: 0rem,
+  $shadow-value: $clr-black-200,
+  $bg-color: $clr-white-090,
+  $light-theme: true
+) {
+  @if $light-theme {
+    padding: $padding-value;
+    background-color: $bg-color;
+    border: 0.2rem solid $clr-white-090;
+    outline: 0.19rem solid $clr-primary-600;
+    box-shadow: 0 0 5rem $shadow-value;
+    border-radius: $border-radius;
+    backdrop-filter: blur(10rem);
+  } @else {
+    padding: $padding-value;
+    background-color: $bg-color;
+    border: 0.2rem solid $clr-grey-100;
+    outline: 0.19rem solid $clr-grey-100;
+    box-shadow: 0 0 2.5rem $shadow-value;
+    border-radius: $border-radius;
+    backdrop-filter: blur(10rem);
+  }
+}
+
+@mixin modal-bg {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background-color: $clr-black-800;
+  backdrop-filter: blur(0.5rem);
+  user-select: none;
+}
+
+@mixin animation(
+  $animation-name,
+  $animation-duration: 0.2s,
+  $animation-delay: 0s,
+  $animation-mode: none
+) {
+  animation: $animation-name $animation-duration linear $animation-delay
+    $animation-mode;
+}
+
+@mixin divider(
+  $margin-top: 0rem,
+  $margin-bottom: 0rem,
+  $width-value: 100%,
+  $height-value: 0.1rem,
+  $color: $clr-white-200
+) {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+  width: $width-value;
+  height: $height-value;
+  background-color: $color;
+  border-radius: 10rem;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@mixin size($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin size-same($size) {
+  height: $size;
+  width: $size;
+}
+
+//$ Flex mixins -------------------------------------
+
+@mixin flex-me($justify: center, $align: center, $gap-value: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap-value;
+}
+
+@mixin flex-align-center($gap-value: 0rem) {
+  display: flex;
+  align-items: center;
+  gap: $gap-value;
+}
+
+@mixin flex-justify-center($gap-value: 0rem) {
+  display: flex;
+  justify-content: center;
+  gap: $gap-value;
+}
+
+@mixin flex-col-center($gap-value: 0rem) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $gap-value;
+}
+
+@mixin flex-split($gap-value: 0rem) {
+  display: flex;
+  gap: $gap-value;
+}

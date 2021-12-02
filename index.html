@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <script type="module" defer src="src/js/controller.js"></script>
+
+    <title>Pig Game</title>
+  </head>
+  <body class="body-container">
+
+    <!-- ok -->
+    <nav class="navbar">
+      <button class="btn-round btn--theme click-sound">
+        <svg class="icon" width="32" height="32">
+          <use
+            class="icon-theme--on"
+            href="src/icon/bootstrap-icons.svg#toggle2-on"
+          />
+          <use
+            class="icon-theme--off hidden"
+            href="src/icon/bootstrap-icons.svg#toggle2-off"
+          />
+        </svg>
+        <div class="note note-theme--on">dark theme</div>
+        <div class="note note-theme--off hidden">light theme</div>
+      </button>
+      <button class="btn-round btn--pause click-sound hidden">
+        <svg class="icon" width="32" height="32">
+          <use href="src/icon/bootstrap-icons.svg#pause-fill" />
+          <div class="note">pause game</div>
+        </svg>
+      </button>
+      <button class="btn-round btn--sounds click-sound">
+        <svg class="icon" width="32" height="32">
+          <use
+            class="icon-sounds--on"
+            href="src/icon/bootstrap-icons.svg#volume-down-fill"
+          />
+          <use
+            class="icon-sounds--off hidden"
+            href="src/icon/bootstrap-icons.svg#volume-mute-fill"
+          />
+        </svg>
+        <div class="note note-sounds--off">sounds off</div>
+        <div class="note note-sounds--on hidden">sounds on</div>
+      </button>
+      <button class="btn-round btn--leave click-sound hidden">
+        <svg class="icon" width="32" height="32">
+          <use href="src/icon/bootstrap-icons.svg#list" />
+        </svg>
+        <div class="note">menu</div>
+      </button>
+    </nav>
+
+    <!-- ok -->
+    <section class="menu">
+      <div class="menu__logo">
+        <div class="menu__logo--icon">
+          <img src="src/img/logo.png" alt="Logo icon" />
+        </div>
+
+        <h1 class="menu__logo--text">
+          <div class="menu__logo--text-top">Pig</div>
+          <div class="menu__logo--text-bottom">Game</div>
+        </h1>
+      </div>
+
+      <div class="menu__btns-container">
+        <button class="btn btn--modes click-sound">New game</button>
+        <button class="btn btn--rules click-sound">Game rules</button>
+        <button class="btn btn--credits click-sound">Credits</button>
+      </div>
+    </section>
+
+    <section class="game-modes hidden">
+      <h2 class="game-modes__heading">Select a game mode</h2>
+      <div class="game-modes__divider"></div>
+      <div class="game-modes__btns-container">
+        <button class="game-modes__btn btn--border pig-mode click-sound">Pig</button>
+        <button class="game-modes__btn btn--border big-pig-mode click-sound">Big Pig</button>
+        <button class="game-modes__btn btn--border run-pig-mode click-sound">Running Pig</button>
+      </div>
+    </section>
+
+    <section class="game-rules hidden">
+      <h2 class="game-rules__heading">Hello and welcome to the Pig Game</h2>
+      <div class="game-rules__divider"></div>
+      <p class="game-rules__text">
+        Pig game is a simple dice game first described by John Scarne in 1945.
+        Players take turns to roll a single dice as many times as they wish,
+        adding all roll results to a current points, but losing their gained
+        current points for the turn if they roll a 1.
+      </p>
+
+      <ul class="game-rules__list">
+        <li class="game-rules__list-item">
+          If the player rolls a 1, they score nothing and it becomes the next
+          player's turn.
+        </li>
+        <li class="game-rules__list-item">
+          If the player rolls any other number, it is added to their current
+          points and the player's turn continues.
+        </li>
+        <li class="game-rules__list-item">
+          If a player chooses to "hold", their current points is added to their
+          total score, and it becomes the next player's turn.
+        </li>
+      </ul>
+      <p class="game-rules__text">
+        The first player to score 100 or more points wins.
+      </p>
+
+      <h2 class="game-rules__heading">Big Pig</h2>
+      <div class="game-rules__divider"></div>
+      <p class="game-rules__text">This mode adds more options to the game.</p>
+      <ul class="game-rules__list">
+        <li class="game-rules__list-item">
+          If the player rolls a special side of the dice can gain current points
+          +10, +20, +30, or may lose from score -10, -20, -30.
+        </li>
+        <li class="game-rules__list-item">
+          If the player rolls swap. If he wants to he can swap total scores with
+          his opponent.
+        </li>
+      </ul>
+      <p class="game-rules__text">
+        The first player to score 200 or more points wins.
+      </p>
+      <h2 class="game-rules__heading">Running Pig</h2>
+      <div class="game-rules__divider"></div>
+      <p class="game-rules__text">
+        This mode adds same options as Big Pig mode. Only the difference is the
+        player with higher score wins after timer is off.
+      </p>
+      <button class="btn btn--game-rules click-sound">Back to menu</button>
+    </section>
+
+    <section class="credits hidden">
+      <h2 class="credits__heading">Credits</h2>
+      <div class="credits__divider"></div>
+      <div class="credits__creators-container">
+        <h3 class="credits__creator--role">Created by</h3>
+        <h3 class="credits__creator--name">Martin Kamír</h3>
+        <h3 class="credits__creator--role">Inspired by</h3>
+        <h3 class="credits__creator--name">Jonas Schmedtmann's</h3>
+        <h3 class="credits__creator--role">Music</h3>
+        <h3 class="credits__creator--name">Skrilex</h3>
+        <h3 class="credits__creator--role">Game Sounds</h3>
+        <h3 class="credits__creator--name">KDA</h3>
+        <h3 class="credits__creator--role">Special Thanks</h3>
+        <h3 class="credits__creator--name">Gabriela Kamírová</h3>
+        <h3 class="credits__creator--name">Zuzana Kamírová</h3>
+        <h3 class="credits__creator--name">Máša</h3>
+      </div>
+      <button class="btn btn--credits click-sound">Back to menu</button>
+    </section>
+
+    <div class="game-countdown hidden">
+      <h2 class="game-countdown__timer">04:00</h2>
+    </div>
+
+    <section class="game-window hidden">
+      <div class="player player--0 player--active">
+        <h2 class="player__name">Player 1</h2>
+        <div class="player__status">
+          <h3 class="player__playing player__playing--0"></h3>
+          <h3 class="player__winner player__winner--0 hidden">winner</h3>
+        </div>
+        <p class="player__score player__score--0">0</p>
+        <div class="current-box current-box--0">
+          <p class="current-box__label">Current score</p>
+          <p class="current-box__score current-box__score--0">0</p>
+        </div>
+      </div>
+      <div class="player player--1">
+        <h2 class="player__name">Player 2</h2>
+        <div class="player__status">
+          <h3 class="player__playing player__playing--1 hidden"></h3>
+          <h3 class="player__winner player__winner--1 hidden">winner</h3>
+        </div>
+        <p class="player__score player__score--1">0</p>
+        <div class="current-box current-box--1">
+          <p class="current-box__label">Current score</p>
+          <p class="current-box__score current-box__score--1">0</p>
+        </div>
+      </div>
+      <div class="panel-bar">
+        <img
+          class="panel-bar__dice dice dice--light opacity-zero"
+          src="src/img/dice-light-1.png"
+          alt="Playing dice light"
+        />
+        <img
+          class="panel-bar__dice dice dice--dark opacity-zero hidden"
+          src="src/img/dice-dark-1.png"
+          alt="Playing dice dark"
+        />
+
+
+        <div class="panel-bar__swap-container">
+          <button class="btn btn--swap btn--swap-yes hidden">
+            Yes
+          </button>
+          <button class="btn btn--swap btn--swap-no click-sound hidden">
+            No
+          </button>
+        </div>
+
+        <div class="panel-bar__btns-container">
+          <button class="btn btn--roll click-sound ">
+            <svg class="btn__icon" width="32" height="32">
+              <use href="src/icon/bootstrap-icons.svg#dice-1" /></svg
+            >Roll dice
+          </button¨>
+          <button class="btn btn--hold btn--whoosh-click">
+            <svg class="btn__icon" width="32" height="32">
+              <use class="icon" href="src/icon/bootstrap-icons.svg#download" />
+            </svg>
+            Hold score
+          </button>
+        </div>
+      </div>
+      <div class="victory-bar hidden">
+        <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player"></span> you won!</h2>
+        <div class="victory-bar__btns-container">
+          <button class="btn btn--again">Again</button>
+          <button class="btn btn--leave">Leave</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="copyright">
+      <p class="copyright__text">
+        &copy; Copyright 2021 by Martin Kamír. All Rights Reserved. Remake of
+        Jonas Schmedtmann's Pig game.
+      </p>
+      <div class="copyright__icons">
+        <a
+          class="copyright__link"
+          href="https://martinkamir.com"
+          target="_blank"
+        >
+          <svg
+            class="copyright__icon"
+            id="website"
+            width="32"
+            height="32"
+            viewBox="0 0 100 66"
+            style="enable-background: new 0 0 100 66"
+            xml:space="preserve"
+          >
+            <style type="text/css"></style>
+            <path
+              d="M13.52,40.79L2.15,60.14C1.54,61.19,2.29,62.5,3.5,62.5h22.74c1.21,0,1.96-1.31,1.35-2.36L16.22,40.79
+    C15.62,39.76,14.13,39.76,13.52,40.79z"
+            />
+            <path
+              d="M61.65,58.98L61.65,58.98c-11.43,6.6-26.04,2.68-32.64-8.75L4.11,7.09C3.78,6.53,3.97,5.81,4.54,5.48l0,0
+    c11.43-6.6,26.04-2.68,32.64,8.75l24.91,43.14C62.41,57.93,62.22,58.65,61.65,58.98z"
+            />
+            <path
+              d="M97.98,58.98L97.98,58.98c-11.43,6.6-26.04,2.68-32.64-8.75L40.43,7.09c-0.33-0.56-0.13-1.28,0.43-1.61l0,0
+    C52.29-1.12,66.9,2.8,73.5,14.23l24.91,43.14C98.74,57.93,98.54,58.65,97.98,58.98z"
+            />
+            <g></g>
+          </svg>
+        </a>
+        <a
+          class="copyright__link"
+          href="https://github.com/Martin-K-Kamir"
+          target="_blank"
+        >
+          <svg
+            class="copyright__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+        </a>
+        <a
+          class="copyright__link"
+          href="https://www.linkedin.com/in/martin-kam%C3%ADr-2967aa222/"
+          target="_blank"
+        >
+          <svg
+            class="copyright__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+    <div class="exit hidden">
+      <div class="exit__window">
+        <h2 class="exit__heading">Are you sure to exit?</h2>
+        <p class="exit__text">Game progress will be lost</p>
+        <div class="exit__btns-container ">
+          <button class="btn btn--exit btn--exit-yes click-sound">Yes</button>
+          <button class="btn btn--exit btn--exit-no click-sound">No</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pause-modal hidden">
+      <button class="pause-modal__btn btn--unpause click-sound">
+        <svg class="pause-modal__icon" width="32" height="32">
+          <use href="src/icon/bootstrap-icons.svg#pause-fill" />
+        </svg>
+        <h2 class="pause-modal__text">Game is paused</h2>
+      </button>
+    </div>
+
+    <audio class="audio-victory" src="src/sounds/victory.mp3"></audio>
+    <audio class="audio-swap-alert" src="src/sounds/swap.mp3"></audio>
+    <audio class="audio-positive" src="src/sounds/win-score.mp3"></audio>
+    <audio class="audio-negative" src="src/sounds/lost-score.mp3"></audio>
+    <audio class="audio-click" src="src/sounds/click.mp3"></audio>
+    <audio class="audio-swapped" src="src/sounds/click-swap.mp3"></audio>
+    <audio class="audio-whoosh" src="src/sounds/whoosh.mp3"></audio>      
+  </body>
+</html>
