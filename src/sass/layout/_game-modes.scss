@@ -1,4 +1,4 @@
-.game-modes {
+.modes {
   @include glossy-bg($padding-big);
   @include animation(pop-in);
 
@@ -17,26 +17,11 @@
     @include flex-justify-center(5rem);
   }
 
-  &__btn {
-    @include flex-me;
-    width: 20rem;
-    height: 8rem;
-    transition: $transition-fast;
-
-    font-size: $fs-text-biggest;
-    font-weight: $fw-text-bulky;
-    color: $clr-white;
-
-    background-color: transparent;
-    border: $border-white-thick;
-    border-radius: $border-radius;
-
-    &:hover {
-      cursor: pointer;
-      transform: scale(110%);
-      font-weight: calc($fw-text-bulky + 200); //800
-      color: $clr-secondary;
-      border: $border-secondary-thick;
-    }
+  .btn-border:hover {
+    cursor: pointer;
+    transform: scale(110%);
+    font-weight: calc($fw-text-bulky + 200); //800 // make b
+    color: $clr-secondary;
+    border: $border-secondary-thick;
   }
 }

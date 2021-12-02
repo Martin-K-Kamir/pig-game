@@ -4,8 +4,8 @@ import * as model from '../model.js';
 import { SELECTED } from '../config.js';
 
 class MenuView extends View {
-  _modesWindow = document.querySelector('.game-modes');
-  _rulesWindow = document.querySelector('.game-rules');
+  _modesWindow = document.querySelector('.modes');
+  _rulesWindow = document.querySelector('.rules');
   _creditsWindow = document.querySelector('.credits');
 
   _btnPause = document.querySelector('.btn--pause');

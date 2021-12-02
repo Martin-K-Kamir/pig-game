@@ -75,81 +75,87 @@
       </div>
     </section>
 
-    <section class="game-modes hidden">
-      <h2 class="game-modes__heading">Select a game mode</h2>
-      <div class="game-modes__divider"></div>
-      <div class="game-modes__btns-container">
-        <button class="game-modes__btn btn--border pig-mode click-sound">Pig</button>
-        <button class="game-modes__btn btn--border big-pig-mode click-sound">Big Pig</button>
-        <button class="game-modes__btn btn--border run-pig-mode click-sound">Running Pig</button>
+    <!-- ok -->
+    <section class="modes hidden">
+      <h2 class="modes__heading">Select a game mode</h2>
+      <div class="modes__divider"></div>
+      <div class="modes__btns-container">
+        <button class="btn-border pig-mode click-sound">Pig</button>
+        <button class="btn-border big-pig-mode click-sound">Big Pig</button>
+        <button class="btn-border run-pig-mode click-sound">Running Pig</button>
       </div>
     </section>
 
-    <section class="game-rules hidden">
-      <h2 class="game-rules__heading">Hello and welcome to the Pig Game</h2>
-      <div class="game-rules__divider"></div>
-      <p class="game-rules__text">
+    <!-- ok -->
+    <section class="rules hidden">
+      <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
+      <div class="rules__divider"></div>
+      <p class="rules__text">
         Pig game is a simple dice game first described by John Scarne in 1945.
         Players take turns to roll a single dice as many times as they wish,
-        adding all roll results to a current points, but losing their gained
-        current points for the turn if they roll a 1.
+        adding all roll results to a current score, but losing their gained
+        current score for the turn if they roll a 1.
       </p>
 
-      <ul class="game-rules__list">
-        <li class="game-rules__list-item">
+      <ul class="rules__list">
+        <li class="rules__list-item">
           If the player rolls a 1, they score nothing and it becomes the next
           player's turn.
         </li>
-        <li class="game-rules__list-item">
+        <li class="rules__list-item">
           If the player rolls any other number, it is added to their current
-          points and the player's turn continues.
+          score and the player's turn continues.
         </li>
-        <li class="game-rules__list-item">
-          If a player chooses to "hold", their current points is added to their
+        <li class="rules__list-item">
+          If a player chooses to "hold", their current score is added to their
           total score, and it becomes the next player's turn.
         </li>
       </ul>
-      <p class="game-rules__text">
-        The first player to score 100 or more points wins.
+      <p class="rules__text">
+        The first player to score 100 or more score wins.
       </p>
 
-      <h2 class="game-rules__heading">Big Pig</h2>
-      <div class="game-rules__divider"></div>
-      <p class="game-rules__text">This mode adds more options to the game.</p>
-      <ul class="game-rules__list">
-        <li class="game-rules__list-item">
-          If the player rolls a special side of the dice can gain current points
+      <h2 class="rules__heading">Big Pig</h2>
+      <div class="rules__divider"></div>
+      <p class="rules__text">This mode adds more options to the game.</p>
+      <ul class="rules__list">
+        <li class="rules__list-item">
+          If the player rolls a special side of the dice can gain current score
           +10, +20, +30, or may lose from score -10, -20, -30.
         </li>
-        <li class="game-rules__list-item">
+        <li class="rules__list-item">
           If the player rolls swap. If he wants to he can swap total scores with
           his opponent.
         </li>
+        <li class="rules__list-item">
+          A player can lose the game if his score is below -50.
+        </li>
       </ul>
-      <p class="game-rules__text">
-        The first player to score 200 or more points wins.
+      <p class="rules__text">
+        The first player to score 200 or more score wins.
       </p>
-      <h2 class="game-rules__heading">Running Pig</h2>
-      <div class="game-rules__divider"></div>
-      <p class="game-rules__text">
-        This mode adds same options as Big Pig mode. Only the difference is the
-        player with higher score wins after timer is off.
+      <h2 class="rules__heading">Running Pig</h2>
+      <div class="rules__divider"></div>
+      <p class="rules__text">
+        This mode adds same options as <i>Big Pig</i> mode. Only the difference is the
+        player with higher score wins after timer is off. So whoever has the bigger score after 4 minutes wins!
       </p>
-      <button class="btn btn--game-rules click-sound">Back to menu</button>
+      <button class="btn btn--rules click-sound">Back to menu</button>
     </section>
 
+    <!-- ok -->
     <section class="credits hidden">
       <h2 class="credits__heading">Credits</h2>
       <div class="credits__divider"></div>
       <div class="credits__creators-container">
         <h3 class="credits__creator--role">Created by</h3>
         <h3 class="credits__creator--name">Martin Kamír</h3>
-        <h3 class="credits__creator--role">Inspired by</h3>
+        <h3 class="credits__creator--role">Original author</h3>
         <h3 class="credits__creator--name">Jonas Schmedtmann's</h3>
         <h3 class="credits__creator--role">Music</h3>
-        <h3 class="credits__creator--name">Skrilex</h3>
+        <h3 class="credits__creator--name">Jane Doe</h3>
         <h3 class="credits__creator--role">Game Sounds</h3>
-        <h3 class="credits__creator--name">KDA</h3>
+        <h3 class="credits__creator--name">Unknown</h3>
         <h3 class="credits__creator--role">Special Thanks</h3>
         <h3 class="credits__creator--name">Gabriela Kamírová</h3>
         <h3 class="credits__creator--name">Zuzana Kamírová</h3>

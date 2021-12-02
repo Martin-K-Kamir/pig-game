@@ -1,10 +1,10 @@
 .btn {
   @include flex-me(center, center, 1rem);
   width: $btn-width-longest;
-  padding: 1.55rem 0;
-  transition: transform 0.15s; //// ?????????
-  font-size: $fs-btn;
-  font-weight: $fw-btn;
+  padding: 1.55rem 0; // make b
+  transition: $transition-fast;
+  font-size: $fs-btn; // make b
+  font-weight: $fw-btn; // make b
   text-transform: uppercase;
   color: $clr-grey;
   background-color: $clr-white;
@@ -48,4 +48,19 @@
   &:hover {
     background-color: $clr-white-300;
   }
+}
+
+.btn-border {
+  @include flex-me;
+  width: 20rem; // make b
+  height: 8rem; // make b
+  transition: $transition-fast;
+
+  font-size: $fs-text-biggest; // make b
+  font-weight: $fw-text-bulky; // make b
+  color: $clr-white;
+
+  background-color: transparent;
+  border: $border-white-thick;
+  border-radius: $border-radius;
 }

@@ -2,8 +2,8 @@
   background-color: $clr-grey;
 
   & .menu,
-  & .game-modes,
-  & .game-rules,
+  & .modes,
+  & .rules,
   & .credits {
     @include glossy-bg($padding-value: $padding-big, $light-theme: false);
   }
@@ -22,9 +22,9 @@
     background-color: $clr-black-200;
   }
 
-  & .game-modes__heading,
+  & .modes__heading,
   & .credits__creator--role,
-  & .game-rules__heading {
+  & .rules__heading {
     color: $clr-primary-800;
   }
 
@@ -41,7 +41,7 @@
     background-color: $clr-white-700;
   }
 
-  & .game-modes__btn:hover {
+  & .modes__btns-container .btn-border:hover {
     color: $clr-primary-800;
     border: 0.4rem solid $clr-primary-800;
   }
