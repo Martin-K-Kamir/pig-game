@@ -2,8 +2,8 @@ import View from './View.js';
 import menuView from './menuView.js';
 
 class LeavingModalView extends View {
-  _leavingModal = document.querySelector('.exit');
-  btn = document.querySelector('.btn--exit-yes');
+  _leavingModal = document.querySelector('.leaving-modal');
+  btn = document.querySelector('.btn--leave-yes');
 
   constructor() {
     super();
@@ -21,9 +21,9 @@ class LeavingModalView extends View {
         // Toggle hidden for leavingModal
         if (
           btn.classList.contains('btn--leave') ||
-          btn.classList.contains('btn--exit-no')
+          btn.classList.contains('btn--leave-no')
         ) {
-          this._displayLeavingModal();
+          this.elToggleClass(this._leavingModal);
         }
 
         // If btn--exit-yes were clicked
@@ -34,10 +34,6 @@ class LeavingModalView extends View {
         }
       }.bind(this)
     );
-  }
-
-  _displayLeavingModal() {
-    this.elToggleClass(this._leavingModal);
   }
 
   _displayMenuWindow() {

@@ -1,0 +1,32 @@
+
+@mixin flex-me($justify: center, $align: center, $gap-value: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap-value;
+  }
+  
+  @mixin flex-align-center($gap-value: 0rem) {
+    display: flex;
+    align-items: center;
+    gap: $gap-value;
+  }
+  
+  @mixin flex-justify-center($gap-value: 0rem) {
+    display: flex;
+    justify-content: center;
+    gap: $gap-value;
+  }
+  
+  @mixin flex-col-center($gap-value: 0rem) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-value;
+  }
+  
+  @mixin flex-split($gap-value: 0rem) {
+    display: flex;
+    gap: $gap-value;
+  }

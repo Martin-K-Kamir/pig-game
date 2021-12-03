@@ -11,7 +11,7 @@
   </head>
   <body class="body-container">
 
-    <!-- ok -->
+    
     <nav class="navbar">
       <button class="btn-round btn--theme click-sound">
         <svg class="icon" width="32" height="32">
@@ -55,7 +55,7 @@
       </button>
     </nav>
 
-    <!-- ok -->
+    
     <section class="menu">
       <div class="menu__logo">
         <div class="menu__logo--icon">
@@ -75,7 +75,7 @@
       </div>
     </section>
 
-    <!-- ok -->
+    
     <section class="modes hidden">
       <h2 class="modes__heading">Select a game mode</h2>
       <div class="modes__divider"></div>
@@ -86,7 +86,7 @@
       </div>
     </section>
 
-    <!-- ok -->
+    
     <section class="rules hidden">
       <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
       <div class="rules__divider"></div>
@@ -143,7 +143,7 @@
       <button class="btn btn--rules click-sound">Back to menu</button>
     </section>
 
-    <!-- ok -->
+    
     <section class="credits hidden">
       <h2 class="credits__heading">Credits</h2>
       <div class="credits__divider"></div>
@@ -164,12 +164,13 @@
       <button class="btn btn--credits click-sound">Back to menu</button>
     </section>
 
-    <!-- to do -->
-    <div class="game-countdown hidden">
-      <h2 class="game-countdown__timer">04:00</h2>
+    
+    <div class="timer hidden">
+      <h2 class="timer__counter">04:00</h2>
     </div>
 
-    <section class="game-window hidden">
+    
+    <section class="game hidden">
       <div class="player player--0 player--active">
         <h2 class="player__name">Player 1</h2>
         <div class="player__status">
@@ -208,21 +209,21 @@
 
 
         <div class="panel-bar__swap-container">
-          <button class="btn btn--swap btn--swap-yes hidden">
+          <button class="btn btn--grey btn--swap-yes hidden">
             Yes
           </button>
-          <button class="btn btn--swap btn--swap-no click-sound hidden">
+          <button class="btn btn--grey btn--swap-no click-sound hidden">
             No
           </button>
         </div>
 
         <div class="panel-bar__btns-container">
-          <button class="btn btn--roll click-sound ">
+          <button class="btn btn--roll click-sound">
             <svg class="btn__icon" width="32" height="32">
               <use href="src/icon/bootstrap-icons.svg#dice-1" /></svg
             >Roll dice
           </button¨>
-          <button class="btn btn--hold btn--whoosh-click">
+          <button class="btn btn--hold">
             <svg class="btn__icon" width="32" height="32">
               <use class="icon" href="src/icon/bootstrap-icons.svg#download" />
             </svg>
@@ -233,12 +234,13 @@
       <div class="victory-bar hidden">
         <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player"></span> you won!</h2>
         <div class="victory-bar__btns-container">
-          <button class="btn btn--again">Again</button>
-          <button class="btn btn--leave">Leave</button>
+          <button class="btn btn-grey btn--again">Again</button>
+          <button class="btn btn-grey btn--leave">Leave</button>
         </div>
       </div>
     </section>
 
+    
     <footer class="copyright">
       <p class="copyright__text">
         &copy; Copyright 2021 by Martin Kamír. All Rights Reserved. Remake of
@@ -261,8 +263,7 @@
           >
             <style type="text/css"></style>
             <path
-              d="M13.52,40.79L2.15,60.14C1.54,61.19,2.29,62.5,3.5,62.5h22.74c1.21,0,1.96-1.31,1.35-2.36L16.22,40.79
-    C15.62,39.76,14.13,39.76,13.52,40.79z"
+              d="M13.52,40.79L2.15,60.14C1.54,61.19,2.29,62.5,3.5,62.5h22.74c1.21,0,1.96-1.31,1.35-2.36L16.22,40.79 C15.62,39.76,14.13,39.76,13.52,40.79z"
             />
             <path
               d="M61.65,58.98L61.65,58.98c-11.43,6.6-26.04,2.68-32.64-8.75L4.11,7.09C3.78,6.53,3.97,5.81,4.54,5.48l0,0
@@ -312,23 +313,25 @@
       </div>
     </footer>
 
-    <div class="exit hidden">
-      <div class="exit__window">
-        <h2 class="exit__heading">Are you sure to exit?</h2>
-        <p class="exit__text">Game progress will be lost</p>
-        <div class="exit__btns-container ">
-          <button class="btn btn--exit btn--exit-yes click-sound">Yes</button>
-          <button class="btn btn--exit btn--exit-no click-sound">No</button>
+    
+    <div class="leaving-modal hidden">
+      <div class="leaving-modal__box">
+        <h2 class="leaving-modal__heading">Are you sure to leave?</h2>
+        <p class="leaving-modal__text">Game progress will be lost</p>
+        <div class="leaving-modal__btns-container">
+          <button class="btn btn-grey btn--leave-yes click-sound">Yes</button>
+          <button class="btn btn-grey btn--leave-no click-sound">No</button>
         </div>
       </div>
     </div>
 
-    <div class="pause-modal hidden">
-      <button class="pause-modal__btn btn--unpause click-sound">
-        <svg class="pause-modal__icon" width="32" height="32">
+    
+    <div class="paused-modal hidden">
+      <button class="paused-modal__btn btn--unpause click-sound">
+        <svg class="paused-modal__icon" width="32" height="32">
           <use href="src/icon/bootstrap-icons.svg#pause-fill" />
         </svg>
-        <h2 class="pause-modal__text">Game is paused</h2>
+        <h2 class="paused-modal__text">Game is paused</h2>
       </button>
     </div>
 

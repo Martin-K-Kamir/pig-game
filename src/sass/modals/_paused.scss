@@ -1,0 +1,32 @@
+.paused-modal {
+    @include modal-bg;
+    @include flex-me;
+    @include animation(fade-in);
+    transition: $transition-slow;
+  
+    &__btn {
+      @include flex-col-center;
+  
+      &:hover .pause-modal__icon,
+      &:hover .pause-modal__text {
+        color: $clr-primary;
+      }
+    }
+  
+    &__icon,
+    &__text {
+      color: $clr-white;
+      transition: $transition-fast;
+    }
+  
+    &__icon {
+      width: 30rem;
+      height: 30rem;
+    }
+  
+    &__text {
+      font-size: $fs-big;
+      text-transform: uppercase;
+    }
+  }
+  

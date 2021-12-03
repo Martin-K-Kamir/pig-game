@@ -1,0 +1,10 @@
+.game {
+  @include glossy-bg(0, $clr-black-300, $clr-white-300);
+  @include animation(pop-in);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100rem;
+  height: 60rem;
+}
+

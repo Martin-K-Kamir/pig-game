@@ -30,7 +30,7 @@ class ThemesView extends View {
 
   toggleThemes() {
     this.setTheme = this.setTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
-    this._body.classList.toggle('dark-mode');
+    this._body.classList.toggle('dark-theme');
   }
 }
 

@@ -21,20 +21,13 @@
   &__icon {
     width: 2.1rem;
   }
+}
 
-  // swap and exit needs more work
-  &--swap {
-    width: $btn-width-medium;
-    color: $clr-white;
-    background-color: $clr-grey;
-    transition: $transition-fast;
-  }
-
-  &--exit {
-    width: $btn-width-medium;
-    color: $clr-white;
-    background-color: $clr-grey;
-  }
+.btn-grey {
+  width: $btn-width-medium;
+  padding: 1.3rem 0; // make b
+  color: $clr-white;
+  background-color: $clr-grey;
 }
 
 //$ ok

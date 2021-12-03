@@ -1,0 +1,19 @@
+@mixin size($height, $width) {
+    height: $height;
+    width: $width;
+  }
+  
+  @mixin size-same($size) {
+    height: $size;
+    width: $size;
+  }
+
+  @mixin animation(
+  $animation-name,
+  $animation-duration: 0.2s,
+  $animation-delay: 0s,
+  $animation-mode: none
+) {
+  animation: $animation-name $animation-duration linear $animation-delay
+    $animation-mode;
+}

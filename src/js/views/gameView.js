@@ -23,8 +23,8 @@ class GameView extends View {
   timeleftPlayerTimer;
   timeleftGameTimer = SECS_FOR_GAME_TIMER;
   clickGameTimerOnce = CLICK_AVAILABLE;
-  _timerBox = document.querySelector('.game-countdown');
-  _timerNums = document.querySelector('.game-countdown__timer');
+  _timerBox = document.querySelector('.timer');
+  _timerNums = document.querySelector('.timer__counter');
 
   _diceLight = document.querySelector('.dice--light');
   _diceDark = document.querySelector('.dice--dark');

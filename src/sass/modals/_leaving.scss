@@ -1,0 +1,30 @@
+.leaving-modal {
+    @include flex-col-center(2rem);
+    @include modal-bg;
+    @include animation(fade-in);
+    transition: $transition-fast;
+  
+    &__box {
+      @include flex-col-center;
+      padding: $padding-big;
+      border-radius: $border-radius;
+      background-color: $clr-white;
+      box-shadow: $box-shadow-medium;
+    }
+  
+    &__heading {
+      font-size: $fs-heading-big;
+      color: $clr-grey;
+      margin-bottom: 3rem;
+    }
+  
+    &__text {
+      color: $clr-grey;
+      margin-bottom: 4rem;
+    }
+  
+    &__btns-container {
+      @include flex-split(2rem);
+    }
+  }
+  
