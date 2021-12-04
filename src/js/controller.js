@@ -25,7 +25,7 @@ import {
   DICE_1,
   DICE_7,
   PERCENT_50,
-  PERCENT_95,
+  PERCENT_90,
   PERCENT_100,
   PRIZE_CHANCES,
 } from './config.js';
@@ -98,7 +98,7 @@ const controlSetGameMode = function () {
   // 3) If running pig game mode were selected
   if (model.gameModes.run) {
     model.initState(RUN_DICE, RUN_LIMIT);
-    gameView.elToggleClass(gameView.countdownBox);
+    gameView.elToggleClass(gameView.timerBox);
   }
 };
 
@@ -218,7 +218,7 @@ const controlRollingDice = function () {
     // 3.3) If percentages were under 50% and above 95%
     if (
       model.state.percentages > PERCENT_50 &&
-      model.state.percentages < PERCENT_95
+      model.state.percentages < PERCENT_90
     ) {
       // Lose from score based on prize chances, play negative sound and update score
       model.takeScore();
@@ -231,7 +231,7 @@ const controlRollingDice = function () {
     }
 
     // 3.4) If percentages were above 95%
-    if (model.state.percentages >= PERCENT_95) {
+    if (model.state.percentages >= PERCENT_90) {
       // Set diceRoll to swap, display swap btns and play swap alert sound
       model.diceRollSwap();
       gameView.displaySwapBtns(SHOW_BTNS);

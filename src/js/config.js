@@ -34,7 +34,7 @@ export const DICE_1 = 1;
 export const DICE_7 = 7;
 
 export const PERCENT_50 = 50;
-export const PERCENT_95 = 95;
+export const PERCENT_90 = 90;
 export const PERCENT_100 = 100;
 
 export const PRIZE_CHANCES = 3;

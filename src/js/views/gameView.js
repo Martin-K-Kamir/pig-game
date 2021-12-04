@@ -23,7 +23,7 @@ class GameView extends View {
   timeleftPlayerTimer;
   timeleftGameTimer = SECS_FOR_GAME_TIMER;
   clickGameTimerOnce = CLICK_AVAILABLE;
-  _timerBox = document.querySelector('.timer');
+  timerBox = document.querySelector('.timer');
   _timerNums = document.querySelector('.timer__counter');
 
   _diceLight = document.querySelector('.dice--light');
@@ -111,7 +111,7 @@ class GameView extends View {
           // If runPig were selected
           if (model.gameModes.runPig) {
             this.clickGameTimerOnce = CLICK_AVAILABLE;
-            this.elToggleClass(this._timerBox); // display gameTimer
+            this.elToggleClass(this.timerBox); // display gameTimer
           }
         }
 
@@ -165,7 +165,7 @@ class GameView extends View {
     this.removeClass(this._player1, 'player--winner');
     this.removeClass(this._player1, 'player--active');
 
-    this.addClass(this._timerBox);
+    this.addClass(this.timerBox);
     this.addClass(this._playing1);
     this.addClass(this._curScoreBox0);
     this.addClass(this._curScoreBox0);

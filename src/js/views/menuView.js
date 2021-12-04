@@ -9,7 +9,7 @@ class MenuView extends View {
   _creditsWindow = document.querySelector('.credits');
 
   _btnPause = document.querySelector('.btn--pause');
-  _btnExit = document.querySelector('.btn--exit');
+  _btnLeave = document.querySelector('.btn--leave');
 
   constructor() {
     super();
@@ -37,7 +37,7 @@ class MenuView extends View {
     this._body.addEventListener(
       'click',
       function (e) {
-        const btn = e.target.closest('.btn--border');
+        const btn = e.target.closest('.btn-border');
         if (!btn) return;
 
         if (btn.classList.contains('pig-mode')) model.gameModes.pig = SELECTED;
@@ -45,7 +45,7 @@ class MenuView extends View {
           model.gameModes.big = SELECTED;
         if (btn.classList.contains('run-pig-mode'))
           model.gameModes.run = SELECTED;
-
+        console.log(model.gameModes);
         handler();
         this._displayGameWindow();
       }.bind(this)
@@ -55,7 +55,7 @@ class MenuView extends View {
   _displayGameWindow() {
     this.elToggleClass(this._gameWindow);
     this.elToggleClass(this._modesWindow);
-    this.removeClass(this._btnExit);
+    this.removeClass(this._btnLeave);
     this.removeClass(this._btnPause);
   }
 
