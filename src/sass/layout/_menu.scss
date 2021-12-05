@@ -1,12 +1,29 @@
-// ok
 .menu {
   @include glossy-bg($padding-big);
   @include flex-col-center(5rem);
   @include animation(pop-in);
 
+  @media only screen and (max-width: 500px) {
+    width: 90%;
+    padding: 15% 0;
+    gap: 3rem;
+  }
+
+  @media only screen and (max-width: 500px) {
+    padding: 12% 0;
+  }
+
+  @media only screen and (max-width: 330px) {
+    padding: 10% 0;
+  }
+
   &__logo {
     @include flex-align-center(2.5rem);
     user-select: none;
+
+    @media only screen and (max-width: 500px) {
+      gap: 2rem;
+    }
 
     &--icon {
       @include animation(icon-throw);
@@ -14,6 +31,14 @@
       & img {
         @include animation(icon-rotate);
         width: 12.5rem;
+
+        @media only screen and (max-width: 500px) {
+          width: 25vw;
+        }
+
+        @media only screen and (max-width: 350px) {
+          width: 28vw;
+        }
       }
     }
 
@@ -22,6 +47,16 @@
       font-weight: $fw-heading-tiny;
       line-height: 5.5rem;
       letter-spacing: 0.8rem;
+
+      @media only screen and (max-width: 500px) {
+        font-size: 9vw;
+        line-height: 11vw;
+      }
+
+      @media only screen and (max-width: 350px) {
+        font-size: 10.5vw;
+        line-height: 12vw;
+      }
 
       &-top {
         @include animation(text-slide, 0.3s, 0.001s, backwards);
@@ -35,6 +70,14 @@
 
   &__btns-container {
     @include flex-col-center(3rem);
+
+    @media only screen and (max-width: 500px) {
+      gap: 2.4rem;
+    }
+
+    @media only screen and (max-width: 330px) {
+      gap: 1.6rem;
+    }
   }
 }
 

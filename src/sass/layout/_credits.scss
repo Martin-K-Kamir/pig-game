@@ -3,13 +3,30 @@
   @include animation(pop-in);
   display: grid;
 
+  @media only screen and (max-width: 580px) {
+    width: 90%;
+    padding: 11% 0;
+  }
+
+  @media only screen and (max-width: 350px) {
+    padding: 7% 0;
+  }
+
   &__heading {
     text-transform: uppercase;
     text-align: center;
+
+    @media only screen and (max-width: 500px) {
+      font-size: 6.5vw;
+    }
   }
 
   &__divider {
     @include divider(0.5rem, 1.5rem);
+
+    @media only screen and (max-width: 580px) {
+      @include divider(0.5rem, 1.5rem, 72%);
+    }
   }
 
   &__creators-container {
@@ -18,12 +35,33 @@
     justify-content: center;
     gap: 1rem;
     column-gap: 2.5rem;
+
+    @media only screen and (max-width: 500px) {
+      column-gap: 1.5rem;
+    }
+
+    @media only screen and (max-width: 400px) {
+      grid-template-columns: 100%;
+      gap: 0;
+    }
   }
 
   &__creator {
     &--role,
     &--name {
       font-size: $fs-text-big;
+
+      @media only screen and (max-width: 500px) {
+        font-size: 3.8vw;
+      }
+
+      @media only screen and (max-width: 400px) {
+        font-size: 4.5vw;
+      }
+
+      @media only screen and (max-width: 350px) {
+        font-size: 3.8vw;
+      }
     }
 
     &--role {
@@ -31,17 +69,37 @@
       font-weight: $fw-bold;
       grid-column: 1 / 2;
       color: $clr-secondary;
+
+      &:not(:first-child) {
+        @media only screen and (max-width: 400px) {
+          margin-top: 1rem;
+        }
+      }
+
+      @media only screen and (max-width: 400px) {
+        grid-column: 1 / 2;
+        text-align: center;
+      }
     }
 
     &--name {
       text-align: left;
       font-weight: $fw-tiny;
       grid-column: 2 / 3;
+
+      @media only screen and (max-width: 400px) {
+        grid-column: 1 / 2;
+        text-align: center;
+      }
     }
   }
 
   & .btn {
     margin-top: 3rem;
     justify-self: center;
+
+    @media only screen and (max-width: 400px) {
+      margin-top: 2rem;
+    }
   }
 }

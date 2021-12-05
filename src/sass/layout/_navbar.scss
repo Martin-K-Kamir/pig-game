@@ -6,6 +6,11 @@
   top: 2rem;
   right: 3rem;
 
+  @media only screen and (max-width: 500px) {
+    top: 1.5rem;
+    right: 1.7rem;
+  }
+
   & .btn-round {
     position: relative;
   }

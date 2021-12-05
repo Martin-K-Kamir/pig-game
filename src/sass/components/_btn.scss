@@ -9,6 +9,16 @@
   color: $clr-grey;
   background-color: $clr-white;
 
+  @media only screen and (max-width: 400px) {
+    width: 43vw;
+    font-size: 1.35rem;
+  }
+
+  @media only screen and (max-width: 330px) {
+    font-size: 1.25rem;
+    padding: 1.45rem 0; // make b
+  }
+
   &:active {
     transform: translateY(0.3rem);
     box-shadow: $box-shadow-btn-down;

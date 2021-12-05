@@ -4,11 +4,21 @@
   height: 69vh;
   overflow: auto;
 
+  @media only screen and (max-width: 850px) {
+    width: 90%;
+    padding: 7% 8%;
+    gap: 3rem;
+  }
+
   &__heading {
     color: $clr-secondary;
 
     &:not(:first-child) {
       margin-top: 6rem;
+    }
+
+    @media only screen and (max-width: 400px) {
+      font-size: 6.5vw;
     }
   }
 
@@ -19,6 +29,13 @@
   &__text,
   &__list-item {
     width: $text-width-longest;
+
+    @media only screen and (max-width: 800px) {
+      width: 100%;
+    }
+    @media only screen and (max-width: 400px) {
+      font-size: 3.5vw;
+    }
   }
 
   &__list {

@@ -33,8 +33,6 @@
   user-select: none;
 }
 
-
-
 @mixin divider(
   $margin-top: 0rem,
   $margin-bottom: 0rem,
@@ -42,13 +40,11 @@
   $height-value: 0.1rem,
   $color: $clr-white-200
 ) {
+  margin: 0 auto; // center
   margin-top: $margin-top;
   margin-bottom: $margin-bottom;
   width: $width-value;
   height: $height-value;
   background-color: $color;
   border-radius: 10rem;
-
-  display: flex;
-  flex-direction: column-reverse;
 }
