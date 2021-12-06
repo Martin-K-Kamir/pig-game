@@ -22,4 +22,9 @@ button {
   text-rendering: optimizeSpeed;
   color: $clr-white;
   background-color: $clr-primary;
+  overflow-x: hidden;
+
+  @media only screen and (max-width: 580px) {
+    //justify-content: flex-end;
+  }
 }

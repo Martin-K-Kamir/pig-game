@@ -4,7 +4,7 @@
   bottom: 1rem;
 
   @media only screen and (max-width: 400px) {
-    bottom: 0rem;
+    bottom: -0.5rem;
   }
 
   &__text {
@@ -20,6 +20,10 @@
       margin-bottom: 0;
       font-size: 0.9rem;
     }
+
+    @media only screen and (max-width: 375px) {
+      transform: translateY(0.5rem);
+    }
   }
 
   &__icons {
@@ -33,6 +37,10 @@
     @media only screen and (max-width: 400px) {
       width: 1.8rem;
     }
+
+    @media only screen and (max-width: 375px) {
+      width: 1.5rem;
+    }
   }
 
   // Make logo bit bigger and in better position with other icons
@@ -42,6 +50,10 @@
 
     @media only screen and (max-width: 400px) {
       width: 2.23rem;
+    }
+
+    @media only screen and (max-width: 375px) {
+      width: 1.9rem;
     }
   }
 }

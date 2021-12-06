@@ -3,8 +3,28 @@
   @include animation(pop-in);
   position: relative;
   display: flex;
-  overflow: hidden;
+  //overflow: hidden;
   width: 100rem;
   height: 60rem;
-}
 
+  @media only screen and (max-width: 1050px) {
+    width: 95%;
+  }
+
+  @media only screen and (max-width: 580px) {
+    width: 100%;
+    flex-direction: column;
+    border-radius: 0;
+    backdrop-filter: none;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    height: 80vh;
+
+    position: absolute;
+    bottom: 0rem;
+  }
+
+  @media only screen and (max-height: 800px) {
+  }
+}

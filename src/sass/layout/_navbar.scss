@@ -1,4 +1,3 @@
-//$ ok
 .navbar {
   @include flex-justify-center(1rem);
   user-select: none;
@@ -6,9 +5,17 @@
   top: 2rem;
   right: 3rem;
 
+  @media only screen and (max-width: 1050px) {
+    right: 2rem;
+  }
+
   @media only screen and (max-width: 500px) {
     top: 1.5rem;
-    right: 1.7rem;
+    right: 1rem;
+  }
+
+  @media only screen and (max-height: 600px) {
+    top: 0.8rem;
   }
 
   & .btn-round {

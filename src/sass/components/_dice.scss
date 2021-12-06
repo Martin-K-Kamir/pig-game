@@ -1,7 +1,11 @@
 .dice {
-  width: 13rem;
+  width: 12rem;
   padding: $padding-small;
   background-color: $clr-white;
   border-radius: $border-radius;
   box-shadow: $box-shadow-medium;
+
+  @media only screen and (max-width: 580px) {
+    width: 10rem;
+  }
 }

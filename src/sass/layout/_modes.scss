@@ -2,19 +2,53 @@
   @include glossy-bg($padding-big);
   @include animation(pop-in);
 
+  @media only screen and (max-width: 900px) {
+    width: 90%;
+    padding: 6.5% 5.5%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    padding: 14.5%;
+  }
+
   &__heading {
     font-size: $fs-heading-big;
     text-transform: uppercase;
     text-align: center;
     color: $clr-secondary;
+
+    @media only screen and (max-width: 900px) {
+      font-size: 4.4vw;
+    }
+
+    @media only screen and (max-width: 700px) {
+      font-size: 5.3vw;
+    }
+
+    @media only screen and (max-width: 500px) {
+      font-size: 8vw;
+    }
   }
 
   &__divider {
     @include divider(0.5rem, 2.8rem);
+
+    @media only screen and (max-width: 580px) {
+      margin-bottom: 2rem;
+    }
   }
 
   &__btns-container {
     @include flex-justify-center(5rem);
+
+    @media only screen and (max-width: 900px) {
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+      @include flex-col-center(2rem);
+    }
   }
 
   .btn-border:hover {

@@ -144,7 +144,7 @@
     </section>
 
     
-    <section class="credits ">
+    <section class="credits hidden">
       <h2 class="credits__heading">Credits</h2>
       <div class="credits__divider"></div>
       <div class="credits__creators-container">
@@ -169,79 +169,88 @@
       <h2 class="timer__counter">04:00</h2>
     </div>
 
+
+
+    <section class="game">
+        <div class="player player--0 player--active">
+          <h2 class="player__name">Player 1</h2>
+          <div class="player__status">
+            <h3 class="player__playing player__playing--0"></h3>
+            <h3 class="player__winner player__winner--0 hidden">winner</h3>
+          </div>
+          <p class="player__score player__score--0">0</p>
+          <div class="current-box current-box--0">
+            <p class="current-box__label">Current score</p>
+            <p class="current-box__score current-box__score--0">0</p>
+          </div>
+        </div>
+        <div class="player player--1">
+          <h2 class="player__name">Player 2</h2>
+          <div class="player__status">
+            <h3 class="player__playing player__playing--1 hidden"></h3>
+            <h3 class="player__winner player__winner--1 hidden">winner</h3>
+          </div>
+          <p class="player__score player__score--1">0</p>
+          <div class="current-box current-box--1">
+            <p class="current-box__label">Current score</p>
+            <p class="current-box__score current-box__score--1">0</p>
+          </div>
+        </div>
+        <div class="panel-bar">
+          <img
+            class="panel-bar__dice dice dice--light opacity-zero"
+            src="src/img/dice-light-1.png"
+            alt="Playing dice light"
+          />
+          <img
+            class="panel-bar__dice dice dice--dark opacity-zero hidden"
+            src="src/img/dice-dark-1.png"
+            alt="Playing dice dark"
+          />
     
-    <section class="game hidden">
-      <div class="player player--0 player--active">
-        <h2 class="player__name">Player 1</h2>
-        <div class="player__status">
-          <h3 class="player__playing player__playing--0"></h3>
-          <h3 class="player__winner player__winner--0 hidden">winner</h3>
+    
+          <div class="panel-bar__swap-container">
+            <button class="btn btn-grey btn--swap-yes hidden">
+              Yes
+            </button>
+            <button class="btn btn-grey btn--swap-no click-sound hidden">
+              No
+            </button>
+          </div>
+    
+          <div class="panel-bar__btns-container">
+            <button class="btn btn--full btn--roll click-sound">
+              <svg class="btn__icon" width="32" height="32">
+                <use href="src/icon/bootstrap-icons.svg#dice-1" /></svg
+              >Roll dice
+            </button¨>
+            <button class="btn btn--full btn--hold">
+              <svg class="btn__icon" width="32" height="32">
+                <use class="icon" href="src/icon/bootstrap-icons.svg#download" />
+              </svg>
+              Hold score
+            </button>
+          </div>
         </div>
-        <p class="player__score player__score--0">0</p>
-        <div class="current-box current-box--0">
-          <p class="current-box__label">Current score</p>
-          <p class="current-box__score current-box__score--0">0</p>
+        <div class="victory-bar hidden">
+          <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player"></span> you won!</h2>
+          <div class="victory-bar__btns-container">
+            <button class="btn btn-grey btn--again">Again</button>
+            <button class="btn btn-grey btn--leave">Leave</button>
+          </div>
         </div>
-      </div>
-      <div class="player player--1">
-        <h2 class="player__name">Player 2</h2>
-        <div class="player__status">
-          <h3 class="player__playing player__playing--1 hidden"></h3>
-          <h3 class="player__winner player__winner--1 hidden">winner</h3>
-        </div>
-        <p class="player__score player__score--1">0</p>
-        <div class="current-box current-box--1">
-          <p class="current-box__label">Current score</p>
-          <p class="current-box__score current-box__score--1">0</p>
-        </div>
-      </div>
-      <div class="panel-bar">
-        <img
-          class="panel-bar__dice dice dice--light opacity-zero"
-          src="src/img/dice-light-1.png"
-          alt="Playing dice light"
-        />
-        <img
-          class="panel-bar__dice dice dice--dark opacity-zero hidden"
-          src="src/img/dice-dark-1.png"
-          alt="Playing dice dark"
-        />
-
-
-        <div class="panel-bar__swap-container">
-          <button class="btn btn-grey btn--swap-yes hidden">
-            Yes
-          </button>
-          <button class="btn btn-grey btn--swap-no click-sound hidden">
-            No
-          </button>
-        </div>
-
-        <div class="panel-bar__btns-container">
-          <button class="btn btn--roll click-sound">
-            <svg class="btn__icon" width="32" height="32">
-              <use href="src/icon/bootstrap-icons.svg#dice-1" /></svg
-            >Roll dice
-          </button¨>
-          <button class="btn btn--hold">
-            <svg class="btn__icon" width="32" height="32">
-              <use class="icon" href="src/icon/bootstrap-icons.svg#download" />
-            </svg>
-            Hold score
-          </button>
-        </div>
-      </div>
-      <div class="victory-bar hidden">
-        <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player"></span> you won!</h2>
-        <div class="victory-bar__btns-container">
-          <button class="btn btn-grey btn--again">Again</button>
-          <button class="btn btn-grey btn--leave">Leave</button>
-        </div>
-      </div>
     </section>
 
+      
+
+
     
-    <footer class="copyright">
+    
+
+    
+
+    
+    <footer class="copyright hidden">
       <p class="copyright__text">
         &copy; Copyright 2021 by Martin Kamír. All Rights Reserved. Remake of
         Jonas Schmedtmann's Pig game.
