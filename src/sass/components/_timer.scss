@@ -1,17 +1,101 @@
 .timer {
-    @include animation(pop-in);
-    transition: $transition-fast;
-    position: absolute;
-    top: 3rem;
-  
-    padding: 0.1rem 4rem;
-    background-color: $clr-white-090;
-    border-radius: 1rem;
-  
-    &__counter {
-      color: $clr-white;
-      font-size: calc($fs-default + 5rem); // 6.5rem
-      letter-spacing: 0.7rem;
+  @include animation(pop-in);
+  transition: $transition-fast;
+  position: absolute;
+  top: -8rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 22.5rem;
+  background-color: $clr-white-090;
+  border-radius: 1rem 1rem 0 0;
+  height: 13%;
+  z-index: 888;
+
+  @media only screen and (max-width: 700px) {
+    top: -6.5rem;
+    width: 19rem;
+    height: 10.5%;
+  }
+
+  @media only screen and (max-width: 580px) {
+    display: flex;
+    justify-content: flex-start;
+    background-color: transparent;
+    margin-left: 1rem;
+    width: 100%;
+    top: -5.1rem;
+  }
+
+  @media only screen and (max-width: 360px) and (max-height: 750px) {
+    top: -5.2rem;
+  }
+
+  @media only screen and (max-width: 330px) {
+    top: -4.5rem;
+  }
+
+  @media only screen and (max-width: 330px) and (max-height: 500px) {
+    top: -4.2rem;
+  }
+
+  // 1280/720
+  @media only screen and (max-height: 800px) and (min-width: 580px) {
+    top: -5rem;
+    width: 16.5rem;
+    height: 8%;
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    display: flex;
+    justify-content: flex-start;
+    background-color: transparent;
+    width: 100%;
+    top: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
+    top: 0.8rem;
+  }
+
+  &__counter {
+    color: $clr-white;
+    font-size: calc($fs-default + 4rem); // 4.5rem
+    letter-spacing: 0.7rem;
+
+    display: flex;
+    justify-content: center;
+
+    @media only screen and (max-width: 700px) {
+      font-size: calc($fs-default + 3rem); // 4.5rem
+    }
+
+    @media only screen and (max-width: 580px) {
+      font-size: 3.5rem;
+    }
+
+    @media only screen and (max-width: 360px) and (max-height: 750px) {
+      font-size: 3.8rem;
+    }
+
+    @media only screen and (max-width: 330px) {
+      font-size: 3rem;
+    }
+
+    @media only screen and (max-height: 800px) and (min-width: 580px) {
+      font-size: calc($fs-default + 2rem); // 4.5rem
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      color: $clr-grey !important;
+      font-size: 3rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
+      font-size: 2rem;
     }
   }
-  
+}
+
+// 960 x 600 fix

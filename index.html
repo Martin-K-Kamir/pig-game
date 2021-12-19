@@ -11,8 +11,19 @@
   </head>
   <body class="body-container">
 
-    
     <nav class="navbar">
+      <button class="btn-round btn--leave click-sound ">
+        <svg class="icon" width="32" height="32">
+          <use href="src/icon/bootstrap-icons.svg#list" />
+        </svg>
+        <div class="note">menu</div>
+      </button>
+      <button class="btn-round btn--pause click-sound ">
+        <svg class="icon" width="32" height="32">
+          <use href="src/icon/bootstrap-icons.svg#pause-fill" />
+          <div class="note">pause game</div>
+        </svg>
+      </button>
       <button class="btn-round btn--theme click-sound">
         <svg class="icon" width="32" height="32">
           <use
@@ -26,12 +37,6 @@
         </svg>
         <div class="note note-theme--on">dark theme</div>
         <div class="note note-theme--off hidden">light theme</div>
-      </button>
-      <button class="btn-round btn--pause click-sound hidden">
-        <svg class="icon" width="32" height="32">
-          <use href="src/icon/bootstrap-icons.svg#pause-fill" />
-          <div class="note">pause game</div>
-        </svg>
       </button>
       <button class="btn-round btn--sounds click-sound">
         <svg class="icon" width="32" height="32">
@@ -47,14 +52,7 @@
         <div class="note note-sounds--off">sounds off</div>
         <div class="note note-sounds--on hidden">sounds on</div>
       </button>
-      <button class="btn-round btn--leave click-sound hidden">
-        <svg class="icon" width="32" height="32">
-          <use href="src/icon/bootstrap-icons.svg#list" />
-        </svg>
-        <div class="note">menu</div>
-      </button>
     </nav>
-
     
     <section class="menu hidden">
       <div class="menu__logo">
@@ -74,10 +72,9 @@
         <button class="btn btn--credits click-sound">Credits</button>
       </div>
     </section>
-
-    
+ 
     <section class="modes hidden">
-      <h2 class="modes__heading">Select a game mode</h2>
+      <h2 class="modes__heading">Select a <span>game mode</span></h2>
       <div class="modes__divider"></div>
       <div class="modes__btns-container">
         <button class="btn-border pig-mode click-sound">Pig</button>
@@ -86,7 +83,6 @@
       </div>
     </section>
 
-    
     <section class="rules hidden">
       <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
       <div class="rules__divider"></div>
@@ -142,8 +138,7 @@
       </p>
       <button class="btn btn--rules click-sound">Back to menu</button>
     </section>
-
-    
+  
     <section class="credits hidden">
       <h2 class="credits__heading">Credits</h2>
       <div class="credits__divider"></div>
@@ -164,37 +159,43 @@
       <button class="btn btn--credits click-sound">Back to menu</button>
     </section>
 
-    
-    <div class="timer hidden">
-      <h2 class="timer__counter">04:00</h2>
-    </div>
+    <section class="game ">
+      <div class="timer">
+        <h2 class="timer__counter">04:00</h2>
+      </div>
 
-
-
-    <section class="game">
       <div class="player player--0 player--active">
-          <h2 class="player__name">Player 1</h2>
-          <div class="player__status">
-            <h3 class="player__playing player__playing--0"></h3>
-            <h3 class="player__winner player__winner--0 hidden">winner</h3>
+        <div class="player__wrapper">
+          <div class="player__heading-wrapper">
+            <h2 class="player__name">Player 1</h2>
+            <div class="player__status">
+              <h3 class="player__playing player__playing--0">playing for 5 sec</h3>
+              <h3 class="player__winner player__winner--0 hidden">winner</h3>
+            </div>
           </div>
+          
           <p class="player__score player__score--0">0</p>
           <div class="current-box current-box--0">
             <p class="current-box__label">Current score</p>
             <p class="current-box__score current-box__score--0">0</p>
           </div>
+        </div>
       </div>
       <div class="player player--1">
-          <h2 class="player__name">Player 2</h2>
-          <div class="player__status">
-            <h3 class="player__playing player__playing--1 hidden"></h3>
-            <h3 class="player__winner player__winner--1 hidden">winner</h3>
+        <div class="player__wrapper">
+          <div class="player__heading-wrapper">
+            <h2 class="player__name">Player 2</h2>
+            <div class="player__status">
+              <h3 class="player__playing player__playing--1 hidden"></h3>
+              <h3 class="player__winner player__winner--1 hidden">winner</h3>
+            </div>
           </div>
           <p class="player__score player__score--1">0</p>
           <div class="current-box current-box--1">
             <p class="current-box__label">Current score</p>
             <p class="current-box__score current-box__score--1">0</p>
           </div>
+        </div>        
       </div>
       <div class="panel-bar">
           <img
@@ -210,48 +211,51 @@
     
     
           <div class="panel-bar__swap-container">
-            <button class="btn btn-grey btn--swap-yes hidden">
+            <button class="btn-grey--sm btn--swap-yes ">
               Yes
             </button>
-            <button class="btn btn-grey btn--swap-no click-sound hidden">
+            <button class="btn-grey--sm btn--swap-no click-sound ">
               No
             </button>
           </div>
     
           <div class="panel-bar__btns-container">
-            <button class="btn btn--full btn--roll click-sound">
-              <svg class="btn__icon" width="32" height="32">
-                <use href="src/icon/bootstrap-icons.svg#dice-1" /></svg
-              >Roll dice
+            <button class="btn btn--full btn--roll click-sound ">
+              Roll dice
             </button¨>
-            <button class="btn btn--full btn--hold">
-              <svg class="btn__icon" width="32" height="32">
-                <use class="icon" href="src/icon/bootstrap-icons.svg#download" />
-              </svg>
+            <button class="btn btn--full btn--hold ">
+              
               Hold score
             </button>
           </div>
       </div>
-      <div class="bg-bar"></div>
-      <div class="victory-bar hidden">
-          <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player"></span> you won!</h2>
+      <!-- rework name bg -->
+      <div class="bg-bar">
+        <div class="bg-bar__btns-container">
+          <button class="btn btn--full btn--roll click-sound ">
+            Roll dice
+          </button>
+          <button class="btn btn--full btn--swap-yes hidden">
+            Yes
+          </button>
+          <button class="btn btn--full btn--hold ">
+            Hold score
+          </button>
+          <button class="btn btn--full btn--swap-no click-sound hidden">
+            No
+          </button>
+        </div>
+      </div>
+      <div class="victory-bar ">
+          <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player">Player&nbsp;1</span>&nbsp;you&nbsp;won!</h2>
           <div class="victory-bar__btns-container">
-            <button class="btn btn-grey btn--again">Again</button>
-            <button class="btn btn-grey btn--leave">Leave</button>
+            <button class="btn-grey--lg btn--again click-sound">Again</button>
+            <button class="btn-grey--lg btn-grey--ghost btn--leave click-sound">Back to menu</button>
           </div>
       </div>
     </section>
-
-      
-
-
     
-    
-
-    
-
-    
-    <footer class="copyright hidden">
+    <footer class="copyright ">
       <p class="copyright__text">
         &copy; Copyright 2021 by Martin Kamír. All Rights Reserved. Remake of
         Jonas Schmedtmann's Pig game.
@@ -322,26 +326,24 @@
         </a>
       </div>
     </footer>
-
     
     <div class="leaving-modal hidden">
       <div class="leaving-modal__box">
         <h2 class="leaving-modal__heading">Are you sure to leave?</h2>
         <p class="leaving-modal__text">Game progress will be lost</p>
         <div class="leaving-modal__btns-container">
-          <button class="btn btn-grey btn--leave-yes click-sound">Yes</button>
-          <button class="btn btn-grey btn--leave-no click-sound">No</button>
+          <button class="btn-grey btn--leave-yes click-sound">Yes</button>
+          <button class="btn-grey btn-grey--ghost btn--leave-no click-sound">No</button>
         </div>
       </div>
     </div>
 
-    
     <div class="paused-modal hidden">
       <button class="paused-modal__btn btn--unpause click-sound">
         <svg class="paused-modal__icon" width="32" height="32">
           <use href="src/icon/bootstrap-icons.svg#pause-fill" />
         </svg>
-        <h2 class="paused-modal__text">Game is paused</h2>
+        <h2 class="paused-modal__text"><span>Game is</span> paused</h2>
       </button>
     </div>
 

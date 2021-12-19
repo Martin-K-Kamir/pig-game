@@ -1,5 +1,25 @@
 html {
   font-size: 62.5%;
+
+  // t max
+  @media only screen and (max-width: 1050px) {
+    font-size: 59.375%;
+  }
+
+  // t min
+  @media only screen and (max-width: 700px) {
+    font-size: 56.55%;
+  }
+
+  // p max
+  @media only screen and (max-width: 580px) {
+    font-size: 53.125%;
+  }
+
+  // p min
+  @media only screen and (max-width: 375px) {
+    font-size: 50%;
+  }
 }
 
 h2 {
@@ -24,7 +44,7 @@ button {
   background-color: $clr-primary;
   overflow: hidden;
 
-  @media only screen and (max-width: 580px) {
-    justify-content: flex-end;
+  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    display: block;
   }
 }

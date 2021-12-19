@@ -3,8 +3,8 @@
   position: absolute;
   bottom: 1rem;
 
-  @media only screen and (max-width: 400px) {
-    bottom: -0.5rem;
+  @media only screen and (max-width: 580px), (max-height: 800px) {
+    display: none;
   }
 
   &__text {
@@ -15,15 +15,6 @@
     font-size: $fs-text-small;
     word-spacing: 0.12rem;
     margin-bottom: 0.5rem;
-
-    @media only screen and (max-width: 400px) {
-      margin-bottom: 0;
-      font-size: 0.9rem;
-    }
-
-    @media only screen and (max-width: 375px) {
-      transform: translateY(0.5rem);
-    }
   }
 
   &__icons {
@@ -33,27 +24,11 @@
   &__icon {
     width: 2rem;
     fill: $clr-white;
-
-    @media only screen and (max-width: 400px) {
-      width: 1.8rem;
-    }
-
-    @media only screen and (max-width: 375px) {
-      width: 1.5rem;
-    }
   }
 
   // Make logo bit bigger and in better position with other icons
   & #website {
     width: 2.33rem;
     transform: translate(0.1rem, 0.1rem);
-
-    @media only screen and (max-width: 400px) {
-      width: 2.23rem;
-    }
-
-    @media only screen and (max-width: 375px) {
-      width: 1.9rem;
-    }
   }
 }

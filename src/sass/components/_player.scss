@@ -1,20 +1,56 @@
 .player {
   @include flex-col-center;
   flex: 50%;
-  padding: $padding-big;
   transition: $transition-medium;
+  border-radius: 1rem;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+
+  @media only screen and (max-width: 580px) {
+    border-radius: 0;
+  }
+
+  // ls phone
+  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    height: 82%;
+    border-radius: 0;
+  }
+
+  &__wrapper {
+    @include flex-col-center(2.4rem);
+
+    @media only screen and (max-width: 580px) {
+      gap: 3rem;
+    }
+
+    @media only screen and (max-width: 360px) and (max-height: 750px) {
+      gap: 6rem;
+    }
+
+    @media only screen and (max-width: 330px) {
+      gap: 3rem;
+    }
+
+    @media only screen and (max-width: 330px) and (max-height: 500px) {
+      gap: 1rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      gap: 0;
+    }
+  }
+
+  &__heading-wrapper {
+    text-align: center;
+  }
 
   @media only screen and (max-width: 1050px) {
     padding: 8rem 5%;
   }
 
   @media only screen and (max-width: 580px) {
-    height: 5rem;
-    padding: 2rem 0 0 0;
-  }
-
-  @media only screen and (max-height: 700px) {
-    padding: 1.8rem 0 0 0;
+    padding: 0;
   }
 
   &--active,
@@ -24,7 +60,7 @@
     }
 
     & .player__score {
-      font-weight: $fw-bold;
+      font-weight: 600;
     }
 
     & .current-box {
@@ -33,7 +69,7 @@
   }
 
   &--active {
-    background-color: $clr-white-600;
+    background-color: $clr-white-900;
   }
 
   &--winner {
@@ -54,11 +90,27 @@
     font-size: $fs-heading-big;
 
     @media only screen and (max-width: 580px) {
-      font-size: 4rem;
+      font-size: 4.3rem;
     }
 
-    @media only screen and (max-height: 700px) {
-      font-size: 4.8vh;
+    @media only screen and (max-width: 360px) {
+      font-size: 3.3rem;
+    }
+
+    @media only screen and (max-width: 360px) and (max-height: 750px) {
+      font-size: 3.9rem;
+    }
+
+    @media only screen and (max-width: 330px) {
+      font-size: 3.4rem;
+    }
+
+    @media only screen and (max-width: 330px) and (max-height: 500px) {
+      font-size: 3rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      font-size: 3.6rem;
     }
   }
 
@@ -67,29 +119,56 @@
     color: $clr-grey;
     font-size: $fs-text-big;
     font-weight: $fw-text-medium;
-
-    @media only screen and (max-height: 500px) {
-      font-size: 1.6rem;
-    }
   }
 
   &__playing {
     animation: pulsing 1s linear infinite alternate;
+
+    @media only screen and (max-width: 580px) {
+      font-size: 2rem;
+    }
+
+    @media only screen and (max-width: 360px) and (max-height: 750px) {
+      font-size: 1.9rem;
+    }
+
+    @media only screen and (max-width: 330px) {
+      font-size: 1.7rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      font-size: 1.7rem;
+    }
   }
 
   &__score {
     margin-bottom: auto;
-    font-size: 10rem;
+    font-size: 12rem;
     font-weight: $fw-tiny;
     color: $clr-grey;
 
     @media only screen and (max-width: 580px) {
-      font-size: 8rem;
-      transform: translateY(-1.3rem);
+      font-size: 10rem;
+      transform: translateY(-4.2rem);
     }
 
-    @media only screen and (max-height: 700px) {
-      font-size: 10vh;
+    @media only screen and (max-width: 360px) and (max-height: 750px) {
+      font-size: 8rem;
+      transform: translateY(-7rem);
+    }
+
+    @media only screen and (max-width: 330px) {
+      font-size: 7rem;
+      transform: translateY(-4.2rem);
+    }
+
+    @media only screen and (max-width: 330px) and (max-height: 500px) {
+      transform: translateY(-3.2rem);
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      font-size: 7.5rem;
+      transform: translateY(-1.2rem);
     }
   }
 }

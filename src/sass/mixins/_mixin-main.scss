@@ -7,8 +7,8 @@
   @if $light-theme {
     padding: $padding-value;
     background-color: $bg-color;
-    border: 0.2rem solid $clr-white-090;
-    outline: 0.19rem solid $clr-primary-600;
+    border: 0.2rem solid $clr-primary-600;
+    outline: 0.1rem solid $clr-primary-600;
     box-shadow: 0 0 5rem $shadow-value;
     border-radius: $border-radius;
     backdrop-filter: blur(10rem);
@@ -16,11 +16,19 @@
     padding: $padding-value;
     background-color: $bg-color;
     border: 0.2rem solid $clr-grey-100;
-    outline: 0.19rem solid $clr-grey-100;
+    outline: 0.1rem solid $clr-grey-100;
     box-shadow: 0 0 2.5rem $shadow-value;
     border-radius: $border-radius;
     backdrop-filter: blur(10rem);
   }
+}
+
+@mixin reset-glossy-bg {
+  padding: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 @mixin modal-bg {
@@ -47,4 +55,34 @@
   height: $height-value;
   background-color: $color;
   border-radius: 10rem;
+}
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin abs-position($top, $right, $bottom, $left) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin breakpoint($point) {
+  @if $point == large {
+    @media only screen and (min-width: 1366px) {
+      @content;
+    }
+  } @else if $point == desktop {
+    @media only screen and (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point == tablet {
+    @media only screen and (min-width: 600px) {
+      @content;
+    }
+  }
 }

@@ -4,20 +4,49 @@
   display: grid;
 
   @media only screen and (max-width: 580px) {
-    width: 90%;
-    padding: 11% 0;
+    padding: 8% !important;
   }
 
-  @media only screen and (max-width: 375px) {
-    padding: 7% 0;
+  @media only screen and (max-width: 400px) {
+    padding: 5% !important;
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    width: 60vw;
+    padding: 3rem !important;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 350px) {
+    width: 60vw;
+    padding: 2rem !important;
   }
 
   &__heading {
     text-transform: uppercase;
     text-align: center;
+    color: $clr-secondary;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 580px) {
+      font-size: 5vw;
+    }
+
+    @media only screen and (max-width: 480px) {
+      font-size: 6vw;
+    }
+
+    @media only screen and (max-width: 400px) {
       font-size: 6.5vw;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 350px) {
+      font-size: 4vw;
     }
   }
 
@@ -25,7 +54,15 @@
     @include divider(0.5rem, 1.5rem);
 
     @media only screen and (max-width: 580px) {
-      @include divider(0.5rem, 1.5rem, 72%);
+      @include divider(0.5rem, 1.5rem);
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      @include divider(0.2rem, 1.1rem);
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 350px) {
+      @include divider(0rem, 0.5rem);
     }
   }
 
@@ -36,13 +73,13 @@
     gap: 1rem;
     column-gap: 2.5rem;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 580px) {
       column-gap: 1.5rem;
     }
 
-    @media only screen and (max-width: 400px) {
-      grid-template-columns: 100%;
-      gap: 0;
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      row-gap: 0;
+      column-gap: 1.5rem;
     }
   }
 
@@ -51,16 +88,20 @@
     &--name {
       font-size: $fs-text-big;
 
-      @media only screen and (max-width: 500px) {
-        font-size: 3.8vw;
+      @media only screen and (max-width: 580px) {
+        font-size: 3vw;
+      }
+
+      @media only screen and (max-width: 480px) {
+        font-size: 3.5vw;
       }
 
       @media only screen and (max-width: 400px) {
-        font-size: 4.5vw;
+        font-size: 4vw;
       }
 
-      @media only screen and (max-width: 375px) {
-        font-size: 3.9vw;
+      @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 350px) {
+        font-size: 2.66vw;
       }
     }
 
@@ -68,29 +109,12 @@
       text-align: right;
       font-weight: $fw-bold;
       grid-column: 1 / 2;
-      color: $clr-secondary;
-
-      &:not(:first-child) {
-        @media only screen and (max-width: 400px) {
-          margin-top: 1rem;
-        }
-      }
-
-      @media only screen and (max-width: 400px) {
-        grid-column: 1 / 2;
-        text-align: center;
-      }
     }
 
     &--name {
       text-align: left;
       font-weight: $fw-tiny;
       grid-column: 2 / 3;
-
-      @media only screen and (max-width: 400px) {
-        grid-column: 1 / 2;
-        text-align: center;
-      }
     }
   }
 
@@ -98,8 +122,19 @@
     margin-top: 3rem;
     justify-self: center;
 
-    @media only screen and (max-width: 400px) {
-      margin-top: 2rem;
+    width: 21rem;
+    padding: 1.55rem;
+
+    @media only screen and (max-width: 360px) {
+      width: 19rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      width: 24vw;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      margin-top: 1rem;
     }
   }
 }

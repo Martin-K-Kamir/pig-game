@@ -2,20 +2,44 @@
   @include flex-justify-center(1rem);
   user-select: none;
   position: absolute;
-  top: 2rem;
+  width: calc(100% - 2rem);
+  top: 1.9rem;
   right: 3rem;
+  z-index: 999999;
 
-  @media only screen and (max-width: 1050px) {
-    right: 2rem;
+  @media only screen and (max-height: 720px) {
+    top: 1.3rem;
+    right: 1.5rem;
   }
 
-  @media only screen and (max-width: 500px) {
-    top: 1.5rem;
-    right: 1rem;
+  @media only screen and (max-width: 1050px) {
+    right: 2.5rem;
+  }
+
+  @media only screen and (max-width: 580px) {
+    top: 1rem;
+    right: 1.2rem;
   }
 
   @media only screen and (max-height: 600px) {
     top: 0.8rem;
+  }
+
+  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    right: 1.5rem;
+  }
+
+  & .btn-round:first-child {
+    margin-left: auto;
+    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+      margin: 0;
+    }
+  }
+
+  & .btn--pause {
+    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+      margin-right: auto;
+    }
   }
 
   & .btn-round {
@@ -24,7 +48,14 @@
 
   & .btn-round .icon {
     @include size-same(2rem);
-    color: $clr-white;
+
+    @media only screen and (max-width: 580px) {
+      @include size-same(2.2rem);
+    }
+
+    @media only screen and (max-width: 460px) {
+      @include size-same(2.5rem);
+    }
   }
 
   & .btn-round:hover .note {
@@ -37,4 +68,32 @@
   }
 }
 
-// own file
+//$ FAZE 1
+// TODO LIST to be done with css
+//// 1. Do landscape for game window
+//// 2. Swap btns
+//// 3. Pause modal
+//// 4. Leave modal
+//// 5. Victory modal
+//// 6. Dark theme for game
+//// 7. Check other sections
+//// 8. Do landscape for other sections
+//// 9. Rework media q for other sections
+//// 10. Dark theme for all sections
+//// 11. Do resizing for html
+//// 12. footer
+// 13. Clean css + html
+
+//$ FAZE 2
+// TODO LIST to clean css and html
+// 1. Create mixins for media q
+// ...
+// ß. Repair JS
+
+//$ FAZE 3
+// TODO LIST to make JS work
+// 1. Repair changed dom nodes and variables
+// 2. Add leaving modal for refreshing
+
+//$ FAZE 4
+// TESTING & BULDING
