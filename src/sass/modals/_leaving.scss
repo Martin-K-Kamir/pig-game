@@ -19,8 +19,16 @@
       padding: 8%;
     }
 
+    @include mq-max($phone-s) {
+      width: 19rem;
+    }
+
     @media only screen and (max-width: 330px) {
       padding: 6%;
+    }
+
+    @include mq-max($phone-s) {
+      width: 19rem;
     }
 
     @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
@@ -34,12 +42,16 @@
     margin-bottom: 3rem;
     text-align: center;
 
-    @media only screen and (max-width: 580px) {
+    @include mq-max($phone-max) {
       font-size: 3.5rem;
     }
 
-    @media only screen and (max-width: 500px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    @include mq-max($phone-b) {
+      margin-bottom: 2rem;
+      font-size: 3rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
       margin-bottom: 2rem;
       font-size: 3rem;
     }
@@ -49,8 +61,13 @@
     color: $clr-grey;
     margin-bottom: 4rem;
     font-size: 1.7rem;
-    @media only screen and (max-width: 500px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+
+    @include mq-max($phone-b) {
+      margin-bottom: 3rem;
+      font-size: 1.6rem;
+    }
+
+    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
       margin-bottom: 3rem;
       font-size: 1.6rem;
     }

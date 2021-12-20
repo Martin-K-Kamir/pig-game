@@ -3,23 +3,12 @@
   padding: $padding-small;
   background-color: $clr-white;
   border-radius: $border-radius;
-  box-shadow: $box-shadow-medium;
+  box-shadow: $box-shadow-medium; 
 
-  @media only screen and (max-width: 900px) {
-    width: 10rem;
-  }
-
-  @media only screen and (max-width: 700px) {
-    width: 8.5rem;
-  }
-
-  @media only screen and (max-width: 580px) {
-    width: 11rem;
-  }
-
-  @media only screen and (max-width: 330px) {
-    width: 9rem;
-  }
+  @include mq-max($tablet-b) {width: 10rem;}
+  @include mq-max($tablet-min) {width: 8.5rem;}
+  @include mq-max($phone-max) {width: 11rem;}
+  @include mq-max($phone-min) {width: 9rem;}
 
   @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
     width: 10rem;

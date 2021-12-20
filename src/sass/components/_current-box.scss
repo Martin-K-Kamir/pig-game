@@ -7,40 +7,40 @@
   background-color: $clr-grey;
   border-radius: $border-radius;
 
-  @media only screen and (max-width: 1050px) {
-    width: 265%;
+  @include mq-max($tablet-max) {
+    width: 275%;
     border-radius: 0;
   }
 
-  @media only screen and (max-width: 580px) {
-    width: 100%;
+  @include mq-max($phone-max) {
+    width: 100%; // mixin
     padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    height: 7rem;
+    display: flex; // mixin
+    justify-content: center; // mixin
+    align-items: center; // mixin
+    gap: 1rem; // mixin
+    height: 7rem; // mixin
 
-    position: absolute;
-    bottom: 0;
+    position: absolute; // mixin
+    bottom: 0; // mixin
   }
 
   @media only screen and (max-width: 580px) and (max-height: 600px) {
-    height: 5.5rem;
+    height: 5.5rem; // make b
   }
 
   @media only screen and (max-width: 330px) and (max-height: 500px) {
-    height: 5rem;
+    height: 5rem; // make b
   }
 
   @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    height: 6rem;
-    position: absolute;
-    bottom: 0;
+    display: flex; // mixin
+    justify-content: center; // mixin
+    align-items: center; // mixin
+    gap: 1.5rem; // mixin
+    height: 6rem; // make b
+    position: absolute; // mixin
+    bottom: 0; // mixin
   }
 
   @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
@@ -50,27 +50,28 @@
   &__label {
     text-transform: uppercase;
     margin-bottom: 1rem;
+    font-size: 1.5rem; // make b
 
-    @media only screen and (max-width: 580px) {
-      margin: 0;
-      font-size: 1.9rem;
+    @include mq-max($phone-max) {
+      margin: 0; // ???
+      font-size: 1.9rem; // make b
     }
 
-    @media only screen and (max-width: 340px) {
-      font-size: 1.6rem;
+    @include mq-max($phone-s) {
+      font-size: 1.6rem; // make b
     }
 
     @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      font-size: 1.7rem;
-      margin: 0;
+      font-size: 1.7rem; // make b
+      margin: 0; // ???
     }
   }
 
   &__score {
-    font-size: calc($fs-default + 2rem); // 3.5rem
+    font-size: calc($fs-default + 2rem); // 3.5rem // make b
 
-    @media only screen and (max-width: 340px) {
-      font-size: 3.2rem;
+    @include mq-max($phone-s) {
+      font-size: 3.2rem; // make b
     }
   }
 }

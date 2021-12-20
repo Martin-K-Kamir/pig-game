@@ -1,5 +1,6 @@
+//btn--primary
 .btn {
-  width: 17rem;
+  width: 17rem; // make b
   padding: 1.8rem 0; // make b
   transition: $transition-fast;
   font-size: 1.55rem; // make b
@@ -9,7 +10,7 @@
   background-color: $clr-white;
 
   // all mq move to game i guess
-  @media only screen and (max-width: 580px) {
+  @include mq-max($phone-max) {
     width: 40vw;
     padding: 1.4rem;
   }
@@ -19,8 +20,8 @@
   }
 
   &:active {
-    transform: translateY(0.3rem);
-    box-shadow: $box-shadow-btn-down;
+    transform: translateY(0.3rem); // mixn
+    box-shadow: $box-shadow-btn-down; // make b
   }
 
   &:focus {
@@ -28,6 +29,7 @@
   }
 }
 
+//???
 .btn--swap-yes,
 .btn--swap-no {
   background-color: $clr-grey;
@@ -37,29 +39,29 @@
 // secondary
 .btn-grey {
   @extend .btn;
-  width: 11rem;
-  padding: 1.4rem;
+  width: 11rem; // make b
+  padding: 1.4rem; // make b
   color: $clr-white;
   background-color: $clr-grey;
 
   &--lg {
     @extend .btn-grey;
-    width: 16rem;
+    width: 16rem; // make b
   }
 
   &--sm {
     @extend .btn-grey;
     font-size: 1.4rem;
-    width: 8.5rem;
+    width: 8.5rem; // make b
     padding: 0; // make b
-    height: 4.4rem;
+    height: 4.4rem; // make b
   }
 
   &--ghost {
     background-color: transparent;
     color: $clr-grey;
-    box-shadow: inset 0 0 0 0.3rem $clr-grey;
-    font-weight: 900;
+    box-shadow: inset 0 0 0 0.3rem $clr-grey; // make b
+    font-weight: 900; // make b
   }
 }
 
@@ -71,11 +73,11 @@
   border-radius: $border-radius-circle;
   transition: $transition-fast;
 
-  @media only screen and (max-width: 580px) {
+  @include mq-max($phone-max) {
     @include size-same(3.4rem);
   }
 
-  @media only screen and (max-width: 460px) {
+  @include mq-max($phone-b) {
     @include size-same(3.7rem);
   }
 
@@ -102,11 +104,11 @@
   font-size: 2.5rem; // make b
   border-radius: $border-radius;
 
-  font-weight: 900;
-  background-color: $clr-white-900;
-  color: $clr-primary-600;
-  border: 0.2rem solid $clr-white;
-  box-shadow: 0 0 0 0.35rem $clr-primary-800;
+  font-weight: 900; // make b
+  background-color: $clr-white-900; // make b
+  color: $clr-primary-600; // make b
+  border: 0.2rem solid $clr-white; // make b
+  box-shadow: 0 0 0 0.35rem $clr-primary-800; // make b
 
   &:hover {
     cursor: pointer;
@@ -114,19 +116,19 @@
     color: $clr-primary-800;
   }
 
-  @media only screen and (max-width: 900px) {
+  @include mq-max($tablet-b) {
     font-size: 2.7vw;
-    width: 22vw;
-    height: 7vw;
+    width: 22vw; // make b
+    height: 7vw; // make b
   }
 
-  @media only screen and (max-width: 580px) {
-    width: 100%;
-    height: 9vw;
+  @include mq-max($phone-max) {
+    width: 100%; // make b
+    height: 9vw; // make b
     font-size: 4vw;
   }
 
-  @media only screen and (max-width: 400px) {
+  @include mq-max($phone-m) {
     height: 9.5vw;
     font-size: 4.4vw;
   }

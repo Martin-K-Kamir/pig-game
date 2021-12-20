@@ -4,7 +4,7 @@
   height: 80vh;
   overflow: auto;
 
-  @media only screen and (max-width: 850px) {
+  @include mq-max($tablet-m) {
     width: 92%;
     padding: 7% 8% !important;
   }
@@ -29,7 +29,7 @@
       margin-top: 3rem;
     }
 
-    @media only screen and (max-width: 400px) {
+    @include mq-max($phone-m) {
       font-size: 6.5vw;
     }
   }
@@ -42,10 +42,11 @@
   &__list-item {
     width: $text-width-longest;
 
-    @media only screen and (max-width: 800px) {
+    @include mq-max($tablet-s) {
       width: 100%;
     }
-    @media only screen and (max-width: 400px) {
+
+    @include mq-max($phone-m) {
       font-size: 3.5vw;
     }
   }
@@ -60,15 +61,12 @@
     width: 21rem;
     padding: 1.55rem;
 
-    @media only screen and (max-width: 360px) {
+    @include mq-max($phone-s) {
       width: 19rem;
     }
 
     @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
       width: 24vw;
-    }
-
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
       margin-top: 3rem;
     }
   }

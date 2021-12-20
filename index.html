@@ -169,7 +169,7 @@
           <div class="player__heading-wrapper">
             <h2 class="player__name">Player 1</h2>
             <div class="player__status">
-              <h3 class="player__playing player__playing--0">playing for 5 sec</h3>
+              <h3 class="player__playing player__playing--0"></h3>
               <h3 class="player__winner player__winner--0 hidden">winner</h3>
             </div>
           </div>
@@ -199,7 +199,7 @@
       </div>
       <div class="panel-bar">
           <img
-            class="panel-bar__dice dice dice--light "
+            class="panel-bar__dice dice dice--light opacity-zero"
             src="src/img/dice-light-1.png"
             alt="Playing dice light"
           />
@@ -211,10 +211,10 @@
     
     
           <div class="panel-bar__swap-container">
-            <button class="btn-grey--sm btn--swap-yes ">
+            <button class="btn-grey--sm btn--swap-yes hidden">
               Yes
             </button>
-            <button class="btn-grey--sm btn--swap-no click-sound ">
+            <button class="btn-grey--sm btn--swap-no click-sound hidden">
               No
             </button>
           </div>
@@ -246,7 +246,7 @@
           </button>
         </div>
       </div>
-      <div class="victory-bar ">
+      <div class="victory-bar hidden">
           <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player">Player&nbsp;1</span>&nbsp;you&nbsp;won!</h2>
           <div class="victory-bar__btns-container">
             <button class="btn-grey--lg btn--again click-sound">Again</button>

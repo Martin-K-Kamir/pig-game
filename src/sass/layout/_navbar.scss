@@ -12,17 +12,13 @@
     right: 1.5rem;
   }
 
-  @media only screen and (max-width: 1050px) {
+  @include mq-max($tablet-max) {
     right: 2.5rem;
   }
 
-  @media only screen and (max-width: 580px) {
+  @include mq-max($phone-max) {
     top: 1rem;
     right: 1.2rem;
-  }
-
-  @media only screen and (max-height: 600px) {
-    top: 0.8rem;
   }
 
   @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
@@ -31,12 +27,15 @@
 
   & .btn-round:first-child {
     margin-left: auto;
+
+    /// ???????????????????
     @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
       margin: 0;
     }
   }
 
   & .btn--pause {
+    /// ????????????????
     @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
       margin-right: auto;
     }
@@ -49,11 +48,11 @@
   & .btn-round .icon {
     @include size-same(2rem);
 
-    @media only screen and (max-width: 580px) {
+    @include mq-max($phone-max) {
       @include size-same(2.2rem);
     }
 
-    @media only screen and (max-width: 460px) {
+    @include mq-max($phone-b) {
       @include size-same(2.5rem);
     }
   }
@@ -69,7 +68,7 @@
 }
 
 //$ FAZE 1
-// TODO LIST to be done with css
+// TODO LIST to be done with responsive
 //// 1. Do landscape for game window
 //// 2. Swap btns
 //// 3. Pause modal
@@ -86,7 +85,11 @@
 
 //$ FAZE 2
 // TODO LIST to clean css and html
-// 1. Create mixins for media q
+// 1. Clean all mq
+// 2. Make mixins and add them
+// 3. Rework variables
+// 4. Manage files
+// 5. Make better rule systems for classes
 // ...
 // ß. Repair JS
 
@@ -95,5 +98,8 @@
 // 1. Repair changed dom nodes and variables
 // 2. Add leaving modal for refreshing
 
-//$ FAZE 4
+// $ FAZE
+//& Adding new features
+
+//$ FAZE 49489891651569
 // TESTING & BULDING

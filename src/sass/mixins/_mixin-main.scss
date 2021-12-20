@@ -86,3 +86,123 @@
     }
   }
 }
+
+// max-width
+// 1050 11111
+// 900 11111
+// 850 1
+// 800 1
+// 700 11111111111
+// 580 11111111111111111111111111111111111111
+// 480 11
+// 460 1111
+// 400 1111111
+// 375 1
+// 360 1111111111
+// 350 1
+// 340 11
+// 330 111111111
+
+// max-height
+// 720 1
+// 600 1
+// 320
+
+// max-width/height
+// 915 x 430 1111111111111111111111111111111
+// 600 x 430 1
+//* 800 x 580 11
+//* 580 x 800 1
+// 580 x 790 11
+// 580 x 710 11
+// 580 x 600 1
+// 580 x 350 11
+// 570 x 350 111111111
+// 570 x 320 1111111111
+// 360 x 750 1111111
+// 330 x 500 1111111
+
+/////*****************************
+//* changed
+/////*****************************
+// max-width
+
+$tablet-max: 65.625em; // 1050px
+$tablet-b: 56.25em; // 900px
+$tablet-m: 53.125em; // 850px
+$tablet-s: 50em; // 800px
+$tablet-min: 43.75em; // 700px
+
+$phone-max: 36.25em; // 580px
+$phone-b: 28.75em; // 460px
+$phone-m: 25em; // 400px
+$phone-s: 22.5em; // 360px
+$phone-min: 20.625em; // 330px
+
+// max-height
+// 720
+// 600
+
+// max-width/height
+$ls-max: 57.1875em x 26.875em;
+$ls-xlg: 50em x 36.25em;
+$ls-lg: 36.25em x 50em;
+$ls-b: 36.25em x 49.375em;
+$ls-m: 35.625em x 21.875em;
+$ls-s: 35.625em x 20em;
+$ls-xs: 22.5em x 46.875em;
+$ls-min: 22.5em x 31.25em;
+
+@mixin mq-max($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin landscape($breakpoint) {
+  @if $breakpoint == small-phone {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    } // 500px/16px = 31.25
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } // 600px/16px = 37.5
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } // 900px/16px = 56.25
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } // 1200px/16px = 75
+  }
+  @if $breakpoint == tiny-desktop {
+    @media only screen and (max-width: 81.25em) {
+      @content;
+    } // 1300px/16px = 81,25
+  }
+  @if $breakpoint == small-desktop {
+    @media only screen and (max-width: 87.5em) {
+      @content;
+    } // 1400px/16px = 87,5
+  }
+  @if $breakpoint == medium-desktop {
+    @media only screen and (max-width: 93.75em) {
+      @content;
+    } // 1500px/16px = 93,75
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } // 1800px/16 = 112.5
+  }
+  @if $breakpoint == huge-desktop {
+    @media only screen and (min-width: 131.25em) {
+      @content;
+    } // 2100px/16 = 112.5
+  }
+}

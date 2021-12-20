@@ -3,15 +3,15 @@
   @include flex-col-center(5rem);
   @include animation(pop-in);
 
-  @media only screen and (max-width: 580px) {
+  @include mq-max($phone-max) {
     gap: 3.5rem;
   }
 
-  @media only screen and (max-width: 460px) {
+  @include mq-max($phone-b) {
     padding: 11% !important;
   }
 
-  @media only screen and (max-width: 360px) {
+  @include mq-max($phone-s) {
     padding: 9% !important;
   }
 
@@ -40,7 +40,7 @@
         @include animation(icon-rotate);
         width: 12.5rem;
 
-        @media only screen and (max-width: 360px) {
+        @include mq-max($phone-s) {
           width: 28vw;
           gap: 1.5rem;
         }
@@ -57,7 +57,7 @@
       line-height: 5.5rem;
       letter-spacing: 0.8rem;
 
-      @media only screen and (max-width: 350px) {
+      @include mq-max($phone-s) {
         font-size: 10.5vw;
         line-height: 12vw;
       }
@@ -88,7 +88,7 @@
       width: 21rem;
       padding: 1.55rem;
 
-      @media only screen and (max-width: 360px) {
+      @include mq-max($phone-s) {
         width: 19rem;
       }
 
@@ -97,7 +97,7 @@
       }
     }
 
-    @media only screen and (max-width: 360px) {
+    @include mq-max($phone-s) {
       gap: 2.5rem;
     }
   }
