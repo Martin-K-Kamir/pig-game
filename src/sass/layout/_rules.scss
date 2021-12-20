@@ -41,7 +41,7 @@
   &__text,
   &__list-item {
     width: $text-width-longest;
-
+    font-size: 1.5rem;
     @include mq-max($tablet-s) {
       width: 100%;
     }

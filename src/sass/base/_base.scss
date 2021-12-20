@@ -17,7 +17,6 @@ button {
 }
 
 .body-container {
-  @include flex-col-center;
   position: relative;
   min-height: 100vh;
   font-family: $font-default;
@@ -27,8 +26,7 @@ button {
   color: $clr-white;
   background-color: $clr-primary;
   overflow: hidden;
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    display: block;
-  }
+  
+  @include flex-col-center;
+  @include mq-landscape(phone-max) {display: block;}
 }

@@ -9,12 +9,6 @@
   @include mq-max($tablet-min) {width: 8.5rem;}
   @include mq-max($phone-max) {width: 11rem;}
   @include mq-max($phone-min) {width: 9rem;}
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    width: 10rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
-    width: 8rem;
-  }
+  @include mq-landscape(phone-max) {width: 10rem;}
+  @include mq-landscape(phone-s) {width: 8rem;}
 }

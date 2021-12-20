@@ -8,24 +8,10 @@
   z-index: 200;
 
   @include mq-max($phone-max) {top: -12.2rem;}
-
-  @media only screen and (max-width: 360px) and (max-height: 750px) {
-    top: -12.2rem;
-  }
-
   @include mq-max($phone-min) {top: -10.2rem;}
-
-  @media only screen and (max-width: 330px) and (max-height: 500px) {
-    top: -9.7rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    top: 6rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
-    top: 5rem;
-  }
+  @include mq-max-width-height($phone-min, 31.25em) {top: -9.7rem;}
+  @include mq-landscape(phone-max) {top: 6rem;}
+  @include mq-landscape(phone-s) {top: 5rem;}
 
   &__btns-container {
     @include flex-col-center(3rem);
@@ -34,18 +20,10 @@
     @include mq-max($tablet-b) {transform: translateY(14.8rem);}
     @include mq-max($tablet-min) {transform: translateY(16.2rem);}
     @include mq-max($phone-max) {display: none;}
-
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      display: none;
-    }
+    @include mq-landscape(phone-max) {display: none;}
 
     & .btn {
       @include mq-max($tablet-min) {width: 23vw;}
-      @include mq-max($phone-m) {font-size: 1.35rem;}
-
-      @media only screen and (max-width: 580px) and (max-height: 710px) {
-        font-size: 1.35rem;
-      }
     }
   }
 
@@ -60,9 +38,6 @@
     
     @include mq-max($tablet-min) {gap: 2rem;}
     @include mq-max($phone-max) {display: none;}
-
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      display: none;
-    }
+    @include mq-landscape(phone-max) {display: none;}
   }
 }

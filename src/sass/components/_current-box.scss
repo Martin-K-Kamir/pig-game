@@ -25,15 +25,11 @@
     bottom: 0; // mixin
   }
 
-  @media only screen and (max-width: 580px) and (max-height: 600px) {
-    height: 5.5rem; // make b
+  @include mq-max($phone-min) {
+    height: 5rem;
   }
 
-  @media only screen and (max-width: 330px) and (max-height: 500px) {
-    height: 5rem; // make b
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+  @include mq-landscape(phone-max) {
     display: flex; // mixin
     justify-content: center; // mixin
     align-items: center; // mixin
@@ -43,7 +39,7 @@
     bottom: 0; // mixin
   }
 
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
+  @include mq-landscape(phone-s) {
     height: 5rem;
   }
 
@@ -61,7 +57,7 @@
       font-size: 1.6rem; // make b
     }
 
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    @include mq-landscape(phone-max) {
       font-size: 1.7rem; // make b
       margin: 0; // ???
     }
