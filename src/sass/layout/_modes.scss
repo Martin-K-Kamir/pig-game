@@ -4,27 +4,21 @@
 
   @include mq-max($tablet-b) {
     width: 90%;
-    padding: 7% !important;
+    padding: 7%;
   }
 
   @include mq-max($phone-max) {
-    padding: 10.5% !important;
     width: 80%;
+    padding: 10.5%;
   }
 
   @include mq-landscape(phone-max) {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    @include absCenter;
   }
 
   @include mq-landscape(phone-s) {
     width: 90%;
-    padding: 7% !important;
+    padding: 7%;
   }
 
   &__heading {
@@ -32,19 +26,14 @@
     letter-spacing: 0.7rem;
     text-transform: uppercase;
     text-align: center;
-    color: $clr-white;
 
     @include mq-max($tablet-b) {
       font-size: 5.2vw;
       letter-spacing: 0.2rem;
     }
 
-    @include mq-max($tablet-min) {
-      font-size: 5.2vw;
-    }
-
     @include mq-max($phone-max) {
-      font-size: 8vw;
+      font-size: 7vw;
       line-height: 1.3;
     }
 
@@ -52,6 +41,7 @@
       font-size: 5.5vw;
     }
 
+    // breaking text into two lines
     & span {
       @include mq-max($phone-max) {
         display: block;
@@ -64,11 +54,7 @@
   }
 
   &__divider {
-    @include divider(0.5rem, 2.8rem);
-
-    @include mq-max($tablet-min) {
-      margin-bottom: 2.5rem;
-    }
+    @include divider(0.5rem, 2.5rem);
   }
 
   &__btns-container {

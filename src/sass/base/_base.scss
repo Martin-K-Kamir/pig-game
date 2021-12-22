@@ -8,12 +8,13 @@ html {
 }
 
 h2 {
+  color: $clr-secondary;
   font-weight: $fw-heading-bulky; // clean
   font-size: $fs-heading-medium; // clean
 }
 
 button {
-  border-radius: $border-radius-btn;
+  border-radius: $border-radius-btn; // clean
 }
 
 .body-container {

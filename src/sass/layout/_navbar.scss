@@ -7,11 +7,6 @@
   right: 3rem;
   z-index: 999999;
 
-  @media only screen and (max-height: 720px) {
-    top: 1.3rem;
-    right: 1.5rem;
-  }
-
   @include mq-max($tablet-max) {
     right: 2.5rem;
   }
@@ -21,22 +16,25 @@
     right: 1.2rem;
   }
 
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+  @include mq-max-height(45em) {
+    top: 1.3rem;
+    right: 1.5rem;
+  }
+
+  @include mq-landscape(phone-max) {
     right: 1.5rem;
   }
 
   & .btn-round:first-child {
     margin-left: auto;
 
-    /// ???????????????????
-    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+    @include mq-max-width-height($phone-max, 49.375em) {
       margin: 0;
     }
   }
 
   & .btn--pause {
-    /// ????????????????
-    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+    @include mq-max-width-height($phone-max, 49.375em) {
       margin-right: auto;
     }
   }
@@ -85,7 +83,7 @@
 
 //$ FAZE 2
 // TODO LIST to clean css and html
-// 1. Clean all mq
+//// 1. Clean all mq
 // 2. Make mixins and add them
 // 3. Rework variables
 // 4. Manage files

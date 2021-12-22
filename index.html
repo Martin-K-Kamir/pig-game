@@ -84,58 +84,63 @@
     </section>
 
     <section class="rules hidden">
-      <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
-      <div class="rules__divider"></div>
-      <p class="rules__text">
-        Pig game is a simple dice game first described by John Scarne in 1945.
-        Players take turns to roll a single dice as many times as they wish,
-        adding all roll results to a current score, but losing their gained
-        current score for the turn if they roll a 1.
+      <div class="rules__section">
+        <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
+        <div class="rules__divider"></div>
+        <p class="rules__text">
+          Pig game is a simple dice game first described by John Scarne in 1945.
+          Players take turns to roll a single dice as many times as they wish,
+          adding all roll results to a current score, but losing their gained
+          current score for the turn if they roll a 1.
+        </p>
+        <ul class="rules__list">
+          <li class="rules__list-item">
+            If the player rolls a 1, they score nothing and it becomes the next
+            player's turn.
+          </li>
+          <li class="rules__list-item">
+            If the player rolls any other number, it is added to their current
+            score and the player's turn continues.
+          </li>
+          <li class="rules__list-item">
+            If a player chooses to "hold", their current score is added to their
+            total score, and it becomes the next player's turn.
+          </li>
+        </ul>
+        <p class="rules__text">
+          The first player to score 100 or more score wins.
       </p>
+      </div>
+      <div class="rules__section">
+        <h2 class="rules__heading">Big Pig</h2>
+        <div class="rules__divider"></div>
+        <p class="rules__text">This mode adds more options to the game.</p>
+        <ul class="rules__list">
+          <li class="rules__list-item">
+            If the player rolls a special side of the dice can gain current score
+            +10, +20, +30, or may lose from score -10, -20, -30.
+          </li>
+          <li class="rules__list-item">
+            If the player rolls swap. If he wants to he can swap total scores with
+            his opponent.
+          </li>
+          <li class="rules__list-item">
+            A player can lose the game if his score is below -50.
+          </li>
+        </ul>
+        <p class="rules__text">
+          The first player to score 200 or more score wins.
+        </p>
+      </div>
+      <div class="rules__section">
+        <h2 class="rules__heading">Running Pig</h2>
+        <div class="rules__divider"></div>
+        <p class="rules__text">
+          This mode adds same options as <i>Big Pig</i> mode. Only the difference is the
+          player with higher score wins after timer is off. So whoever has the bigger score after 4 minutes wins!
+        </p>
+      </div>
 
-      <ul class="rules__list">
-        <li class="rules__list-item">
-          If the player rolls a 1, they score nothing and it becomes the next
-          player's turn.
-        </li>
-        <li class="rules__list-item">
-          If the player rolls any other number, it is added to their current
-          score and the player's turn continues.
-        </li>
-        <li class="rules__list-item">
-          If a player chooses to "hold", their current score is added to their
-          total score, and it becomes the next player's turn.
-        </li>
-      </ul>
-      <p class="rules__text">
-        The first player to score 100 or more score wins.
-      </p>
-
-      <h2 class="rules__heading">Big Pig</h2>
-      <div class="rules__divider"></div>
-      <p class="rules__text">This mode adds more options to the game.</p>
-      <ul class="rules__list">
-        <li class="rules__list-item">
-          If the player rolls a special side of the dice can gain current score
-          +10, +20, +30, or may lose from score -10, -20, -30.
-        </li>
-        <li class="rules__list-item">
-          If the player rolls swap. If he wants to he can swap total scores with
-          his opponent.
-        </li>
-        <li class="rules__list-item">
-          A player can lose the game if his score is below -50.
-        </li>
-      </ul>
-      <p class="rules__text">
-        The first player to score 200 or more score wins.
-      </p>
-      <h2 class="rules__heading">Running Pig</h2>
-      <div class="rules__divider"></div>
-      <p class="rules__text">
-        This mode adds same options as <i>Big Pig</i> mode. Only the difference is the
-        player with higher score wins after timer is off. So whoever has the bigger score after 4 minutes wins!
-      </p>
       <button class="btn btn--rules click-sound">Back to menu</button>
     </section>
   

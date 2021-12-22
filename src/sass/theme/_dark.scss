@@ -5,7 +5,7 @@
   & .modes,
   & .rules,
   & .credits {
-    @include glossy-bg($padding-value: $padding-big, $light-theme: false);
+    @include glossy-bg($light-theme: false);
   }
 
   & .game {
@@ -25,9 +25,7 @@
     background-color: $clr-black-200;
   }
 
-  & .modes__heading,
-  & .rules__heading,
-  & .credits__heading {
+  & h2 {
     color: $clr-primary-800;
   }
 

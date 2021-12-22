@@ -33,8 +33,12 @@
       height: 22rem;
     }
 
-    @media only screen and (max-width: 350px) and (max-height: 480px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    @include mq-max-width-height($phone-s, 30em) {
+      width: 16rem;
+      height: 16rem;
+    }
+
+    @include mq-landscape(phone-max) {
       width: 16rem;
       height: 16rem;
     }
@@ -48,14 +52,20 @@
       font-size: 4.5rem;
     }
 
-    @media only screen and (max-width: 350px) and (max-height: 480px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+    @include mq-max-width-height($phone-s, 30em) {
+      font-size: 3.3rem;
+    }
+
+    @include mq-landscape(phone-max) {
       font-size: 3.3rem;
     }
 
     & span {
-      @media only screen and (max-width: 580px),
-        (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
+      @include mq-max($phone-max) {
+        display: block;
+      }
+
+      @include mq-landscape(phone-max) {
         display: block;
       }
     }
