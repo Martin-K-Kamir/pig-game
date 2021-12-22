@@ -1,6 +1,5 @@
 .menu {
   user-select: none;
-
   @include glossy-bg($padding-big);
   @include flex-col-center(5rem);
   @include animation(pop-in);
@@ -10,24 +9,17 @@
   }
 
   @include mq-max($phone-b) {
-    padding: 11% !important;
+    padding: 11%;
   }
 
   @include mq-max($phone-s) {
-    padding: 9% !important;
+    padding: 9%;
   }
 
   @include mq-landscape(phone-max) {
-    width: 93vw;
-    height: 28rem;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
     gap: 3rem;
+    @include size(28rem, 93vw);
+    @include abs-center;
   }
 
   &__logo {
@@ -89,16 +81,7 @@
     }
 
     & .btn {
-      width: 21rem;
-      padding: 1.55rem;
-
-      @include mq-max($phone-s) {
-        width: 19rem;
-      }
-
-      @include mq-landscape(phone-max) {
-        width: 24vw;
-      }
+      @include rfs-btn;
     }
   }
 }

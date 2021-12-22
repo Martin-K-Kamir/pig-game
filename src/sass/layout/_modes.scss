@@ -13,7 +13,7 @@
   }
 
   @include mq-landscape(phone-max) {
-    @include absCenter;
+    @include abs-center;
   }
 
   @include mq-landscape(phone-s) {

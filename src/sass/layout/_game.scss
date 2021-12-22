@@ -1,27 +1,20 @@
 .game {
-  @include glossy-bg(0, $clr-black-300, $clr-white-300);
-  @include animation(pop-in);
   position: relative;
   display: flex;
-  width: 100rem;
-  height: 60rem;
   z-index: 5;
+  @include glossy-bg(0, $clr-black-300, $clr-white-300);
+  @include animation(pop-in);
+  @include size(60rem, 100rem);
 
   @include mq-max($tablet-max) {
     width: 95%;
   }
 
   @include mq-max($phone-max) {
-    width: 100%;
     flex-direction: column;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    border: none !important;
-    height: 80vh;
-    position: absolute;
-    bottom: 0;
+    @include abs($b: 0);
+    @include size(80vh, 100%);
+    @include reset-glossy-bg;
   }
 
   @include mq-max-width-height($phone-min, 31.25em) {
@@ -29,14 +22,9 @@
   }
 
   @include mq-landscape(phone-max) {
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0 !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    border: none !important;
     flex-flow: row wrap;
+    @include size(100vh, 100vw);
+    @include reset-glossy-bg;
   }
 }
 
@@ -46,8 +34,7 @@
 
   @include mq-max($phone-max) {
     display: block;
-    width: 100%;
-    height: 10rem;
+    @include size(10rem, 100%);
   }
 
   @include mq-max($phone-s) {
@@ -56,8 +43,7 @@
 
   @include mq-landscape(phone-max) {
     display: block;
-    height: 17.8vh;
-    width: 100%;
+    @include size(17.8vh, 100%);
   }
 
   &__btns-container {

@@ -196,7 +196,23 @@ $phone-min: 20.625em; // 330px
   }
 }
 
-@mixin absCenter {
+@mixin abs($t: null, $r: null, $b: null, $l: null) {
+  position: absolute;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+
+@mixin abs-side($tb: null, $rl: null) {
+  position: absolute;
+  top: $tb;
+  right: $rl;
+  bottom: $tb;
+  left: $rl;
+}
+
+@mixin abs-center {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -206,13 +222,13 @@ $phone-min: 20.625em; // 330px
   transform: translateY(-50%);
 }
 
-@mixin absCenterY {
+@mixin abs-center-Y {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-@mixin absCenterX {
+@mixin abs-center-X {
   position: absolute;
   margin-left: auto;
   margin-right: auto;

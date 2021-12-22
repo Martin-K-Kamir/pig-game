@@ -12,7 +12,7 @@
   @include mq-landscape(phone-max) {
     padding: 3rem;
     @include size(73vh, 95vw);
-    @include absCenter;
+    @include abs-center;
   }
 
   &__section {
