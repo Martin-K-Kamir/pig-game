@@ -28,7 +28,7 @@ class SoundsView extends View {
   }
 
   _handleClickingSounds() {
-    this._body.addEventListener(
+    this.body.addEventListener(
       'click',
       function (e) {
         const btn = e.target.closest('button');

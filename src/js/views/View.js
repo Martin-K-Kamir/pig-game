@@ -1,7 +1,7 @@
 export default class View {
-  _body = document.querySelector('.body-container');
-  _gameWindow = document.querySelector('.game');
-  _menuWindow = document.querySelector('.menu');
+  body = document.querySelector('.body-container');
+  gameWindow = document.querySelector('.game');
+  menuWindow = document.querySelector('.menu');
 
   addHandlerClick(handler, btn = this.btn) {
     btn.addEventListener('click', function () {

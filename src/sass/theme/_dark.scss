@@ -30,6 +30,16 @@
     color: $clr-primary-800;
   }
 
+  // fix for h2
+  & .leaving-modal__heading {
+    color: $clr-grey;
+  }
+
+  // fix for h2
+  & .paused-modal__text {
+    color: $clr-white;
+  }
+
   // Making the png pink
   & .menu__logo--icon img {
     filter: invert(75%) sepia(3%) saturate(3990%) hue-rotate(300deg)

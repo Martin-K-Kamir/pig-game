@@ -8,8 +8,8 @@ class MenuView extends View {
   _rulesWindow = document.querySelector('.rules');
   _creditsWindow = document.querySelector('.credits');
 
-  _btnPause = document.querySelector('.btn--pause');
-  _btnLeave = document.querySelector('.btn--leave');
+  btnPause = document.querySelector('.btn--pause');
+  btnLeave = document.querySelector('.btn--leave');
 
   constructor() {
     super();
@@ -17,7 +17,7 @@ class MenuView extends View {
   }
 
   _handleMenuWindows() {
-    this._body.addEventListener(
+    this.body.addEventListener(
       'click',
       function (e) {
         const btn = e.target.closest('button');
@@ -34,10 +34,10 @@ class MenuView extends View {
   }
 
   addHandlerSelecting(handler) {
-    this._body.addEventListener(
+    this.body.addEventListener(
       'click',
       function (e) {
-        const btn = e.target.closest('.btn-border');
+        const btn = e.target.closest('.btn-mode');
         if (!btn) return;
 
         if (btn.classList.contains('pig-mode')) model.gameModes.pig = SELECTED;
@@ -53,24 +53,24 @@ class MenuView extends View {
   }
 
   _displayGameWindow() {
-    this.elToggleClass(this._gameWindow);
+    this.elToggleClass(this.gameWindow);
     this.elToggleClass(this._modesWindow);
-    this.removeClass(this._btnLeave);
-    this.removeClass(this._btnPause);
+    this.removeClass(this.btnLeave);
+    this.removeClass(this.btnPause);
   }
 
   _displayModesWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this.menuWindow);
     this.elToggleClass(this._modesWindow);
   }
 
   _displayRulesWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this.menuWindow);
     this.elToggleClass(this._rulesWindow);
   }
 
   _displayCreditsWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this.menuWindow);
     this.elToggleClass(this._creditsWindow);
   }
 }

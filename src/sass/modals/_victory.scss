@@ -9,9 +9,6 @@
   @include abs-center-X;
   @include abs($b: 5rem);
 
-  //@include animation(fade-in);
-  //@include animation(pop-in);
-
   @include mq-max($tablet-min) {
     padding: 3rem;
     width: 52rem;

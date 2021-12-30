@@ -31,7 +31,7 @@ class GameView extends View {
 
   btnRoll = document.querySelector('.btn--roll');
   btnHold = document.querySelector('.btn--hold');
-  btnLeave = document.querySelector('.btn--leave');
+  btnBack = document.querySelector('.btn--back');
   _btnYes = document.querySelector('.btn--swap-yes');
   _btnNo = document.querySelector('.btn--swap-no');
   _btnAgain = document.querySelector('.btn--again');
@@ -69,7 +69,7 @@ class GameView extends View {
   }
 
   _handleSwapping() {
-    this._body.addEventListener(
+    this.body.addEventListener(
       'click',
       function (e) {
         const btn = e.target.closest('button');
@@ -95,7 +95,7 @@ class GameView extends View {
   }
 
   _handleVictoryBar() {
-    this._body.addEventListener(
+    this.body.addEventListener(
       'click',
       function (e) {
         const btn = e.target.closest('button');
@@ -107,18 +107,12 @@ class GameView extends View {
         if (btn.classList.contains('btn--again')) {
           this.resetGameEls();
           model.resetState();
-
-          // If runPig were selected
-          if (model.gameModes.runPig) {
-            this.clickGameTimerOnce = CLICK_AVAILABLE;
-            this.elToggleClass(this.timerBox); // display gameTimer
-          }
         }
 
-        // If  btn--leave were clicked
+        // If  btn--back were clicked
         // Display menu window and hide game window
-        if (btn.classList.contains('btn--leave')) {
-          this._displayMenuWindow();
+        if (btn.classList.contains('btn--back')) {
+          this.displayMenuWindow();
           // In the controller is handled the resetting function
         }
       }.bind(this)
@@ -139,11 +133,11 @@ class GameView extends View {
     );
   }
 
-  _displayMenuWindow() {
-    this.addClass(menuView._btnExit);
-    this.addClass(menuView._btnPause);
-    this.addClass(this._gameWindow);
-    this.removeClass(this._menuWindow);
+  displayMenuWindow() {
+    this.addClass(menuView.btnLeave);
+    this.addClass(menuView.btnPause);
+    this.addClass(this.gameWindow);
+    this.removeClass(this.menuWindow);
   }
 
   resetGameEls() {
@@ -161,14 +155,13 @@ class GameView extends View {
     this._timerNums.textContent = '04:00';
 
     this.removeClass(this._playing0);
+    this.removeClass(this._curScoreBox0);
+    this.removeClass(this._curScoreBox1);
     this.removeClass(this._player0, 'player--winner');
     this.removeClass(this._player1, 'player--winner');
     this.removeClass(this._player1, 'player--active');
 
-    this.addClass(this.timerBox);
     this.addClass(this._playing1);
-    this.addClass(this._curScoreBox0);
-    this.addClass(this._curScoreBox0);
     this.addClass(this._winner0);
     this.addClass(this._winner1);
     this.addClass(this._player0, 'player--active');
@@ -177,6 +170,7 @@ class GameView extends View {
 
     setTimeout(() => {
       this.removeClass(this._victoryBar, 'bounce-out--first');
+      this.removeClass(this._victoryBar, 'opacity-zero');
       this.addClass(this._victoryBar);
     }, 300);
   }
@@ -231,8 +225,6 @@ class GameView extends View {
 
     this.addClass(this._playing0);
     this.addClass(this._playing1);
-    this.addClass(this._curScoreBox0);
-    this.addClass(this._curScoreBox1);
     this.addClass(this._diceLight, 'opacity-zero');
     this.addClass(this._diceLight, 'opacity-zero');
     this.addClass(this._victoryBar, 'bounce-in--first');
@@ -252,7 +244,7 @@ class GameView extends View {
   }
 
   initPlayerTimer(activePlayer) {
-    this.timeleftPlayerTimer = 5;
+    this.timeleftPlayerTimer = 5; // number is here so the func doesnt break at start
 
     const updatePlayerTimer = () => {
       document.querySelector(

@@ -3,7 +3,7 @@ import themesView from './views/themesView.js';
 import gameView from './views/gameView.js';
 import pauseView from './views/pauseView.js';
 import soundsView from './views/soundsView.js';
-import leavingModalView from './views/leavingModalView.js';
+import leavingView from './views/leavingView.js';
 import menuView from './views/menuView.js';
 import View from './views/View.js';
 
@@ -98,7 +98,7 @@ const controlSetGameMode = function () {
   // 3) If running pig game mode were selected
   if (model.gameModes.run) {
     model.initState(RUN_DICE, RUN_LIMIT);
-    gameView.elToggleClass(gameView.timerBox);
+    gameView.removeClass(gameView.timerBox);
   }
 };
 
@@ -157,9 +157,19 @@ const controlPlayerInactive = function () {
 
     // 3.6) Clear timers
     gameView.clearTimers(gameView.playerTimerID, gameView.inactiveTimerID);
+
+    // 3.7) Init player timer again
+    gameView.initPlayerTimer(model.state.activePlayer);
+
+    // 3.8) Init inactive timer again
+    gameView.inactiveTimerID = setInterval(
+      gameView.initInactiveTimer,
+      SECS_FOR_INACTIVE_TIMER
+    );
   };
 
-  // 4) Init inactive timer
+  // 4) Init inactive timer func above
+  // This func runs after the interval is finished. After interval is done player changes and interval resets (step .3)
   gameView.inactiveTimerID = setInterval(
     gameView.initInactiveTimer,
     SECS_FOR_INACTIVE_TIMER
@@ -313,10 +323,44 @@ const controlResettingTheGame = function () {
   // 2) reset game UI
   gameView.resetGameEls();
 
-  // 3) Reset all timers for run pig
-  if (model.gameModes.runPig) {
-    gameView.clearAllTimers();
-  }
+  // 3) Reset all timers
+  gameView.clearAllTimers();
+};
+
+const controlLeaving = function () {
+  // 1) Show modal
+  leavingView.elToggleClass(leavingView.leavingModal);
+
+  // 2) Hold gameTimer
+  gameView.holdGameTimer();
+
+  // 3) Clear timers
+  gameView.clearTimers(
+    gameView.gameTimerID,
+    gameView.playerTimerID,
+    gameView.inactiveTimerID
+  );
+};
+
+const controlLeavingNo = function () {
+  // 1) Hide modal
+  leavingView.elToggleClass(leavingView.leavingModal);
+
+  // 2) Init timers
+  gameView.initGameTimer();
+  gameView.initPlayerTimer(model.state.activePlayer);
+  controlPlayerInactive();
+};
+
+const controlLeavingYes = function () {
+  // 1) Hide modal
+  leavingView.elToggleClass(leavingView.leavingModal);
+
+  // 2) Display menu window and hide game window
+  gameView.displayMenuWindow();
+
+  // 2) Restart game to the state
+  controlResettingTheGame();
 };
 
 const init = function () {
@@ -330,8 +374,10 @@ const init = function () {
   gameView.addHandlerClick(controlPlayerInactive, gameView.btnRoll);
   gameView.addHandlerClick(controlRollingDice, gameView.btnRoll);
   gameView.addHandlerClick(controlHoldingScore, gameView.btnHold);
-  leavingModalView.addHandlerClick(controlResettingTheGame);
-  gameView.addHandlerClick(controlResettingTheGame, gameView.btnLeave);
+  gameView.addHandlerClick(controlResettingTheGame, gameView.btnBack);
+  leavingView.addHandlerClick(controlLeaving);
+  leavingView.addHandlerClick(controlLeavingNo, leavingView.btnNo);
+  leavingView.addHandlerClick(controlLeavingYes, leavingView.btnYes);
 
   gameView.addHandlerInitGameTimer(controlGameTimeout);
   menuView.addHandlerSelecting(controlSetGameMode);
