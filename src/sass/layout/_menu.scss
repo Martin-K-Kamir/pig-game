@@ -1,30 +1,24 @@
+
+
 .menu {
   user-select: none;
-  @include glossy-bg($padding-big);
-  @include flex-col-center(5rem);
+  @include glossy-bg($p-b);
+  @include flex-col-center(3rem);
   @include animation(pop-in);
 
-  @include mq-max($phone-max) {
-    gap: 3.5rem;
-  }
-
-  @include mq-max($phone-b) {
-    padding: 11%;
-  }
-
-  @include mq-max($phone-s) {
-    padding: 9%;
-  }
+  @include mq-max($phone-b) {padding: 15%}
+  @include mq-max($phone-m) {width: $w-fluid-max}
+  @include mq-max-w-h($phone-min, $screen-h-s) {height: 48rem}
 
   @include mq-landscape(phone-max) {
-    gap: 3rem;
-    @include size(28rem, 93vw);
-    @include abs-center;
+    gap: 2rem;
+    @include menus-landscape-size;
   }
 
+  //$ Logo --------------------------------------------------
   &__logo {
     @include flex-align-center(2.5rem);
-
+    
     &--icon {
       @include animation(icon-throw);
 
@@ -32,31 +26,28 @@
         width: 12.5rem;
         @include animation(icon-rotate);
 
-        @include mq-max($phone-s) {
-          width: 28vw;
-          gap: 1.5rem;
-        }
-
-        @include mq-landscape(phone-s) {
-          width: 10rem;
-        }
+        @include mq-max($phone-m) {width: 27vw}
+        @include mq-landscape(phone-max) {width: 12vw}
+        @include mq-landscape(phone-s) {width: 13vw}
+        @include mq-landscape(phone-min) {width: 15vw}
       }
     }
 
     &--text {
-      font-size: $fs-heading-biggest;
-      font-weight: $fw-heading-tiny;
-      line-height: 5.5rem;
       letter-spacing: 0.8rem;
-
+      line-height: 5.5rem; 
+      font-size: $fs-heading-b;
+      font-weight: $fw-m;
+      color: $clr-white;
+      
       @include mq-max($phone-s) {
         font-size: 10.5vw;
         line-height: 12vw;
       }
 
-      @include mq-landscape(phone-s) {
-        font-size: 3.5rem;
-        line-height: 4.5rem;
+      @include mq-landscape(phone-max) {
+        font-size: 4.5vw;
+        line-height: 6vw;
       }
 
       &-top {
@@ -69,20 +60,13 @@
     }
   }
 
+  //$ Btns container --------------------------------------------------
   &__btns-container {
+    width: 100%;
     @include flex-col-center(3rem);
 
-    @include mq-max($phone-s) {
-      gap: 2.5rem;
-    }
-
-    @include mq-landscape(phone-max) {
-      flex-direction: row;
-    }
-
-    & .btn {
-      @include rfs-btn;
-    }
+    @include mq-landscape(phone-max) {flex-direction: row}
+    @include mq-landscape(phone-s) {gap: 2rem}
   }
 }
 

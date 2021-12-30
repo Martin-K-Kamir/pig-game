@@ -1,48 +1,53 @@
 .modes {
-  @include glossy-bg($padding-big);
+  $l-p-fluid-max: 15%;
+  $l-p-fluid-m: 9%;
+  $l-p-fluid-min: 8%;
+
+  @include glossy-bg($p-b);
   @include animation(pop-in);
 
-  @include mq-max($tablet-b) {
-    width: 90%;
-    padding: 7%;
+  @include mq-max($tablet-m) {
+    padding: $l-p-fluid-min;
+    width: $w-fluid-max;
   }
 
   @include mq-max($phone-max) {
-    width: 80%;
-    padding: 10.5%;
+    padding: $l-p-fluid-m;
+    width: $w-fluid-b;
+  }
+
+  @include mq-max($phone-m) {
+    padding: $l-p-fluid-max;
+    width: $w-fluid-max;
   }
 
   @include mq-landscape(phone-max) {
     @include abs-center;
+    @include flex-col-center;
+    @include menus-landscape-size;
   }
 
-  @include mq-landscape(phone-s) {
-    width: 90%;
-    padding: 7%;
-  }
-
+  //$ Heading --------------------------------------------------
   &__heading {
-    font-size: 5.1rem;
     letter-spacing: 0.7rem;
     text-transform: uppercase;
     text-align: center;
-
-    @include mq-max($tablet-b) {
-      font-size: 5.2vw;
-      letter-spacing: 0.2rem;
-    }
+    @include font-size($fs-heading-m);
 
     @include mq-max($phone-max) {
-      font-size: 7vw;
-      line-height: 1.3;
+      @include font-size($fs-heading-m);
     }
 
-    @include mq-landscape(phone-s) {
-      font-size: 5.5vw;
+    @include mq-max($phone-min) {
+      @include font-size($fs-heading-m);
     }
 
-    // breaking text into two lines
+    @include mq-landscape(phone-min) {
+      @include font-size($fs-heading-m);
+    }
+
     & span {
+      // breaking text into two lines
       @include mq-max($phone-max) {
         display: block;
       }
@@ -54,18 +59,31 @@
   }
 
   &__divider {
-    @include divider(0.5rem, 2.5rem);
+    @include divider(2.2rem);
   }
 
+  //$ Btns container --------------------------------------------------
   &__btns-container {
     @include flex-justify-center(5rem);
+
+    @include mq-max($tablet-m) {
+      gap: 6%;
+    }
 
     @include mq-max($phone-max) {
       @include flex-col-center(3rem);
     }
 
-    @include mq-landscape(phone-m) {
+    @include mq-landscape(phone-max) {
       flex-direction: row;
+      width: 100%;
+    }
+
+    //* For phone screen to have full width
+    & .btn-primary {
+      @include mq-max($phone-max) {
+        width: $btn-w-full;
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
 .game {
+  user-select: none;
   position: relative;
   display: flex;
-  z-index: 5;
   @include glossy-bg(0, $clr-black-300, $clr-white-300);
   @include animation(pop-in);
   @include size(60rem, 100rem);
 
   @include mq-max($tablet-max) {
-    width: 95%;
+    width: $w-fluid-max;
   }
 
   @include mq-max($phone-max) {
@@ -17,7 +17,8 @@
     @include reset-glossy-bg;
   }
 
-  @include mq-max-width-height($phone-min, 31.25em) {
+  // For small screens (iPhone 4)
+  @include mq-max-w-h($phone-min, $screen-h-m) {
     height: 83vh;
   }
 
@@ -25,64 +26,5 @@
     flex-flow: row wrap;
     @include size(100vh, 100vw);
     @include reset-glossy-bg;
-  }
-}
-
-.bg-bar {
-  display: none;
-  background-color: $clr-primary;
-
-  @include mq-max($phone-max) {
-    display: block;
-    @include size(10rem, 100%);
-  }
-
-  @include mq-max($phone-s) {
-    height: 9rem;
-  }
-
-  @include mq-landscape(phone-max) {
-    display: block;
-    @include size(17.8vh, 100%);
-  }
-
-  &__btns-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-
-    @include mq-max($phone-s) {
-      gap: 2.5rem;
-    }
-
-    @include mq-landscape(phone-max) {
-      gap: 3rem;
-    }
-
-    @include mq-landscape(phone-s) {
-      gap: 1.8rem;
-    }
-
-    & .btn {
-      @include mq-max($phone-max) {
-        width: 43vw;
-        padding: 1.5rem;
-        font-size: 1.8rem;
-      }
-
-      @include mq-max($phone-s) {
-        width: 41vw;
-        padding: 1.4rem;
-        font-size: 1.7rem;
-      }
-
-      @include mq-landscape(phone-max) {
-        width: 46vw;
-        padding: 1.5rem 0;
-        font-size: 1.6rem;
-      }
-    }
   }
 }

@@ -1,102 +1,65 @@
 .timer {
-  @include animation(pop-in);
-  transition: $transition-fast;
-  position: absolute;
-  top: -8rem;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 22.5rem;
+  z-index: -1;
   background-color: $clr-white-090;
-  border-radius: 1rem 1rem 0 0;
-  height: 13%;
-  z-index: 888;
+  @include border-radius-top($border-radius-default);
+  @include size(13%, 22.5rem);
+  @include abs-center-X;
+  @include abs($t: -8rem);
+
+  @include mq-1280x720 {
+    top: -5rem;
+    @include size(8%, 16.5rem);
+  }
 
   @include mq-max($tablet-min) {
     top: -6.5rem;
-    width: 19rem;
-    height: 10.5%;
+    @include size(10.5%, 19rem);
   }
 
   @include mq-max($phone-max) {
-    display: flex;
-    justify-content: flex-start;
-    background-color: transparent;
+    background-color: transparent; // Hide bg for phone screens
     margin-left: 1rem;
     width: 100%;
-    top: -5.1rem;
+    top: -6.1rem;
+    @include flex-me($justify: flex-start);
   }
 
   @include mq-max($phone-min) {
-    top: -4.5rem;
+    top: -5.3rem;
   }
 
-  @include mq-max-width-height($phone-s, 46.875em) {
-    top: -5.2rem;
-  }
-
-  @include mq-max-width-height($phone-min, 31.25em) {
-    top: -4.2rem;
-  }
-
-  // 1280/720
-  @media only screen and (max-height: 800px) and (min-width: 580px) {
-    top: -5rem;
-    width: 16.5rem;
-    height: 8%;
+  @include mq-max-w-h($phone-min, $screen-h-s) {
+    top: -4.4rem;
   }
 
   @include mq-landscape(phone-max) {
-    display: flex;
-    justify-content: flex-start;
-    background-color: transparent;
+    z-index: layer('default');
+    background-color: transparent; // Hide bg for phone screens
     width: 100%;
-    top: 0.5rem;
-    margin-left: 1rem;
+    top: 1.2rem;
+    margin-left: 2rem;
+    @include flex-me($justify: flex-start);
   }
 
   @include mq-landscape(phone-s) {
-    top: 0.8rem;
+    top: 1rem;
   }
 
+  //$ Counter --------------------------------------------------
   &__counter {
-    color: $clr-white;
-    font-size: calc($fs-default + 4rem); // 4.5rem
     letter-spacing: 0.7rem;
+    color: $clr-white;
+    font-size: $fs-heading-max;
+    @include flex-justify-center;
 
-    display: flex;
-    justify-content: center;
+    @include mq-1280x720 {@include fs-down($fs-heading-max, 2)} // 3.5r
+    @include mq-max($tablet-min) {@include fs-down($fs-heading-max, 1)} // 4.5r
+    @include mq-max($phone-max) {@include fs-down($fs-heading-max, 2)} // 3.5r
+    @include mq-max($phone-min) {@include fs-down($fs-heading-max, 2.5)} // 3r
+    @include mq-landscape(phone-max) {@include fs-down($fs-heading-max, 2.5)} // 3r
 
-    @include mq-max($tablet-min) {
-      font-size: calc($fs-default + 3rem); // 4.5rem
-    }
-
-    @include mq-max($phone-max) {
-      font-size: 3.5rem;
-    }
-
-    @include mq-max($phone-min) {
-      font-size: 3rem;
-    }
-
-    @include mq-max-width-height($phone-s, 46.875em) {
-      font-size: 3.8rem;
-    }
-
-    // 1280/720
-    @media only screen and (max-height: 800px) and (min-width: 580px) {
-      font-size: calc($fs-default + 2rem); // 4.5rem
-    }
-
-    @include mq-landscape(phone-max) {
-      color: $clr-grey !important;
-      font-size: 3rem;
-    }
-
-    @include mq-landscape(phone-s) {
-      font-size: 2rem;
-    }
+    // For landscape have always grey clr
+    @include mq-landscape(phone-max) {color: $clr-grey !important}
   }
 }
 
-// 960 x 600 fix

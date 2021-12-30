@@ -1,72 +1,38 @@
 .credits {
-  @include glossy-bg($padding-big);
-  @include animation(pop-in);
   display: grid;
+  @include glossy-bg($p-b);
+  @include animation(pop-in);
 
-  @include mq-max($phone-max) {
-    padding: 8% !important;
-  }
-
-  @include mq-max($phone-m) {
-    padding: 5% !important;
+  @include mq-max($phone-b) {
+    padding: 8vw 4vw;
+    width: $w-fluid-max;
   }
 
   @include mq-landscape(phone-max) {
-    width: 60vw;
-    padding: 3rem !important;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    overflow-y: scroll;
+    @include menus-landscape-size;
   }
 
-  @include mq-landscape(phone-s) {
-    width: 60vw;
-    padding: 2rem !important;
-  }
-
+  //$ Heading --------------------------------------------------
   &__heading {
     text-transform: uppercase;
     text-align: center;
-    color: $clr-secondary;
-
-    @include mq-max($phone-max) {
-      font-size: 5vw;
-    }
-
-    @include mq-max($phone-b) {
-      font-size: 6vw;
-    }
-
-    @include mq-max($phone-m) {
-      font-size: 6.5vw;
-    }
-
-    @include mq-landscape(phone-s) {
-      font-size: 4vw;
-    }
   }
 
   &__divider {
-    @include divider(0.5rem, 1.5rem);
+    @include divider;
 
-    @include mq-max($phone-max) {
-      @include divider(0.5rem, 1.5rem);
-    }
-
-    @include mq-landscape(phone-max) {
-      @include divider(0.2rem, 1.1rem);
-    }
-
-    @include mq-landscape(phone-s) {
-      @include divider(0rem, 0.5rem);
+    // Make divider not full width
+    @include mq-max($phone-b) {
+      width: calc(100% - 8vw);
     }
   }
 
+  //$ Creators --------------------------------------------------
   &__creators-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -74,64 +40,28 @@
     column-gap: 2.5rem;
 
     @include mq-max($phone-max) {
-      column-gap: 1.5rem;
-    }
-
-    @include mq-landscape(phone-max) {
-      row-gap: 0;
+      gap: 0.8rem;
       column-gap: 1.5rem;
     }
   }
 
   &__creator {
-    &--role,
-    &--name {
-      font-size: $fs-text-big;
-
-      @include mq-max($phone-max) {
-        font-size: 3vw;
-      }
-
-      @include mq-max($phone-b) {
-        font-size: 3.5vw;
-      }
-
-      @include mq-max($phone-m) {
-        font-size: 4vw;
-      }
-
-      @include mq-landscape(phone-s) {
-        font-size: 2.66vw;
-      }
-    }
-
     &--role {
       text-align: right;
-      font-weight: $fw-bold;
+      font-weight: $fw-max;
       grid-column: 1 / 2;
     }
 
     &--name {
       text-align: left;
-      font-weight: $fw-tiny;
+      font-weight: $fw-min;
       grid-column: 2 / 3;
     }
   }
 
-  & .btn {
-    margin-top: 3rem;
+  //$ Btn --------------------------------------------------
+  & .btn-opacity {
     justify-self: center;
-
-    width: 21rem;
-    padding: 1.55rem;
-
-    @include mq-max($phone-s) {
-      width: 19rem;
-    }
-
-    @include mq-landscape(phone-max) {
-      width: 24vw;
-      margin-top: 1rem;
-    }
+    @include margin-top(3rem);
   }
 }

@@ -1,33 +1,38 @@
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px
 
-  @include mq-max($tablet-max) {font-size: 59.375%;}
-  @include mq-max($tablet-min) {font-size: 56.55%;}
-  @include mq-max($phone-max) {font-size: 53.125%;}
-  @include mq-max($phone-s) {font-size: 50%;}
-}
+  @include mq-max($tablet-max) {font-size: 59.375%;} // 1rem = 9.5px
+  @include mq-max($tablet-min) {font-size: 56.55%;} // 1rem = 9px
+  @include mq-max($phone-max) {font-size: 53.125%;} // 1rem = 8.5px
+  @include mq-max($phone-s) {font-size: 50%;} // 1rem = 8px
+} 
 
 h2 {
   color: $clr-secondary;
-  font-weight: $fw-heading-bulky; // clean
-  font-size: $fs-heading-medium; // clean
+  font-weight: $fw-max;
+  @include font-size($fs-heading-s);
 }
 
-button {
-  border-radius: $border-radius-btn; // clean
+p, li {
+  color: $clr-white;
+  @include font-size($fs-default);
 }
+
 
 .body-container {
   position: relative;
   min-height: 100vh;
   font-family: $font-default;
-  font-weight: $fw-default;
+  font-size: $fs-default;
+  font-weight: $fw-s;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   color: $clr-white;
   background-color: $clr-primary;
   overflow: hidden;
-  
+  @include giv-color($clr-white, $clr-primary);
   @include flex-col-center;
   @include mq-landscape(phone-max) {display: block;}
 }
+
+

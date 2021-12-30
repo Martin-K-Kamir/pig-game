@@ -1,11 +1,10 @@
 .player {
-  @include flex-col-center;
   flex: 50%;
-  transition: $transition-medium;
-  border-radius: 1rem;
-  z-index: 2;
   position: relative;
   overflow: hidden;
+  transition: $transition-medium;
+  border-radius: $border-radius-default;
+  @include flex-col-center;
 
   @include mq-max($tablet-max) {
     padding: 8rem 5%;
@@ -21,14 +20,15 @@
     border-radius: 0;
   }
 
+  //$ Active class --------------------------------------------------
   &--active,
   &--winner {
     & .player__name {
-      font-weight: $fw-heading-bulky;
+      font-weight: $fw-max;
     }
 
     & .player__score {
-      font-weight: 600;
+      font-weight: $fw-b;
     }
 
     & .current-box {
@@ -44,13 +44,13 @@
     background-color: $clr-white;
   }
 
+  //$ Wrapper --------------------------------------------------
   &__wrapper {
     @include flex-col-center(2.4rem);
 
     @include mq-max($phone-max) {gap: 3rem;}
     @include mq-max($phone-min) {gap: 3rem;}
-    @include mq-max-width-height($phone-s, 46.875em) {gap: 6rem;}
-    @include mq-max-width-height($phone-min, 31.25em) {gap: 1rem;}
+    @include mq-max-w-h($phone-s, $screen-h-m) {gap: 2rem;}
     @include mq-landscape(phone-max) {gap: 0;}
   }
 
@@ -58,72 +58,73 @@
     text-align: center;
   }
 
-
-  &__status {
-    height: 2.7rem;
-  }
-
+  //$ Name --------------------------------------------------
   &__name {
     position: relative;
     letter-spacing: 0.1rem;
     word-spacing: 0.2rem;
     text-transform: uppercase;
     color: $clr-grey;
-    font-weight: calc($fw-heading-bulky - 400);
-    font-size: $fs-heading-big;
-
-    @include mq-max($phone-max) {font-size: 4.3rem;}
-    @include mq-max($phone-s) {font-size: 3.3rem;}
-    @include mq-max($phone-min) {font-size: 3.4rem;}
-    @include mq-max-width-height($phone-s, 46.875em) {font-size: 3.9rem;}
-    @include mq-max-width-height($phone-min, 31.25em) {font-size: 3rem;}
-    @include mq-landscape(phone-max) {font-size: 3.6rem;}
+    font-weight: $fw-s;
+    font-size: $fs-heading-m;
+    
+    @include mq-max($phone-max) {@include fs-up($fs-heading-m, 0.3)} // 4.3r
+    @include mq-max($phone-s) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
+    @include mq-max($phone-min) {@include fs-down($fs-heading-m, 0.6)} // 3.4r
+    @include mq-max-w-h($phone-m, $screen-h-max) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
+    @include mq-max-w-h($phone-min, $screen-h-s) {@include fs-down($fs-heading-m, 1)} // 3r
+    @include mq-landscape(phone-max) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
   }
-
+  
+  //$ Playing & Winner --------------------------------------------------
   &__playing,
   &__winner {
-    color: $clr-grey;
-    font-size: $fs-text-big;
-    font-weight: $fw-text-medium;
-  }
-
-  &__playing {
     animation: pulsing 1s linear infinite alternate;
-
-    @include mq-max($phone-max) {font-size: 2rem;}
-    @include mq-max($phone-min) {font-size: 1.7rem;}
-    @include mq-max-width-height($phone-s, 46.875em) {font-size: 1.9rem;}
-    @include mq-landscape(phone-max) {font-size: 1.7rem;}
-  }
-
-  &__score {
-    margin-bottom: auto;
-    font-size: 12rem;
-    font-weight: $fw-tiny;
     color: $clr-grey;
+    font-size: $fs-text-b;
+    font-weight: $fw-m;
+    
+    @include mq-max($phone-max) {@include fs-up($fs-text-b, 0.2)} // 2r
+    @include mq-max($phone-min) {@include fs-down($fs-text-b, 0.1)} // 1.7r
+    @include mq-max-w-h($phone-min, $screen-h-s) {@include fs-down($fs-text-b, 0.1)} // 1.7r
+    @include mq-landscape(phone-max) {@include fs-down($fs-text-b, 0.1);} // 1.7r
+  }
+  
+  &__status {
+    height: 2.7rem;
+  }
+  
+  //$ Score --------------------------------------------------
+  &__score {
+    $l-fs-score: 12rem;
+
+    font-size: $l-fs-score;
+    font-weight: $fw-min;
+    color: $clr-grey;
+    @include pos-Y(-1.3rem);
 
     @include mq-max($phone-max) {
-      font-size: 10rem;
-      transform: translateY(-4.2rem);
+      @include fs-down($l-fs-score, 2); // 10r
+      @include pos-Y(-4.2rem);
     }
 
     @include mq-max($phone-min) {
-      font-size: 7rem;
-      transform: translateY(-4.2rem);
+      @include fs-down($l-fs-score, 5); // 7r
+      @include pos-Y(-3.9rem);
     }
 
-    @include mq-max-width-height($phone-s, 46.875em) {
-      font-size: 8rem;
-      transform: translateY(-7rem);
+    @include mq-max-w-h($phone-m, $screen-h-max) {
+      @include fs-down($l-fs-score, 4); // 8r
     }
 
-    @include mq-max-width-height($phone-min, 31.25em) {
-      transform: translateY(-3.2rem);
+    @include mq-max-w-h($phone-min, $screen-h-s) {
+      @include fs-down($l-fs-score, 5.5); // 6.5r
+      @include pos-Y(-3.7rem);
     }
 
     @include mq-landscape(phone-max) {
-      font-size: 7.5rem;
-      transform: translateY(-1.2rem);
+      @include fs-down($l-fs-score, 4.5); // 7.5r
+      @include pos-Y(-1.2rem);
     }
   }
 }

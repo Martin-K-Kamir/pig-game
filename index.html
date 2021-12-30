@@ -12,13 +12,13 @@
   <body class="body-container">
 
     <nav class="navbar">
-      <button class="btn-round btn--leave click-sound ">
+      <button class="btn-round btn--leave click-sound hidden">
         <svg class="icon" width="32" height="32">
           <use href="src/icon/bootstrap-icons.svg#list" />
         </svg>
         <div class="note">menu</div>
       </button>
-      <button class="btn-round btn--pause click-sound ">
+      <button class="btn-round btn--pause click-sound hidden">
         <svg class="icon" width="32" height="32">
           <use href="src/icon/bootstrap-icons.svg#pause-fill" />
           <div class="note">pause game</div>
@@ -54,7 +54,7 @@
       </button>
     </nav>
     
-    <section class="menu ">
+    <section class="menu">
       <div class="menu__logo">
         <div class="menu__logo--icon">
           <img src="src/img/logo.png" alt="Logo icon" />
@@ -67,9 +67,9 @@
       </div>
 
       <div class="menu__btns-container">
-        <button class="btn btn--modes click-sound">New game</button>
-        <button class="btn btn--rules click-sound">Game rules</button>
-        <button class="btn btn--credits click-sound">Credits</button>
+        <button class="btn-primary--full btn--modes click-sound">New game</button>
+        <button class="btn-primary--full btn--rules click-sound">Game rules</button>
+        <button class="btn-primary--full btn--credits click-sound">Credits</button>
       </div>
     </section>
  
@@ -77,15 +77,15 @@
       <h2 class="modes__heading">Select a <span>game mode</span></h2>
       <div class="modes__divider"></div>
       <div class="modes__btns-container">
-        <button class="btn-border pig-mode click-sound">Pig</button>
-        <button class="btn-border big-pig-mode click-sound">Big Pig</button>
-        <button class="btn-border run-pig-mode click-sound">Running Pig</button>
+        <button class="btn-primary--b btn-border pig-mode click-sound">Pig</button>
+        <button class="btn-primary--b btn-border big-pig-mode click-sound">Big Pig</button>
+        <button class="btn-primary--b btn-border run-pig-mode click-sound">Hyper Pig</button>
       </div>
     </section>
 
     <section class="rules hidden">
       <div class="rules__section">
-        <h2 class="rules__heading">Hello and welcome to the Pig Game</h2>
+        <h2 class="rules__heading">Hello and welcome to the Pig&nbsp;Game</h2>
         <div class="rules__divider"></div>
         <p class="rules__text">
           Pig game is a simple dice game first described by John Scarne in 1945.
@@ -141,31 +141,31 @@
         </p>
       </div>
 
-      <button class="btn btn--rules click-sound">Back to menu</button>
+      <button class="btn-opacity btn--rules click-sound">Back to menu</button>
     </section>
   
     <section class="credits hidden">
       <h2 class="credits__heading">Credits</h2>
       <div class="credits__divider"></div>
-      <div class="credits__creators-container">
-        <h3 class="credits__creator--role">Created by</h3>
-        <h3 class="credits__creator--name">Martin Kamír</h3>
-        <h3 class="credits__creator--role">Original author</h3>
-        <h3 class="credits__creator--name">Jonas Schmedtmann's</h3>
-        <h3 class="credits__creator--role">Music</h3>
-        <h3 class="credits__creator--name">Jane Doe</h3>
-        <h3 class="credits__creator--role">Game Sounds</h3>
-        <h3 class="credits__creator--name">Unknown</h3>
-        <h3 class="credits__creator--role">Special Thanks</h3>
-        <h3 class="credits__creator--name">Gabriela Kamírová</h3>
-        <h3 class="credits__creator--name">Zuzana Kamírová</h3>
-        <h3 class="credits__creator--name">Máša</h3>
-      </div>
-      <button class="btn btn--credits click-sound">Back to menu</button>
+      <ul class="credits__creators-container">
+        <li class="credits__creator--role">Created by</li>
+        <li class="credits__creator--name">Martin Kamír</li>
+        <li class="credits__creator--role">Original author</li>
+        <li class="credits__creator--name">Jonas Schmedtmann's</li>
+        <li class="credits__creator--role">Music</li>
+        <li class="credits__creator--name">Jane Doe</li>
+        <li class="credits__creator--role">Game Sounds</li>
+        <li class="credits__creator--name">Unknown</li>
+        <li class="credits__creator--role">Special Thanks</li>
+        <li class="credits__creator--name">Gabriela Kamírová</li>
+        <li class="credits__creator--name">Zuzana Kamírová</li>
+        <li class="credits__creator--name">Máša</li>
+      </ul>
+      <button class="btn-opacity btn--credits click-sound">Back to menu</button>
     </section>
 
     <section class="game hidden">
-      <div class="timer">
+      <div class="timer hidden">
         <h2 class="timer__counter">04:00</h2>
       </div>
 
@@ -202,65 +202,65 @@
           </div>
         </div>        
       </div>
-      <div class="panel-bar">
+      <div class="game-bar">
           <img
-            class="panel-bar__dice dice dice--light opacity-zero"
+            class="game-bar__dice dice dice--light opacity-zero"
             src="src/img/dice-light-1.png"
             alt="Playing dice light"
           />
           <img
-            class="panel-bar__dice dice dice--dark opacity-zero hidden"
+            class="game-bar__dice dice dice--dark opacity-zero hidden"
             src="src/img/dice-dark-1.png"
             alt="Playing dice dark"
           />
     
     
-          <div class="panel-bar__swap-container">
-            <button class="btn-grey--sm btn--swap-yes hidden">
+          <div class="game-bar__swap-container">
+            <button class="btn-grey--s btn--swap-yes hidden">
               Yes
             </button>
-            <button class="btn-grey--sm btn--swap-no click-sound hidden">
+            <button class="btn-grey--s btn--swap-no click-sound hidden">
               No
             </button>
           </div>
     
-          <div class="panel-bar__btns-container">
-            <button class="btn btn--full btn--roll click-sound ">
+          <div class="game-bar__btns-container">
+            <button class="btn-secondary btn--roll click-sound ">
               Roll dice
             </button¨>
-            <button class="btn btn--full btn--hold ">
+            <button class="btn-secondary btn--hold ">
               
               Hold score
             </button>
           </div>
       </div>
-      <!-- rework name bg -->
-      <div class="bg-bar">
-        <div class="bg-bar__btns-container">
-          <button class="btn btn--full btn--roll click-sound ">
+
+      <div class="game-bar-bottom">
+        <div class="game-bar-bottom__btns-container">
+          <button class="btn-secondary btn--roll click-sound ">
             Roll dice
           </button>
-          <button class="btn btn--full btn--swap-yes hidden">
-            Yes
-          </button>
-          <button class="btn btn--full btn--hold ">
+          <button class="btn-secondary btn--hold ">
             Hold score
           </button>
-          <button class="btn btn--full btn--swap-no click-sound hidden">
+          <button class="btn-secondary--grey btn--swap-yes hidden">
+            Yes
+          </button>
+          <button class="btn-secondary--grey btn--swap-no click-sound hidden">
             No
           </button>
         </div>
       </div>
-      <div class="victory-bar ">
+      <div class="victory-bar hidden">
           <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player">Player&nbsp;1</span>&nbsp;you&nbsp;won!</h2>
           <div class="victory-bar__btns-container">
-            <button class="btn-grey--lg btn--again click-sound">Again</button>
-            <button class="btn-grey--lg btn-grey--ghost btn--leave click-sound">Back to menu</button>
+            <button class="btn-grey--b btn--again click-sound">Again</button>
+            <button class="btn-grey--b btn-grey--ghost btn--leave click-sound">Back to menu</button>
           </div>
       </div>
     </section>
     
-    <footer class="copyright ">
+    <footer class="copyright">
       <p class="copyright__text">
         &copy; Copyright 2021 by Martin Kamír. All Rights Reserved. Remake of
         Jonas Schmedtmann's Pig game.

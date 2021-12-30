@@ -1,11 +1,21 @@
 .current-box {
+  $l-height-max: 7rem;
+  $l-height-m: 6rem;
+  $l-height-min: 5.6rem;
+
+  $l-fs-label-default: 1.8rem;
+  $l-fs-label-max: 1.9rem;
+  $l-fs-label-min: 1.7rem;
+
+  $l-fs-score-max: 4rem;
+  $l-fs-score-min: 3.2rem;
+
   width: 24rem;
-  padding: $padding-small;
   opacity: 0.8;
   text-align: center;
-  color: $clr-white-900;
-  background-color: $clr-grey;
-  border-radius: $border-radius;
+  padding: $p-min;
+  border-radius: $border-radius-default;
+  @include giv-color($clr-white-900, $clr-grey);
 
   @include mq-max($tablet-max) {
     width: 275%;
@@ -13,61 +23,52 @@
   }
 
   @include mq-max($phone-max) {
-    width: 100%; // mixin
-    padding: 1rem;
-    display: flex; // mixin
-    justify-content: center; // mixin
-    align-items: center; // mixin
-    gap: 1rem; // mixin
-    height: 7rem; // mixin
-
-    position: absolute; // mixin
-    bottom: 0; // mixin
+    @include size($l-height-max, 100%);
+    @include abs($b: 0);
+    @include flex-center(1rem);
   }
 
   @include mq-max($phone-min) {
-    height: 5rem;
+    height: $l-height-min;
   }
 
   @include mq-landscape(phone-max) {
-    display: flex; // mixin
-    justify-content: center; // mixin
-    align-items: center; // mixin
-    gap: 1.5rem; // mixin
-    height: 6rem; // make b
-    position: absolute; // mixin
-    bottom: 0; // mixin
+    height: $l-height-m;
+    @include abs($b: 0);
+    @include flex-center(1.5rem);
   }
 
-  @include mq-landscape(phone-s) {
-    height: 5rem;
+  @include mq-landscape(phone-min) {
+    height: $l-height-min;
   }
 
+  //$ Label --------------------------------------------------
   &__label {
     text-transform: uppercase;
     margin-bottom: 1rem;
-    font-size: 1.5rem; // make b
+    font-size: $l-fs-label-default;
 
     @include mq-max($phone-max) {
-      margin: 0; // ???
-      font-size: 1.9rem; // make b
+      margin: 0;
+      font-size: $l-fs-label-max;
     }
 
     @include mq-max($phone-s) {
-      font-size: 1.6rem; // make b
+      font-size: $l-fs-label-min;
     }
 
     @include mq-landscape(phone-max) {
-      font-size: 1.7rem; // make b
-      margin: 0; // ???
+      margin: 0;
+      font-size: $l-fs-label-min;
     }
   }
 
+  //$ Score --------------------------------------------------
   &__score {
-    font-size: calc($fs-default + 2rem); // 3.5rem // make b
+    font-size: $l-fs-score-max;
 
     @include mq-max($phone-s) {
-      font-size: 3.2rem; // make b
+      font-size: $l-fs-score-min;
     }
   }
 }

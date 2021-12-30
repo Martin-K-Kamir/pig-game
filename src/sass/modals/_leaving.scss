@@ -1,74 +1,75 @@
 .leaving-modal {
+  $l-p-fluid-max: 8%;
+  $l-p-fluid-m: 6%;
+  $l-p-fluid-min: 5%;
+
+  z-index: layer('modal');
+  transition: $transition-fast;
+  @include abs-center;
   @include flex-col-center(2rem);
   @include modal-bg;
   @include animation(fade-in);
-  transition: $transition-fast;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999999999999;
 
   &__box {
     @include flex-col-center;
-    padding: 6rem;
-    border-radius: $border-radius;
+    padding: $p-m;
+    border-radius: $border-radius-default;
     background-color: $clr-white;
     box-shadow: $box-shadow-medium;
 
     @include mq-max($phone-max) {
-      padding: 8%;
-    }
-
-    @include mq-max($phone-s) {
-      width: 19rem;
+      padding: $l-p-fluid-max;
     }
 
     @include mq-max($phone-min) {
-      padding: 6%;
+      padding: $l-p-fluid-m;
     }
 
     @include mq-landscape(phone-max) {
-      padding: 5%;
+      padding: $l-p-fluid-min;
     }
   }
 
+  //$ Heading --------------------------------------------------
   &__heading {
-    font-size: $fs-heading-big;
-    color: $clr-grey;
     margin-bottom: 3rem;
     text-align: center;
+    font-size: $fs-heading-m;
+    color: $clr-grey;
 
     @include mq-max($phone-max) {
-      font-size: 3.5rem;
+      @include fs-down($fs-heading-m, 0.5); // 3.5r
     }
 
     @include mq-max($phone-b) {
       margin-bottom: 2rem;
-      font-size: 3rem;
+      @include fs-down($fs-heading-m, 1); // 3r
     }
 
     @include mq-landscape(phone-max) {
       margin-bottom: 2rem;
-      font-size: 3rem;
+      @include fs-down($fs-heading-m, 1); // 3r
     }
   }
 
+  //$ Text --------------------------------------------------
   &__text {
-    color: $clr-grey;
     margin-bottom: 4rem;
-    font-size: 1.7rem;
+    color: $clr-grey;
+    font-size: $fs-default;
 
     @include mq-max($phone-b) {
       margin-bottom: 3rem;
-      font-size: 1.6rem;
+      font-size: $fs-text-b;
     }
 
     @include mq-landscape(phone-max) {
       margin-bottom: 3rem;
-      font-size: 1.6rem;
+      font-size: $fs-text-b;
     }
   }
 
+  //$ Btns container --------------------------------------------------
   &__btns-container {
     @include flex-split(2rem);
   }

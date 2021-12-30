@@ -1,0 +1,98 @@
+//////////////////////////
+//$ Media queries
+///////////////////////////
+
+//$ max-width
+$tablet-max: 65.625em; // 1050px
+$tablet-b: 56.25em; // 900px
+$tablet-m: 53.125em; // 850px
+$tablet-s: 50em; // 800px
+$tablet-min: 43.75em; // 700px
+
+$phone-max: 36.25em; // 580px
+$phone-b: 28.75em; // 460px
+$phone-m: 25em; // 400px
+$phone-s: 22.5em; // 360px
+$phone-min: 20.625em; // 330px
+
+//$ max-height
+$screen-h-max: 43.75em; // 700px
+$screen-h-b: 41.875em; // 670px
+$screen-h-m: 35.625em; // 570px
+$screen-h-s: 31.25em; // 500px
+$screen-h-min: 30em; // 480px
+
+@mixin mq-max($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mq-min($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mq-max-h($breakpoint) {
+  @media only screen and (max-height: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mq-min-h($breakpoint) {
+  @media only screen and (min-height: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mq-max-w-h($breakpoint-width, $breakpoint-height) {
+  @media only screen and (max-width: $breakpoint-width) and (max-height: $breakpoint-height) {
+    @content;
+  }
+}
+
+@mixin mq-1280x720() {
+  @media only screen and (max-height: 800px) and (min-width: 580px) {
+    @content;
+  }
+}
+
+//////////////////////////
+//$ Media query system for landscape
+///////////////////////////
+
+//$ max-width x height
+// phone-max 915px x 430px
+// phone-b 780px x 360px
+// phone-m 640px × 360px
+// phone-s 570px x 320px
+// phone-min 490px x 320px
+
+@mixin mq-landscape($breakpoint) {
+  @if $breakpoint == phone-max {
+    @media only screen and (orientation: landscape) and (max-width: 57.1875em) and (max-height: 26.875em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-b {
+    @media only screen and (orientation: landscape) and (max-width: 48.75em) and (max-height: 22.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-m {
+    @media only screen and (orientation: landscape) and (max-width: 40em) and (max-height: 22.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-s {
+    @media only screen and (orientation: landscape) and (max-width: 35.625em) and (max-height: 20em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone-min {
+    @media only screen and (orientation: landscape) and (max-width: 30.625em) and (max-height: 20em) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+//////////////////////////
+//$ Main background styling for all sections
+///////////////////////////
+@mixin glossy-bg(
+  $padding-value: null,
+  $shadow-value: $clr-black-200,
+  $bg-color: $clr-white-090,
+  $light-theme: true
+) {
+  @if $light-theme {
+    padding: $padding-value;
+    background-color: $bg-color;
+    border: 0.3rem solid $clr-primary-700;
+    outline: 0.2rem solid $clr-primary-700;
+    box-shadow: 0 0 4rem $shadow-value;
+    border-radius: $border-radius-default;
+    backdrop-filter: blur(10rem);
+  } @else {
+    padding: $padding-value;
+    background-color: $bg-color;
+    border: 0.3rem solid $clr-grey-100;
+    outline: 0.2rem solid $clr-grey-100;
+    box-shadow: 0 0 2.5rem $shadow-value;
+    border-radius: $border-radius-default;
+    backdrop-filter: blur(10rem);
+  }
+}
+
+@mixin reset-glossy-bg {
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+//////////////////////////
+//$ Menu sections size rules for landscape
+///////////////////////////
+@mixin menus-landscape-size {
+  padding: 2rem;
+  @include size(65vh, 95vw);
+  @include abs-center;
+}
+
+//////////////////////////
+//$ Main background styling for modals
+///////////////////////////
+@mixin modal-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $clr-black-800;
+  backdrop-filter: blur(0.5rem);
+  user-select: none;
+}
+
+//////////////////////////
+//$ Z-index system
+///////////////////////////
+$z-indexes: ('modal', 'navbar', 'win-bar', 'default');
+
+@function layer($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name))+1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+    @return null;
+  }
+}
+
+//////////////////////////
+//$ Divider
+///////////////////////////
+@mixin divider(
+  $margin-bottom: 0.6rem,
+  $margin-top: null,
+  $width-value: 100%,
+  $height-value: 0.1rem,
+  $color: $clr-white-200
+) {
+  margin: 0 auto; // center
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+  width: $width-value;
+  height: $height-value;
+  background-color: $color;
+  border-radius: 10rem;
+}

@@ -1,20 +1,16 @@
 .victory-bar {
-  position: absolute;
-  bottom: 5rem;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
   width: 60rem;
-  //@include animation(fade-in);
-  transition: $transition-slow;
-  //@include animation(pop-in);
-  z-index: 7777;
-
-  padding: $padding-medium;
-  border-radius: $border-radius;
+  z-index: layer('win-bar');
+  transition: $transition-fast;
+  padding: $p-s;
+  border-radius: $border-radius-default;
   background-color: $clr-white;
   box-shadow: $box-shadow-medium;
+  @include abs-center-X;
+  @include abs($b: 5rem);
+
+  //@include animation(fade-in);
+  //@include animation(pop-in);
 
   @include mq-max($tablet-min) {
     padding: 3rem;
@@ -23,8 +19,8 @@
 
   @include mq-max($phone-max) {
     bottom: 0;
-    width: 100vw;
     border-radius: 0;
+    width: 100vw;
     padding: 4rem 12vw;
   }
 
@@ -32,40 +28,27 @@
     padding: 3rem;
     bottom: 2vh;
     width: 97vw;
+    border-radius: $border-radius-default;
   }
 
   @include mq-landscape(phone-s) {
     bottom: 1.8vh;
-    border-radius: $border-radius;
     padding: 4rem 6rem;
   }
 
+  //$ Heading --------------------------------------------------
   &__heading {
-    font-size: $fs-heading-medium;
-    color: $clr-grey;
     margin-bottom: 3rem;
-
-    @include mq-max($tablet-min) {
-      font-size: 2.6rem;
-    }
+    color: $clr-grey;
+    @include font-size($fs-heading-s);
 
     @include mq-max($phone-max) {
-      margin-bottom: 3rem;
-      font-size: 6.7vw;
       text-align: center;
-    }
-
-    @include mq-max($phone-min) {
-      font-size: 7.4vw;
+      @include font-size(5rem);
     }
 
     @include mq-landscape(phone-max) {
-      font-size: 2.8rem;
       margin-bottom: 2rem;
-    }
-
-    @include mq-landscape(phone-s) {
-      font-size: 4.5vw;
     }
 
     &--player {
@@ -74,6 +57,7 @@
     }
   }
 
+  //$ Btns container --------------------------------------------------
   &__btns-container {
     @include flex-me(flex-start, center, 2rem);
 
@@ -86,16 +70,11 @@
       flex-direction: row;
     }
 
-    & .btn-grey--lg {
+    & .btn-grey--b {
       @include mq-max($phone-max) {
         width: 100%;
-        font-size: 1.8rem;
         padding: 1.7rem;
-      }
-
-      @include mq-landscape(phone-s) {
-        font-size: 1.7rem;
-        padding: 1.6rem;
+        font-size: 1.8rem;
       }
     }
   }

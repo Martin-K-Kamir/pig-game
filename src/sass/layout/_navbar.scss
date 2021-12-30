@@ -1,58 +1,32 @@
 .navbar {
-  @include flex-justify-center(1rem);
+  z-index: layer('navbar');
   user-select: none;
-  position: absolute;
-  width: calc(100% - 2rem);
-  top: 1.9rem;
-  right: 3rem;
-  z-index: 999999;
+  width: calc(100% - 1.5rem);
+  @include abs($t: 2rem, $r: 3rem);
+  @include flex-me($justify: flex-end, $gap: 1rem);
 
-  @include mq-max($tablet-max) {
-    right: 2.5rem;
-  }
+  @include mq-1280x720 {@include abs($t: 0.8rem, $r: 1rem)}
+  @include mq-max($tablet-max) {@include abs($t: 1rem, $r: 2rem)}
+  @include mq-max($phone-max) {@include abs($t: 0.5rem, $r: 0.8rem)}
+  @include mq-landscape(phone-max) {@include abs($t: 1rem, $r: 2rem)}
 
-  @include mq-max($phone-max) {
-    top: 1rem;
-    right: 1.2rem;
-  }
-
-  @include mq-max-height(45em) {
-    top: 1.3rem;
-    right: 1.5rem;
-  }
-
-  @include mq-landscape(phone-max) {
-    right: 1.5rem;
-  }
-
+  // For smaller phone screens break in half btns
   & .btn-round:first-child {
     margin-left: auto;
 
-    @include mq-max-width-height($phone-max, 49.375em) {
+    @include mq-max-w-h($phone-m, $screen-h-b) {
       margin: 0;
     }
   }
 
   & .btn--pause {
-    @include mq-max-width-height($phone-max, 49.375em) {
+    @include mq-max-w-h($phone-m, $screen-h-b) {
       margin-right: auto;
     }
   }
 
   & .btn-round {
     position: relative;
-  }
-
-  & .btn-round .icon {
-    @include size-same(2rem);
-
-    @include mq-max($phone-max) {
-      @include size-same(2.2rem);
-    }
-
-    @include mq-max($phone-b) {
-      @include size-same(2.5rem);
-    }
   }
 
   & .btn-round:hover .note {
@@ -79,26 +53,38 @@
 //// 10. Dark theme for all sections
 //// 11. Do resizing for html
 //// 12. footer
-// 13. Clean css + html
+//// 13. Clean css + html
 
 //$ FAZE 2
 // TODO LIST to clean css and html
 //// 1. Clean all mq
-// 2. Make mixins and add them
-// 3. Rework variables
-// 4. Manage files
-// 5. Make better rule systems for classes
-// 49849. Do responsive for wierd resolutions
-// ...
-// ß. Repair JS
+//// 2. Make mixins and add them
+//// 3. btns rework
+//// 4. better font-size, gap, width, etc... system so it wont repeat
+//// 5. Manage files
+//// 6. Make better rule systems for classes
+// 7. Do responsive for wierd resolutions
+//// 8. Check layout and fix what is overlaping
+//// 9. Rework variables
+//// 10. Clean HTML
+// 11. Try build on Netlify, check on phones
+// 12. Final desing testing
+// 14. Repair JS
 
 //$ FAZE 3
 // TODO LIST to make JS work
-// 1. Repair changed dom nodes and variables
-// 2. Add leaving modal for refreshing
+// 1. Repair changed classes
+// 2. Make works everything like it use to
+// 3. Add leaving modal for refreshing
+// 4. Add playing vs PC
 
-// $ FAZE
-//& Adding new features
+//$ FAZE 4
+// TODO LIST TESTING & BULDING
+// 1. All browsers
+// 2. Try older versions
+// 3. Phones, Notebooks
+// 4. Run some html, css, js tests
+// 5. Check again HTML, SCSS, JS
 
-//$ FAZE 49489891651569
-// TESTING & BULDING
+//$ FAZE 5
+//$ Ready to deploy

@@ -1,0 +1,99 @@
+//////////////////////////
+//$ Flexbox
+///////////////////////////
+@mixin flex-me($justify: center, $align: center, $gap: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin flex-center($gap: null) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin flex-align-center($gap: null) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-justify-center($gap: null) {
+  display: flex;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin flex-col-center($gap: null) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+}
+
+@mixin flex-split($gap: null) {
+  display: flex;
+  gap: $gap;
+}
+
+//////////////////////////
+//$ Translate
+///////////////////////////
+@mixin pos-Y($y) {
+  transform: translateY($y);
+}
+
+@mixin pos-X($x) {
+  transform: translateX($x);
+}
+
+@mixin pos($x, $y) {
+  transform: translate($x, $y);
+}
+
+///////////////////////////
+//$ Absolute
+///////////////////////////
+@mixin abs($t: null, $r: null, $b: null, $l: null) {
+  position: absolute;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+
+@mixin abs-side($tb: null, $rl: null) {
+  position: absolute;
+  top: $tb;
+  right: $rl;
+  bottom: $tb;
+  left: $rl;
+}
+
+@mixin abs-center {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin abs-center-Y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin abs-center-X {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}

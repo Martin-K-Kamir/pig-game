@@ -1,32 +1,25 @@
 .rules {
   height: 74vh;
-  overflow: auto;
-  @include glossy-bg(4rem);
+  overflow-y: scroll;
+  display: grid;
+  @include glossy-bg($p-s);
   @include animation(pop-in);
 
   @include mq-max($tablet-b) {
-    width: 95vw;
-    padding: 4%;
+    padding: $p-fluid-s;
+    width: $w-fluid-max;
   }
 
   @include mq-landscape(phone-max) {
-    padding: 3rem;
-    @include size(73vh, 95vw);
-    @include abs-center;
+    @include menus-landscape-size;
   }
 
   &__section {
-    margin-bottom: 3rem;
-  }
-
-  &__heading {
-    @include mq-max($phone-m) {
-      font-size: 6.5vw;
-    }
+    @include margin-bottom(5rem);
   }
 
   &__divider {
-    @include divider(0.1rem, 1rem);
+    @include divider;
   }
 
   &__list {
@@ -36,18 +29,11 @@
   &__text,
   &__list-item {
     width: 80ch;
-    font-size: 1.5rem;
 
-    @include mq-max($tablet-b) {
-      width: 100%;
-    }
-
-    @include mq-max($phone-m) {
-      font-size: 3.5vw;
-    }
+    @include mq-max($tablet-b) {width: 100%}
   }
 
-  & .btn {
-    @include rfs-btn;
+  & .btn-opacity {
+    justify-self: center;
   }
 }
