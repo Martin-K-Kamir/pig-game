@@ -48,6 +48,12 @@ $btn-border-radius: 50rem;
   }
 }
 
+//$ Utility class for JS
+.clicked {
+  @include pos-Y(0.4rem);
+  box-shadow: $btn-shadow-clicked !important;
+}
+
 .btn-primary,
 .btn-secondary,
 .btn-grey,
@@ -100,6 +106,11 @@ $btn-border-radius: 50rem;
     @include btn($btn-w-landscape, $btn-p-m, $btn-fs-m);
   }
 
+  &:disabled,
+  &[disabled]{
+    @include giv-color($clr-grey-950, $clr-white-600);
+  }
+
   &--grey {
     @extend .btn-secondary;
     @include giv-color($clr-white, $clr-grey);
@@ -118,6 +129,11 @@ $btn-border-radius: 50rem;
 .btn-grey {
   @include btn($btn-w-s, $btn-p-m, $btn-fs-m);
   @include giv-color($clr-white, $clr-grey);
+
+  &:disabled,
+  &[disabled]{
+    @include giv-color($clr-white-600, $clr-black-500);
+  }
 
   &--ghost {
     background-color: transparent;

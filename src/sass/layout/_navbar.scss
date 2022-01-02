@@ -7,7 +7,7 @@
 
   @include mq-1280x720 {@include abs($t: 0.8rem, $r: 1rem)}
   @include mq-max($tablet-max) {@include abs($t: 1rem, $r: 2rem)}
-  @include mq-max($phone-max) {@include abs($t: 0.5rem, $r: 0.8rem)}
+  @include mq-max($phone-max) {@include abs($t: 1rem, $r: 1.2rem)}
   @include mq-landscape(phone-max) {@include abs($t: 1rem, $r: 2rem)}
 
   // For smaller phone screens break in half btns
@@ -34,8 +34,7 @@
   }
 
   & .btn-round .note {
-    position: absolute;
-    bottom: -3.5rem;
+    @include abs($t: 3.5rem);
   }
 }
 
@@ -73,18 +72,25 @@
 
 //$ FAZE 3
 // TODO LIST to make JS work
-// 1. Repair changed classes
-// 2. Make works everything like it use to
-// 3. Add leaving modal for refreshing
+//// 1. Repair changed classes
+//// 2. Make works everything like it use to
+//// 3. Add leaving modal for refreshing
 // 4. Add playing vs PC
+//// 4.1 Clean 
+//// 4.2 Add disbale for btns
+//// 4.3 Make it work for phone
+//// 4.4 Display correct names 
+// 4.5 Make it work for other modes
+//// 4.6 Seperate it from modes
 
 //$ FAZE 4
 // TODO LIST TESTING & BULDING
+// 0. Check again HTML, SCSS, JS -> cleaning, rework btns (again)
 // 1. All browsers
 // 2. Try older versions
 // 3. Phones, Notebooks
 // 4. Run some html, css, js tests
-// 5. Check again HTML, SCSS, JS
+// 5. Check again HTML, SCSS, JS -> cleaning
 
 //$ FAZE 5
 //$ Ready to deploy

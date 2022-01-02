@@ -1,0 +1,48 @@
+.playground {
+  @extend .modes;
+
+  &__heading {
+    @extend .modes__heading;
+
+    & span {
+      // breaking text into two lines
+      @include mq-max($phone-max) {
+        display: block;
+      }
+
+      @include mq-landscape(phone-s) {
+        display: inline;
+      }
+    }
+  }
+
+  &__divider {
+    @extend .modes__divider;
+  }
+
+  &__btns-container {
+    @extend .modes__btns-container;
+
+    //* For phone screen to have full width
+    & .btn-primary {
+      @include mq-max($phone-max) {
+        width: $btn-w-full;
+      }
+    }
+
+    & .btn--online:hover {
+      filter: grayscale(100%);
+    }
+
+    & .btn--online:hover .note {
+      opacity: 1;
+    }
+
+    & .btn--online .note {
+      background-color: $clr-grey !important; // !important for dark theme
+      @include fs-up($fs-text-min, 0.4); // 1.4r
+      @include abs-center;
+      top: 6rem;
+    }
+  }
+}
