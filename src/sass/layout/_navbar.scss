@@ -1,43 +1,26 @@
 .navbar {
-  @include flex-justify-center(1rem);
+  z-index: layer('navbar');
   user-select: none;
-  position: absolute;
-  width: calc(100% - 2rem);
-  top: 1.9rem;
-  right: 3rem;
-  z-index: 999999;
+  width: calc(100% - 1.5rem);
+  @include abs($t: 2rem, $r: 3rem);
+  @include flex-me($justify: flex-end, $gap: 1rem);
 
-  @media only screen and (max-height: 720px) {
-    top: 1.3rem;
-    right: 1.5rem;
-  }
+  @include mq-1280x720 {@include abs($t: 0.8rem, $r: 1rem)}
+  @include mq-max($tablet-max) {@include abs($t: 1rem, $r: 2rem)}
+  @include mq-max($phone-max) {@include abs($t: 1rem, $r: 1.2rem)}
+  @include mq-landscape(phone-max) {@include abs($t: 1rem, $r: 2rem)}
 
-  @media only screen and (max-width: 1050px) {
-    right: 2.5rem;
-  }
-
-  @media only screen and (max-width: 580px) {
-    top: 1rem;
-    right: 1.2rem;
-  }
-
-  @media only screen and (max-height: 600px) {
-    top: 0.8rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    right: 1.5rem;
-  }
-
+  // For smaller phone screens break in half btns
   & .btn-round:first-child {
     margin-left: auto;
-    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+
+    @include mq-max-w-h($phone-m, $screen-h-b) {
       margin: 0;
     }
   }
 
   & .btn--pause {
-    @media only screen and (orientation: portrait) and (max-width: 580px) and (max-height: 790px) {
+    @include mq-max-w-h($phone-m, $screen-h-b) {
       margin-right: auto;
     }
   }
@@ -46,30 +29,17 @@
     position: relative;
   }
 
-  & .btn-round .icon {
-    @include size-same(2rem);
-
-    @media only screen and (max-width: 580px) {
-      @include size-same(2.2rem);
-    }
-
-    @media only screen and (max-width: 460px) {
-      @include size-same(2.5rem);
-    }
-  }
-
   & .btn-round:hover .note {
     opacity: 1;
   }
 
   & .btn-round .note {
-    position: absolute;
-    bottom: -3.5rem;
+    @include abs($t: 3.5rem);
   }
 }
 
 //$ FAZE 1
-// TODO LIST to be done with css
+// TODO LIST to be done with responsive
 //// 1. Do landscape for game window
 //// 2. Swap btns
 //// 3. Pause modal
@@ -82,18 +52,45 @@
 //// 10. Dark theme for all sections
 //// 11. Do resizing for html
 //// 12. footer
-// 13. Clean css + html
+//// 13. Clean css + html
 
 //$ FAZE 2
 // TODO LIST to clean css and html
-// 1. Create mixins for media q
-// ...
-// ß. Repair JS
+//// 1. Clean all mq
+//// 2. Make mixins and add them
+//// 3. btns rework
+//// 4. better font-size, gap, width, etc... system so it wont repeat
+//// 5. Manage files
+//// 6. Make better rule systems for classes
+//// 7. Do responsive for wierd resolutions
+//// 8. Check layout and fix what is overlaping
+//// 9. Rework variables
+//// 10. Clean HTML
+//// 11. Try build on Netlify, check on phones
+//// 12. Final desing testing
+// 14. Repair JS
 
 //$ FAZE 3
 // TODO LIST to make JS work
-// 1. Repair changed dom nodes and variables
-// 2. Add leaving modal for refreshing
+//// 1. Repair changed classes
+//// 2. Make works everything like it use to
+//// 3. Add leaving modal for refreshing
+// 4. Add playing vs PC
+//// 4.1 Clean 
+//// 4.2 Add disbale for btns
+//// 4.3 Make it work for phone
+//// 4.4 Display correct names 
+// 4.5 Make it work for other modes
+//// 4.6 Seperate it from modes
 
 //$ FAZE 4
-// TESTING & BULDING
+// TODO LIST TESTING & BULDING
+// 0. Check again HTML, SCSS, JS -> cleaning, rework btns (again)
+// 1. All browsers
+// 2. Try older versions
+// 3. Phones, Notebooks
+// 4. Run some html, css, js tests
+// 5. Check again HTML, SCSS, JS -> cleaning
+
+//$ FAZE 5
+//$ Ready to deploy

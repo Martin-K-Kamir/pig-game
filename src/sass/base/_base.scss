@@ -1,50 +1,38 @@
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px
 
-  // t max
-  @media only screen and (max-width: 1050px) {
-    font-size: 59.375%;
-  }
-
-  // t min
-  @media only screen and (max-width: 700px) {
-    font-size: 56.55%;
-  }
-
-  // p max
-  @media only screen and (max-width: 580px) {
-    font-size: 53.125%;
-  }
-
-  // p min
-  @media only screen and (max-width: 375px) {
-    font-size: 50%;
-  }
-}
+  @include mq-max($tablet-max) {font-size: 59.375%;} // 1rem = 9.5px
+  @include mq-max($tablet-min) {font-size: 56.55%;} // 1rem = 9px
+  @include mq-max($phone-max) {font-size: 53.125%;} // 1rem = 8.5px
+  @include mq-max($phone-s) {font-size: 50%;} // 1rem = 8px
+} 
 
 h2 {
-  font-weight: $fw-heading-bulky;
-  font-size: $fs-heading-medium;
+  color: $clr-secondary;
+  font-weight: $fw-max;
+  @include font-size($fs-heading-s);
 }
 
-button {
-  border-radius: $border-radius-btn;
+p, li {
+  color: $clr-white;
+  @include font-size($fs-default);
 }
+
 
 .body-container {
-  @include flex-col-center;
   position: relative;
   min-height: 100vh;
   font-family: $font-default;
   font-size: $fs-default;
-  font-weight: $fw-default;
+  font-weight: $fw-s;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   color: $clr-white;
   background-color: $clr-primary;
   overflow: hidden;
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    display: block;
-  }
+  @include giv-color($clr-white, $clr-primary);
+  @include flex-col-center;
+  @include mq-landscape(phone-max) {display: block;}
 }
+
+

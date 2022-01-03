@@ -17,13 +17,15 @@ $clr-white-090: hsla(0, 0%, 100%, 0.09);
 
 $clr-grey: hsl(210, 11%, 15%);
 $clr-grey-900: hsla(214, 4%, 18%);
+$clr-grey-950: hsla(214, 4%, 18%, 0.8);
 $clr-grey-700: hsl(210, 11%, 70%);
 $clr-grey-500: hsl(210, 11%, 50%);
 $clr-grey-300: hsl(210, 11%, 30%);
 $clr-grey-100: hsla(210, 11%, 10%, 0.8);
 
-$clr-primary: #e03e61;
-$clr-primary-800: hsl(347, 72%, 80%);
+$clr-primary: hsl(347, 72%, 56%);
+$clr-primary-800: hsl(347, 73%, 80%);
+$clr-primary-700: hsl(347, 72%, 65%);
 $clr-primary-600: hsl(347, 72%, 60%);
 $clr-primary-400: hsl(347, 72%, 40%);
 $clr-primary-300: hsl(347, 73%, 30%);
@@ -36,63 +38,54 @@ $clr-secondary-300: hsl(45, 97%, 30%);
 
 //$ Fonts -------------------------------------
 
-//* Font family
+//* Font family ------------
 $font-default: 'Nunito', sans-serif;
 
-//* Font weights
-$fw-default: 400;
-$fw-bold: calc($fw-default + 400); // 800
-$fw-tiny: calc($fw-default - 200); // 200
+//* Font weights ------------
+$fw-max: 800;
+$fw-b: 600;
+$fw-m: 500;
+$fw-s: 400;
+$fw-min: 300;
 
-$fw-btn: 800;
+//* Font sizes ------------
+$fs-default: 1.7rem;
 
-$fw-heading-bulky: $fw-bold; // 800
-$fw-heading-medium: calc($fw-heading-bulky - 200); // 600
-$fw-heading-tiny: calc($fw-heading-bulky - 500); // 300
+$fs-heading-max: 5.5rem;
+$fs-heading-b: 4.5rem;
+$fs-heading-m: 4rem;
+$fs-heading-s: 3rem;
+$fs-heading-min: 2.5rem;
 
-$fw-text-bulky: calc($fw-default + 200); // 600
-$fw-text-medium: calc($fw-text-bulky - 100); // 500
-$fw-text-tiny: calc($fw-text-bulky - 300); // 300
-$fw-text-tiniest: calc($fw-text-bulky - 400); // 100
-
-//* Font sizes
-$fs-default: 1.5rem;
-$fs-big: calc($fs-default + 3rem); // 4.5rem
-$fs-small: calc($fs-default - 0.4rem); // 1.1rem
-
-$fs-btn: 1.44rem;
-
-$fs-heading-biggest: $fs-big; // 4.5rem
-$fs-heading-big: calc($fs-heading-biggest - 0.5rem); // 4rem
-$fs-heading-medium: calc($fs-heading-biggest - 1.5rem); // 3rem
-$fs-heading-small: calc($fs-heading-biggest - 2.5rem); // 2rem
-
-$fs-text-biggest: calc($fs-default + 0.5rem); // 2rem
-$fs-text-big: calc($fs-text-biggest - 0.2rem); // 1.8rem
-$fs-text-medium: calc($fs-text-biggest - 0.7rem); // 1.3rem
-$fs-text-small: calc($fs-text-biggest - 1rem); // 1rem
-$fs-text-smallest: calc($fs-text-biggest - 1.2rem); // 0.8rem
+$fs-text-max: 2rem;
+$fs-text-b: 1.8rem;
+$fs-text-m: 1.5rem;
+$fs-text-s: 1.3rem;
+$fs-text-min: 1rem;
 
 //$ Border radius -------------------------------------
-$border-radius: 1rem;
-$border-radius-btn: 50rem;
+$border-radius-default: 1rem;
 $border-radius-circle: 50%;
 
 //$ Paddings -------------------------------------
-$padding-biggest: 10rem;
-$padding-big: 8rem;
-$padding-medium: 4rem;
-$padding-small: 2rem;
+$p-max: 10rem;
+$p-b: 8rem;
+$p-m: 6rem;
+$p-s: 4rem;
+$p-min: 2rem;
+
+$p-fluid-max: 15%;
+$p-fluid-b: 10%;
+$p-fluid-m: 8%;
+$p-fluid-s: 4%;
+$p-fluid-min: 2%;
 
 //$ Widths -------------------------------------
-
-//* Text
-$text-width-longest: 70ch;
-$text-width-medium: 45ch;
-
-//* Btn
-$btn-width-longest: 18rem;
-$btn-width-medium: 10rem;
+$w-fluid-max: 95vw;
+$w-fluid-b: 80vw;
+$w-fluid-m: 60vw;
+$w-fluid-s: 40vw;
+$w-fluid-min: 30vw;
 
 //$ Transitions -------------------------------------
 $transition-slow: all 0.75s linear;
@@ -104,22 +97,4 @@ $box-shadow-darkest: 0 0 5rem $clr-black-800;
 $box-shadow-dark: 0 0 5rem $clr-black-500;
 $box-shadow-medium: 0 0 5rem $clr-black-200;
 $box-shadow-light: 0 0 5rem $clr-black-100;
-
-$box-shadow-btn-down: 0 1rem 2rem hsla(0, 0%, 0%, 0.15);
-
-//$ Borders -------------------------------------
-
-//* White
-$border-white-thick: 0.4rem solid $clr-white;
-$border-white-medium: 0.2rem solid $clr-white;
-$border-white-tiny: 0.1rem solid $clr-white;
-
-//* Primary
-$border-primary-thick: 0.4rem solid $clr-primary;
-$border-primary-medium: 0.2rem solid $clr-primary;
-$border-primary-tiny: 0.1rem solid $clr-primary;
-
-//* Secondary
-$border-secondary-thick: 0.4rem solid $clr-secondary;
-$border-secondary-medium: 0.2rem solid $clr-secondary;
-$border-secondary-tiny: 0.1rem solid $clr-secondary;
+$box-shadow-light: 0 0 5rem $clr-black-100;

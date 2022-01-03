@@ -1,31 +1,24 @@
 .dice {
-  width: 12rem;
-  padding: $padding-small;
+  $l-width-default: 12rem;
+  $l-width-max: 11rem;
+  $l-width-b: 10rem;
+  $l-width-m: 9rem;
+  $l-width-s: 8rem;
+  $l-width-min: 8.5rem;
+
+  width: $l-width-default;
+  padding: $p-min;
   background-color: $clr-white;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow-medium;
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow-medium; 
 
-  @media only screen and (max-width: 900px) {
-    width: 10rem;
-  }
+  @include mq-max($tablet-b) {width: $l-width-b}
+  @include mq-max($tablet-min) {width: $l-width-min}
 
-  @media only screen and (max-width: 700px) {
-    width: 8.5rem;
-  }
-
-  @media only screen and (max-width: 580px) {
-    width: 11rem;
-  }
-
-  @media only screen and (max-width: 330px) {
-    width: 9rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    width: 10rem;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
-    width: 8rem;
-  }
+  @include mq-max($phone-max) {width: $l-width-max}
+  @include mq-max($phone-min) {width: $l-width-m}
+  
+  @include mq-landscape(phone-max) {width: $l-width-b}
+  @include mq-landscape(phone-s) {width: $l-width-m}
+  @include mq-landscape(phone-min) {width: $l-width-s}
 }

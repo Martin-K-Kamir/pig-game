@@ -9,6 +9,8 @@ export const initState = function (diceSides, scoreLimit) {
   state.diceRoll = 0;
   state.percentages = 0;
   state.prizeChances = 0;
+  state.decisionRange = 0;
+  state.rollingSequence = null;
 };
 
 export const resetState = function () {
@@ -18,6 +20,7 @@ export const resetState = function () {
   state.diceRoll = 0;
   state.percentages = 0;
   state.prizeChances = 0;
+  state.playingVsRobot = null;
 };
 
 export const gameModes = {
@@ -46,6 +49,10 @@ export const generatePercentages = function (num) {
 
 export const generatePrizeChances = function (num) {
   state.prizeChances = generateRandomNumber(num);
+};
+
+export const generateDecisionRange = function (num) {
+  state.decisionRange = generateRandomNumber(num);
 };
 
 export const switchActivePlayer = function () {

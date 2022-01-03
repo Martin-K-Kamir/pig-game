@@ -1,20 +1,19 @@
 .copyright {
   @include flex-col-center;
-  position: absolute;
-  bottom: 1rem;
+  @include abs($b: 1rem);
 
+  // Hide for smaller screens
   @media only screen and (max-width: 580px), (max-height: 800px) {
     display: none;
   }
 
   &__text {
-    width: $text-width-medium;
+    width: 45ch;
     text-align: center;
-
-    font-weight: $fw-text-bulky;
-    font-size: $fs-text-small;
     word-spacing: 0.12rem;
     margin-bottom: 0.5rem;
+    font-weight: $fw-b;
+    font-size: $fs-text-min;
   }
 
   &__icons {

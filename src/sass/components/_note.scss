@@ -2,20 +2,13 @@
   opacity: 0;
   white-space: nowrap;
   text-transform: lowercase;
-  font-size: $fs-text-small;
-  color: $clr-white;
-
-  background-color: $clr-grey;
-  border-radius: $border-radius;
   padding: 0.5rem 1rem;
+  z-index: layer('navbar') - 1;
+  font-size: $fs-text-min;
+  border-radius: $border-radius-default;
+  @include giv-color($clr-white, $clr-grey);
 
-  z-index: 999;
-
-  @media only screen and (max-width: 580px) {
-    font-size: 1.25rem;
-  }
-
-  @media only screen and (max-width: 460px) {
-    font-size: 1.35rem;
-  }
+  @include mq-max($phone-max) {@include fs-up($fs-text-min, 0.25)} // 1.25r
+  @include mq-max($phone-b) {@include fs-up($fs-text-min, 0.35)} // 1.35r
+  
 }

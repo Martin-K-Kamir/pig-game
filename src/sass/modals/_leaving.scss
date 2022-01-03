@@ -1,61 +1,75 @@
 .leaving-modal {
+  $l-p-fluid-max: 8%;
+  $l-p-fluid-m: 6%;
+  $l-p-fluid-min: 5%;
+
+  z-index: layer('modal');
+  transition: $transition-fast;
+  @include abs-center;
   @include flex-col-center(2rem);
   @include modal-bg;
   @include animation(fade-in);
-  transition: $transition-fast;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999999999999;
 
   &__box {
     @include flex-col-center;
-    padding: 6rem;
-    border-radius: $border-radius;
+    padding: $p-m;
+    border-radius: $border-radius-default;
     background-color: $clr-white;
     box-shadow: $box-shadow-medium;
 
-    @media only screen and (max-width: 580px) {
-      padding: 8%;
+    @include mq-max($phone-max) {
+      padding: $l-p-fluid-max;
     }
 
-    @media only screen and (max-width: 330px) {
-      padding: 6%;
+    @include mq-max($phone-min) {
+      padding: $l-p-fluid-m;
     }
 
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      padding: 5%;
+    @include mq-landscape(phone-max) {
+      padding: $l-p-fluid-min;
     }
   }
 
+  //$ Heading --------------------------------------------------
   &__heading {
-    font-size: $fs-heading-big;
-    color: $clr-grey;
     margin-bottom: 3rem;
     text-align: center;
-
-    @media only screen and (max-width: 580px) {
-      font-size: 3.5rem;
-    }
-
-    @media only screen and (max-width: 500px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      margin-bottom: 2rem;
-      font-size: 3rem;
-    }
-  }
-
-  &__text {
+    font-size: $fs-heading-m;
     color: $clr-grey;
-    margin-bottom: 4rem;
-    font-size: 1.7rem;
-    @media only screen and (max-width: 500px),
-      (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      margin-bottom: 3rem;
-      font-size: 1.6rem;
+
+    @include mq-max($phone-max) {
+      @include fs-down($fs-heading-m, 0.5); // 3.5r
+    }
+
+    @include mq-max($phone-b) {
+      margin-bottom: 2rem;
+      @include fs-down($fs-heading-m, 1); // 3r
+    }
+
+    @include mq-landscape(phone-max) {
+      margin-bottom: 2rem;
+      @include fs-down($fs-heading-m, 1); // 3r
     }
   }
 
+  //$ Text --------------------------------------------------
+  &__text {
+    margin-bottom: 4rem;
+    color: $clr-grey;
+    font-size: $fs-default;
+
+    @include mq-max($phone-b) {
+      margin-bottom: 3rem;
+      font-size: $fs-text-b;
+    }
+
+    @include mq-landscape(phone-max) {
+      margin-bottom: 3rem;
+      font-size: $fs-text-b;
+    }
+  }
+
+  //$ Btns container --------------------------------------------------
   &__btns-container {
     @include flex-split(2rem);
   }

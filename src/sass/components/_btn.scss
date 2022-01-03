@@ -1,138 +1,188 @@
-.btn {
-  width: 17rem;
-  padding: 1.8rem 0; // make b
-  transition: $transition-fast;
-  font-size: 1.55rem; // make b
-  font-weight: 800; // make b
+
+//$ BTN variables
+$btn-w-full: 100%;
+$btn-w-tablet: 23vw;
+$btn-w-mobile: 43vw;
+$btn-w-landscape: 46vw;
+$btn-w-max: 20rem;
+$btn-w-b: 17rem;
+$btn-w-m: 16rem;
+$btn-w-s: 11rem;
+$btn-w-min: 8.5rem;
+
+$btn-p-max: 1.8rem;
+$btn-p-b: 1.7rem;
+$btn-p-m: 1.4rem;
+$btn-p-s: 1.3rem;
+$btn-p-min: 1.2rem;
+
+$btn-fs-max: 2rem;
+$btn-fs-b: 1.8rem;
+$btn-fs-m: 1.6rem;
+$btn-fs-min: 1.45rem;
+
+$btn-shadow: 0 1rem 1rem hsla(0, 0%, 0%, 0.1);
+$btn-shadow-clicked: 0 1rem 3rem hsla(0, 0%, 0%, 0.3);
+
+$btn-border-radius: 50rem;
+
+//$ Btn sizes mixin
+@mixin btn($w, $p, $fs, $h: null) {
+  width: $w;
+  padding: $p;
+  font-size: $fs;
+  height: $h;
+}
+
+//$ Default properties for BTN
+%btn {
   text-transform: uppercase;
-  color: $clr-grey;
-  background-color: $clr-white;
-
-  // all mq move to game i guess
-  @media only screen and (max-width: 580px) {
-    width: 40vw;
-    padding: 1.4rem;
-  }
-
-  @media only screen and (max-width: 580px) and (max-height: 710px) {
-    padding: 1.2rem 0;
-  }
+  font-weight: 800;
+  transition: $transition-fast;
+  border-radius: $btn-border-radius;
 
   &:active {
-    transform: translateY(0.3rem);
-    box-shadow: $box-shadow-btn-down;
-  }
-
-  &:focus {
-    outline: none;
+    cursor: pointer;
+    @include pos-Y(0.4rem);
+    box-shadow: $btn-shadow-clicked;
   }
 }
 
-.btn--swap-yes,
-.btn--swap-no {
-  background-color: $clr-grey;
-  color: $clr-white;
+//$ Utility class for JS
+.clicked {
+  @include pos-Y(0.4rem);
+  box-shadow: $btn-shadow-clicked !important;
 }
 
-// secondary
+.btn-primary,
+.btn-secondary,
+.btn-grey,
+.btn-opacity {
+  @extend %btn;
+}
+
+
+//$ Primary --------------------------------------------------
+.btn-primary {
+  max-height: 6rem;
+  font-weight: 900;
+  border-radius: $border-radius-default;
+  border: 0.3rem solid $clr-white;
+  box-shadow: 0 0 0 0.4rem $clr-primary-800;
+  @include btn($btn-w-b, $btn-p-s, $btn-fs-max);
+  @include font-size($btn-fs-max);
+  @include giv-color($clr-primary-600, $clr-white-900);
+
+  @include mq-max($phone-m) {max-height: 14vw}
+  @include mq-landscape(phone-min) {font-size: 1.7rem} // For iPhone 4
+
+  &:hover {transform: scale(110%)}
+
+  //* Big & small btns
+  &--full,
+  &--b,
+  &--s {@extend .btn-primary}
+  
+  &--full {width: $btn-w-full}
+  &--b {width: $btn-w-max}
+  &--s {width: $btn-w-min}
+}
+
+//$ Secondary --------------------------------------------------
+.btn-secondary {
+  box-shadow: $btn-shadow;
+  @include btn($btn-w-b, $btn-p-max, $btn-fs-m);
+  @include giv-color($clr-grey, $clr-white);
+
+  @include mq-max($tablet-min) {
+    width: $btn-w-tablet;
+  }
+
+  @include mq-max($phone-max) {
+    @include btn($btn-w-mobile, $btn-p-b, $btn-fs-b);
+  }
+
+  @include mq-landscape(phone-max) {
+    @include btn($btn-w-landscape, $btn-p-m, $btn-fs-m);
+  }
+
+  &:disabled,
+  &[disabled]{
+    @include giv-color($clr-grey-950, $clr-white-600);
+  }
+
+  &--grey {
+    @extend .btn-secondary;
+    @include giv-color($clr-white, $clr-grey);
+  }
+}
+
+//$ Opacity --------------------------------------------------
+.btn-opacity {
+  @include btn($btn-w-m, $btn-p-min, $btn-fs-min);
+  @include giv-color($clr-white, $clr-white-300);
+
+  &:hover {background-color: $clr-white-400}
+}
+
+//$ Grey --------------------------------------------------
 .btn-grey {
-  @extend .btn;
-  width: 11rem;
-  padding: 1.4rem;
-  color: $clr-white;
-  background-color: $clr-grey;
+  @include btn($btn-w-s, $btn-p-m, $btn-fs-m);
+  @include giv-color($clr-white, $clr-grey);
 
-  &--lg {
-    @extend .btn-grey;
-    width: 16rem;
-  }
-
-  &--sm {
-    @extend .btn-grey;
-    font-size: 1.4rem;
-    width: 8.5rem;
-    padding: 0; // make b
-    height: 4.4rem;
+  &:disabled,
+  &[disabled]{
+    @include giv-color($clr-white-600, $clr-black-500);
   }
 
   &--ghost {
     background-color: transparent;
+    font-weight: 900;
     color: $clr-grey;
     box-shadow: inset 0 0 0 0.3rem $clr-grey;
-    font-weight: 900;
+  }
+
+  //* Big & small btns
+  &--b,
+  &--s,
+  &--ghost {
+    @extend .btn-grey;
+  }
+
+  &--b {
+    width: $btn-w-m;
+  }
+
+  &--s {
+    @include btn($btn-w-min, 0, $btn-fs-min, 4.4rem);
   }
 }
 
-// circle
+//$ Round --------------------------------------------------
 .btn-round {
-  @include flex-me(center, center);
-  @include size-same(3.2rem);
   background-color: $clr-white-200;
   border-radius: $border-radius-circle;
-  transition: $transition-fast;
+  @include flex-me(center, center);
+  @include size-same(3.2rem);
 
-  @media only screen and (max-width: 580px) {
+  @include mq-max($phone-max) {
     @include size-same(3.4rem);
   }
 
-  @media only screen and (max-width: 460px) {
+  @include mq-max($phone-m) {
     @include size-same(3.7rem);
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 320px) {
-    @include size-same(3.3rem);
-  }
-
-  & .icon {
-    color: $clr-white;
   }
 
   &:hover {
     background-color: $clr-white-300;
   }
-}
 
-//tile
-.btn-border {
-  @include flex-me;
-  width: 20rem; // make b
-  height: 6.5rem; // make b
-  transition: $transition-fast;
+  & .icon {
+    color: $clr-white;
+    @include size-same(2rem);
 
-  font-size: 2.5rem; // make b
-  border-radius: $border-radius;
-
-  font-weight: 900;
-  background-color: $clr-white-900;
-  color: $clr-primary-600;
-  border: 0.2rem solid $clr-white;
-  box-shadow: 0 0 0 0.35rem $clr-primary-800;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(110%);
-    color: $clr-primary-800;
-  }
-
-  @media only screen and (max-width: 900px) {
-    font-size: 2.7vw;
-    width: 22vw;
-    height: 7vw;
-  }
-
-  @media only screen and (max-width: 580px) {
-    width: 100%;
-    height: 9vw;
-    font-size: 4vw;
-  }
-
-  @media only screen and (max-width: 400px) {
-    height: 9.5vw;
-    font-size: 4.4vw;
-  }
-
-  @media only screen and (orientation: landscape) and (max-width: 570px) and (max-height: 350px) {
-    height: 8vw;
-    font-size: 3vw;
+    @include mq-max($phone-max) {
+      @include size-same(5rem);
+    }
   }
 }

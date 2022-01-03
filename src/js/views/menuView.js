@@ -1,29 +1,34 @@
 import View from './View.js';
+import gameView from './gameView.js';
+
 import * as model from '../model.js';
 
 import { SELECTED } from '../config.js';
 
 class MenuView extends View {
+  _playgroundWindow = document.querySelector('.playground');
   _modesWindow = document.querySelector('.modes');
   _rulesWindow = document.querySelector('.rules');
   _creditsWindow = document.querySelector('.credits');
 
-  _btnPause = document.querySelector('.btn--pause');
-  _btnLeave = document.querySelector('.btn--leave');
+  btnPause = document.querySelector('.btn--pause');
+  btnLeave = document.querySelector('.btn--leave');
 
   constructor() {
     super();
-    this._handleMenuWindows();
+    this._handleMenuWindow();
+    this._handlePlaygroundSelecting();
   }
 
-  _handleMenuWindows() {
-    this._body.addEventListener(
+  _handleMenuWindow() {
+    this.body.addEventListener(
       'click',
       function (e) {
         const btn = e.target.closest('button');
         if (!btn) return;
 
-        if (btn.classList.contains('btn--modes')) this._displayModesWindow();
+        if (btn.classList.contains('btn--modes'))
+          this._displayPlaygroundWindow();
 
         if (btn.classList.contains('btn--rules')) this._displayRulesWindow();
 
@@ -33,11 +38,28 @@ class MenuView extends View {
     );
   }
 
-  addHandlerSelecting(handler) {
-    this._body.addEventListener(
+  _handlePlaygroundSelecting() {
+    this.body.addEventListener(
       'click',
       function (e) {
-        const btn = e.target.closest('.btn-border');
+        const btn = e.target.closest('.btn--playground');
+        if (!btn) return;
+
+        if (btn.classList.contains('btn--robot')) {
+          model.state.playingVsRobot = SELECTED;
+          gameView.changeNameForRobot();
+        }
+        console.log(model.state);
+        this._displayModesWindow();
+      }.bind(this)
+    );
+  }
+
+  addHandlerModesSelecting(handler) {
+    this.body.addEventListener(
+      'click',
+      function (e) {
+        const btn = e.target.closest('.btn--mode');
         if (!btn) return;
 
         if (btn.classList.contains('pig-mode')) model.gameModes.pig = SELECTED;
@@ -53,24 +75,29 @@ class MenuView extends View {
   }
 
   _displayGameWindow() {
-    this.elToggleClass(this._gameWindow);
+    this.elToggleClass(this.gameWindow);
     this.elToggleClass(this._modesWindow);
-    this.removeClass(this._btnLeave);
-    this.removeClass(this._btnPause);
+    this.removeClass(this.btnLeave);
+    this.removeClass(this.btnPause);
+  }
+
+  _displayPlaygroundWindow() {
+    this.elToggleClass(this.menuWindow);
+    this.elToggleClass(this._playgroundWindow);
   }
 
   _displayModesWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this._playgroundWindow);
     this.elToggleClass(this._modesWindow);
   }
 
   _displayRulesWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this.menuWindow);
     this.elToggleClass(this._rulesWindow);
   }
 
   _displayCreditsWindow() {
-    this.elToggleClass(this._menuWindow);
+    this.elToggleClass(this.menuWindow);
     this.elToggleClass(this._creditsWindow);
   }
 }

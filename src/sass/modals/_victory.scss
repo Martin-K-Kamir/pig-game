@@ -1,0 +1,78 @@
+.victory-bar {
+  width: 60rem;
+  z-index: layer('win-bar');
+  transition: $transition-fast;
+  padding: $p-s;
+  border-radius: $border-radius-default;
+  background-color: $clr-white;
+  box-shadow: $box-shadow-medium;
+  @include abs-center-X;
+  @include abs($b: 5rem);
+
+  @include mq-max($tablet-min) {
+    padding: 3rem;
+    width: 52rem;
+  }
+
+  @include mq-max($phone-max) {
+    bottom: 0;
+    border-radius: 0;
+    width: 100vw;
+    padding: 4rem 12vw;
+  }
+
+  @include mq-landscape(phone-max) {
+    padding: 3rem;
+    bottom: 2vh;
+    width: 97vw;
+    border-radius: $border-radius-default;
+  }
+
+  @include mq-landscape(phone-s) {
+    bottom: 1.8vh;
+    padding: 4rem 6rem;
+  }
+
+  //$ Heading --------------------------------------------------
+  &__heading {
+    margin-bottom: 3rem;
+    color: $clr-grey;
+    @include font-size($fs-heading-s);
+
+    @include mq-max($phone-max) {
+      text-align: center;
+      @include font-size(5rem);
+    }
+
+    @include mq-landscape(phone-max) {
+      margin-bottom: 2rem;
+    }
+
+    &--player {
+      text-transform: uppercase;
+      color: $clr-primary;
+    }
+  }
+
+  //$ Btns container --------------------------------------------------
+  &__btns-container {
+    @include flex-me(flex-start, center, 2rem);
+
+    @include mq-max($phone-max) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    @include mq-landscape(phone-s) {
+      flex-direction: row;
+    }
+
+    & .btn-grey--b {
+      @include mq-max($phone-max) {
+        width: 100%;
+        padding: 1.7rem;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

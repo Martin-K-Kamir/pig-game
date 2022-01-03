@@ -16,9 +16,9 @@ export const SELECTED = true;
 export const PIG_DICE = 6;
 export const BIG_DICE = 7;
 export const RUN_DICE = 7;
-export const PIG_LIMIT = 100;
-export const BIG_LIMIT = 200;
-export const RUN_LIMIT = 9000;
+export const PIG_LIMIT = 40;
+export const BIG_LIMIT = 50;
+export const RUN_LIMIT = 999999;
 
 export const ONE_SEC = 1000;
 export const SIXTY_SEC = 60;

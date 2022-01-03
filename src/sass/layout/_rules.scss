@@ -1,75 +1,39 @@
 .rules {
-  @include glossy-bg($padding-big);
+  height: 74vh;
+  overflow-y: scroll;
+  display: grid;
+  @include glossy-bg($p-s);
   @include animation(pop-in);
-  height: 80vh;
-  overflow: auto;
 
-  @media only screen and (max-width: 850px) {
-    width: 92%;
-    padding: 7% 8% !important;
+  @include mq-max($tablet-b) {
+    padding: $p-fluid-s;
+    width: $w-fluid-max;
   }
 
-  @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-    width: 92vw;
-    height: 73vh;
-    padding: 3rem !important;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+  @include mq-landscape(phone-max) {
+    @include menus-landscape-size;
   }
 
-  &__heading {
-    color: $clr-secondary;
-
-    &:not(:first-child) {
-      margin-top: 3rem;
-    }
-
-    @media only screen and (max-width: 400px) {
-      font-size: 6.5vw;
-    }
+  &__section {
+    @include margin-bottom(5rem);
   }
 
   &__divider {
-    @include divider(0.1rem, 1rem);
-  }
-
-  &__text,
-  &__list-item {
-    width: $text-width-longest;
-
-    @media only screen and (max-width: 800px) {
-      width: 100%;
-    }
-    @media only screen and (max-width: 400px) {
-      font-size: 3.5vw;
-    }
+    @include divider;
   }
 
   &__list {
     padding-left: 1.5rem;
   }
 
-  & .btn {
-    margin-top: 4rem;
+  &__text,
+  &__list-item {
+    width: 80ch;
 
-    width: 21rem;
-    padding: 1.55rem;
+    @include mq-max($tablet-b) {width: 100%}
+  }
 
-    @media only screen and (max-width: 360px) {
-      width: 19rem;
-    }
-
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      width: 24vw;
-    }
-
-    @media only screen and (orientation: landscape) and (max-width: 915px) and (max-height: 430px) {
-      margin-top: 3rem;
-    }
+  & .btn-opacity {
+    justify-self: center;
   }
 }

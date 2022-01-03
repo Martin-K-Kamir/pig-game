@@ -1,0 +1,66 @@
+.game-bar {
+  @include flex-col-center;
+  @include abs-center-X;
+  @include abs($t: 8.5rem);
+
+  @include mq-max($phone-max) {top: -12.2rem}
+  @include mq-max($phone-min) {top: -10.2rem}
+  @include mq-max-w-h($phone-min, 31.25em) {top: -9.7rem} 
+  @include mq-landscape(phone-max) {top: 7rem}
+  @include mq-landscape(phone-s) {top: 6rem}
+
+  //$ Bottom --------------------------------------------------
+  &-bottom {
+    display: none; // hidden for pc & tablet screens
+    background-color: $clr-primary;
+
+    @include mq-max($phone-max) {
+     display: block;
+     @include size(10rem, 100%);
+    }
+
+    @include mq-max($phone-s) {
+     height: 9rem;
+    }
+
+    @include mq-landscape(phone-max) {
+     display: block;
+     @include size(17.8vh, 100%);
+    }
+
+    &__btns-container {
+     height: 100%;
+     @include flex-center(3rem);
+
+     @include mq-landscape(phone-s) {
+      gap: 1.8rem;
+     }
+    }
+  }
+
+  //$ Btns container --------------------------------------------------
+  &__btns-container {
+    @include flex-col-center(3rem);
+    @include pos-Y(12.6rem);
+
+    @include mq-max($tablet-b) {@include pos-Y(14.6rem)}
+    @include mq-max($tablet-min) {@include pos-Y(16.2rem)}
+
+    // Hide for phone screen btns show in .game-bar-bottom class
+    @include mq-max($phone-max) {display: none}
+    @include mq-landscape(phone-max) {display: none}
+  }
+
+  //$ Swap container --------------------------------------------------
+  &__swap-container {
+    height: 4.8rem;
+    @include pos-Y(3rem);
+    @include flex-me($gap: 3rem);
+    
+    @include mq-max($tablet-min) {gap: 2rem}
+
+    // Hide for phone screen btns show in .game-bar-bottom class
+    @include mq-max($phone-max) {display: none}
+    @include mq-landscape(phone-max) {display: none}
+  }
+}

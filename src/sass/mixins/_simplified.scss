@@ -1,0 +1,55 @@
+//////////////////////////
+//$ Width & height
+///////////////////////////
+@mixin size($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin size-same($size) {
+  height: $size;
+  width: $size;
+}
+
+//////////////////////////
+//$ Animation
+///////////////////////////
+@mixin animation(
+  $animation-name,
+  $animation-duration: 0.2s,
+  $animation-delay: 0s,
+  $animation-mode: none
+) {
+  animation: $animation-name $animation-duration linear $animation-delay
+    $animation-mode;
+}
+
+//////////////////////////
+//$ Color & background color
+///////////////////////////
+@mixin giv-color($clr, $clr-bg) {
+  color: $clr;
+  background-color: $clr-bg;
+}
+
+//////////////////////////
+//$ Calc font-size
+///////////////////////////
+@mixin fs-up($fs, $value) {
+  font-size: calc(#{$fs} + #{$value}rem);
+}
+
+@mixin fs-down($fs, $value) {
+  font-size: calc(#{$fs} - #{$value}rem);
+}
+
+//////////////////////////
+//$ Border radius
+///////////////////////////
+@mixin border-radius-top($value) {
+  border-radius: $value $value 0 0;
+}
+
+@mixin border-radius-bottom($value) {
+  border-radius: 0 0 $value $value;
+}

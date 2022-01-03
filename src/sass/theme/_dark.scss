@@ -5,7 +5,7 @@
   & .modes,
   & .rules,
   & .credits {
-    @include glossy-bg($padding-value: $padding-big, $light-theme: false);
+    @include glossy-bg($light-theme: false);
   }
 
   & .game {
@@ -25,14 +25,30 @@
     background-color: $clr-black-200;
   }
 
-  & .modes__heading,
-  & .rules__heading,
-  & .credits__heading {
+  & h2,
+  & .menu__logo--text {
     color: $clr-primary-800;
   }
 
+  // fix for h2
+  & .leaving-modal__heading {
+    color: $clr-grey;
+  }
+
+  // fix for h2
+  & .paused-modal__text {
+    color: $clr-white;
+  }
+
+  // Making the png pink
+  & .menu__logo--icon img {
+    filter: invert(75%) sepia(3%) saturate(3990%) hue-rotate(300deg)
+      brightness(300%) contrast(89%);
+  }
+
   & .player__score,
-  & .player__name {
+  & .player__name,
+  & .timer__counter {
     color: $clr-primary;
   }
 
@@ -40,17 +56,26 @@
     color: $clr-white-900;
   }
 
+  & .game-bar-bottom {
+    background-color: $clr-grey;
+  }
+
   & .player--active {
     background-color: $clr-white-700;
   }
 
-  & .btn-border {
+  & .btn-border,
+  & .btn-primary {
     background-color: $clr-grey-300;
     color: $clr-primary-800;
-    border: 0.2rem solid $clr-white-090;
+    border: 0.3rem solid $clr-white-090;
 
     &:hover {
       background-color: $clr-white-900;
     }
+  }
+
+  & .btn-secondary--grey {
+    background: $clr-white-090;
   }
 }
