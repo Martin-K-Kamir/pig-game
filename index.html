@@ -240,6 +240,9 @@
               </button>
 
               <!-- These buttons works for JS robot deciding if swap. Always stays hidden -->
+              <!-- They're hidden because when swap btns shows up they're disabled for player 1 -->
+              <!-- As it's disabled robot can't click on swap btns -->
+              <!-- These btns are not disabled. That means robot can click on these btns -->
               <button class="btn--swap-yes-invisible hidden">
                 Yes
               </button>
@@ -276,7 +279,11 @@
           </div>
         </div>
         <div class="victory-bar hidden">
-            <h2 class="victory-bar__heading">Congratulations <span class="victory-bar__heading--player">Player&nbsp;1</span>&nbsp;you&nbsp;won!</h2>
+            <h2 class="victory-bar__heading">
+              <span class="victory-bar__heading--span-start"></span>
+              <span class="victory-bar__heading--span-main"></span>
+              <span class="victory-bar__heading--span-end"></span>
+            </h2>
             <div class="victory-bar__btns-container">
               <button class="btn-grey--b btn--again click-sound">Again</button>
               <button class="btn-grey--b btn-grey--ghost btn--back click-sound">Back to menu</button>

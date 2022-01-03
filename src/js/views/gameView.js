@@ -66,8 +66,14 @@ class GameView extends View {
   _winner1 = document.querySelector('.player__winner--1');
   _victoryBar = document.querySelector('.victory-bar');
   _victoryHeading = document.querySelector('.victory-bar__heading');
-  _victoryHeadingPlayer = document.querySelector(
-    '.victory-bar__heading--player'
+  _victoryHeadingStart = document.querySelector(
+    '.victory-bar__heading--span-start'
+  );
+  _victoryHeadingEnd = document.querySelector(
+    '.victory-bar__heading--span-end'
+  );
+  _victoryHeadingMain = document.querySelector(
+    '.victory-bar__heading--span-main'
   );
 
   constructor() {
@@ -260,14 +266,15 @@ class GameView extends View {
       document
         .querySelector(`.player__winner--${activePlayer}`)
         .classList.remove('hidden');
-      const player = (this._victoryHeadingPlayer.textContent = `Player ${
-        activePlayer + 1
-      }`);
-      this._victoryHeading.textContent = `Congratulations ${player} you won!`;
+      this._victoryHeadingStart.textContent = `Congratulations`;
+      this._victoryHeadingMain.textContent = `Player ${activePlayer + 1}`;
+      this._victoryHeadingEnd.textContent = `you won!`;
     }
 
     if (draw && playingVsRobot) {
-      this._victoryHeading.textContent = `No one wins it's a draw :(`;
+      this._victoryHeadingStart.textContent = `No one wins,`;
+      this._victoryHeadingMain.textContent = `it's a draw`;
+      this._victoryHeadingEnd.textContent = `:(`;
     }
 
     if (playingVsRobot) {
@@ -275,9 +282,12 @@ class GameView extends View {
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
       if (model.state.scores[0] > model.state.scores[1]) {
-        this._victoryHeading.textContent = `Congratulations you won!`;
+        this._victoryHeadingStart.textContent = `Congratulations`;
+        this._victoryHeadingMain.textContent = `you won!`;
       } else {
-        this._victoryHeading.textContent = `You lost! Good luck next time.`;
+        this._victoryHeadingStart.textContent = `You lost!`;
+        this._victoryHeadingMain.textContent = `Good luck next time`;
+        this._victoryHeadingEnd.textContent = `:)`;
       }
     }
 
