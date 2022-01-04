@@ -24,8 +24,7 @@ export const RUN_LIMIT = 999999;
 export const ONE_SEC = 1000;
 export const SIXTY_SEC = 60;
 export const SECS_FOR_INACTIVE_TIMER = 6000;
-//export const SECS_FOR_GAME_TIMER = 240;
-export const SECS_FOR_GAME_TIMER = 10;
+export const SECS_FOR_GAME_TIMER = 240;
 export const SECS_FOR_PLAYER_TIMER = 5;
 
 export const CLICK_AVAILABLE = true;

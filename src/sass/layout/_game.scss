@@ -29,7 +29,7 @@
   }
 
   &__start {
-    transition: $transition-slow;
+    transition: $transition-fast;
 
     & .note {
       opacity: 1;

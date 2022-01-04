@@ -31,7 +31,9 @@
   }
 
   // fix for h2
-  & .leaving-modal__heading {
+  & .leaving-modal__heading,
+  & .victory-bar__heading--span-start,
+  & .victory-bar__heading--span-end {
     color: $clr-grey;
   }
 
