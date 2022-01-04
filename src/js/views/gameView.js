@@ -26,6 +26,8 @@ class GameView extends View {
   timerBox = document.querySelector('.timer');
   _timerNums = document.querySelector('.timer__counter');
 
+  gameStartPopup = document.querySelector('.game__start');
+
   _diceLight = document.querySelector('.dice--light');
   _diceDark = document.querySelector('.dice--dark');
 
@@ -177,6 +179,11 @@ class GameView extends View {
     this.removeClass(this._victoryBar, 'bounce-in--first');
     this.addClass(this._victoryBar, 'bounce-out--first');
 
+    this.btnRoll.disabled = BTN_WOKRING;
+    this.btnHold.disabled = BTN_DISABLED;
+    this.btnRollBt.disabled = BTN_WOKRING;
+    this.btnHoldBt.disabled = BTN_DISABLED;
+
     this._playing0.textContent = '';
     this._curScoreNum0.textContent = 0;
     this._curScoreNum1.textContent = 0;
@@ -188,7 +195,8 @@ class GameView extends View {
     this._timerNums.textContent = '04:00';
     this._playerName0.textContent = 'Player 1';
     this._playerName1.textContent = 'Player 2';
-
+    
+    this.removeClass(this.gameStartPopup);
     this.removeClass(this._playing0);
     this.removeClass(this._curScoreBox0);
     this.removeClass(this._curScoreBox1);
@@ -202,6 +210,10 @@ class GameView extends View {
     this.addClass(this._player0, 'player--active');
     this.addClass(this._diceLight, 'opacity-zero');
     this.addClass(this._victoryBar, 'opacity-zero');
+
+    if(model.state.playingVsRobot) {
+      this.changePlayerNameForRobot();
+    }
 
     setTimeout(() => {
       this.removeClass(this._victoryBar, 'bounce-out--first');
@@ -257,8 +269,11 @@ class GameView extends View {
     }
   }
 
-  // start work here
   displayWinner(activePlayer, draw, playingVsRobot) {
+    this._victoryHeadingStart.textContent = '';
+    this._victoryHeadingMain.textContent = '';
+    this._victoryHeadingEnd.textContent = '';
+
     if (!draw && !playingVsRobot) {
       document
         .querySelector(`.player--${activePlayer}`)
@@ -273,21 +288,23 @@ class GameView extends View {
 
     if (draw && playingVsRobot) {
       this._victoryHeadingStart.textContent = `No one wins,`;
-      this._victoryHeadingMain.textContent = `it's a draw`;
-      this._victoryHeadingEnd.textContent = `:(`;
+      this._victoryHeadingMain.textContent = `it's a draw :(`;
     }
 
     if (playingVsRobot) {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
+       document
+         .querySelector(`.player__winner--${activePlayer}`)
+         .classList.remove('hidden');
       if (model.state.scores[0] > model.state.scores[1]) {
         this._victoryHeadingStart.textContent = `Congratulations`;
         this._victoryHeadingMain.textContent = `you won!`;
       } else {
         this._victoryHeadingStart.textContent = `You lost!`;
-        this._victoryHeadingMain.textContent = `Good luck next time`;
-        this._victoryHeadingEnd.textContent = `:)`;
+        this._victoryHeadingMain.textContent = `Good luck`;
+        this._victoryHeadingEnd.textContent = ` next time :)`;
       }
     }
 
@@ -302,7 +319,7 @@ class GameView extends View {
     this.removeClass(this._player1, 'player--active');
   }
 
-  changeNameForRobot() {
+  changePlayerNameForRobot() {
     this._playerName0.textContent = 'You';
     this._playerName1.textContent = 'Robot';
   }
@@ -407,6 +424,8 @@ class GameView extends View {
       this.elToggleClass(this.btnHoldBt, 'clicked');
     }, 100);
   }
+
+  
 }
 
 export default new GameView();

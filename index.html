@@ -181,6 +181,10 @@
       </section>
 
       <section class="game hidden">
+        <div class="game__start">
+          <div class="note">To start the game click "Roll dice"</div>
+        </div>
+
         <div class="timer hidden">
           <h2 class="timer__counter">04:00</h2>
         </div>
@@ -254,10 +258,11 @@
             <div class="game-bar__btns-container">
               <button class="btn-secondary btn--roll click-sound ">
                 Roll dice
+                <div class="note">button is currently disabled</div>
               </button¨>
-              <button class="btn-secondary btn--hold ">
-                
+              <button class="btn-secondary btn--hold" disabled>
                 Hold score
+                <div class="note">button is currently disabled</div>
               </button>
             </div>
         </div>
@@ -267,7 +272,7 @@
             <button class="btn-secondary btn--roll-bottom click-sound ">
               Roll dice
             </button>
-            <button class="btn-secondary btn--hold-bottom ">
+            <button class="btn-secondary btn--hold-bottom" disabled>
               Hold score
             </button>
             <button class="btn-secondary--grey btn--swap-yes-bottom hidden">

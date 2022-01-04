@@ -27,4 +27,19 @@
     @include size(100vh, 100vw);
     @include reset-glossy-bg;
   }
+
+  &__start {
+    transition: $transition-slow;
+
+    & .note {
+      opacity: 1;
+      width: 35rem;
+      font-weight: $fw-max;
+      background-color: $clr-grey !important; // !important for dark theme
+      @include flex-center;
+      @include fs-up($fs-text-min, 1); // 2r
+      @include abs-center;
+      top: 4rem;
+    }
+  }
 }

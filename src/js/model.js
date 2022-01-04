@@ -20,7 +20,6 @@ export const resetState = function () {
   state.diceRoll = 0;
   state.percentages = 0;
   state.prizeChances = 0;
-  state.playingVsRobot = null;
 };
 
 export const gameModes = {

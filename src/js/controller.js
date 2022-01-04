@@ -135,6 +135,9 @@ const controlGameTimeout = function () {
 
       // 3.4) Clear all timers
       gameView.clearAllTimers();
+
+      // 3.5) Reset robot interval
+      clearInterval(model.state.rollingSequence);
     };
 
     // 4) Init timeout for game timer
@@ -192,6 +195,7 @@ const controlPlayerInactive = function () {
 };
 
 const controlRollingDice = function () {
+
   // 0) Generate dice roll
   model.generateDiceRoll(model.state.diceSides);
 
@@ -301,6 +305,12 @@ const controlRollingDice = function () {
 
   // 6) Run Inactive
   controlPlayerInactive();
+
+  // 7) Make hold btn to work
+  gameView.disabledBtns(BTN_WOKRING);
+
+  // 8) Hide game__start popup
+  gameView.addClass(gameView.gameStartPopup);
 };
 
 const controlHoldingScore = function () {

@@ -111,6 +111,19 @@ $btn-border-radius: 50rem;
     @include giv-color($clr-grey-950, $clr-white-600);
   }
 
+  &:disabled:hover .note {
+    opacity: 1;
+  }
+
+  & .note {
+    background-color: $clr-grey !important; // !important for dark theme
+    @include fs-up($fs-text-min, 0.4); // 1.4r
+    @include abs-center-X;
+    width: 23rem;
+    top: 15rem;
+    left: -2.9rem
+  }
+
   &--grey {
     @extend .btn-secondary;
     @include giv-color($clr-white, $clr-grey);

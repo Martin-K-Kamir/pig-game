@@ -3,7 +3,7 @@ import gameView from './gameView.js';
 
 import * as model from '../model.js';
 
-import { SELECTED } from '../config.js';
+import { SELECTED, UNSELECTED } from '../config.js';
 
 class MenuView extends View {
   _playgroundWindow = document.querySelector('.playground');
@@ -45,11 +45,14 @@ class MenuView extends View {
         const btn = e.target.closest('.btn--playground');
         if (!btn) return;
 
+        if (btn.classList.contains('btn--offline')) {
+          model.state.playingVsRobot = UNSELECTED;
+        }
+
         if (btn.classList.contains('btn--robot')) {
           model.state.playingVsRobot = SELECTED;
-          gameView.changeNameForRobot();
+          gameView.changePlayerNameForRobot();
         }
-        console.log(model.state);
         this._displayModesWindow();
       }.bind(this)
     );
