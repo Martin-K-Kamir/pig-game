@@ -149,11 +149,11 @@
           </p>
         </div>
         <div class="rules__section">
-          <h2 class="rules__heading">Running Pig</h2>
+          <h2 class="rules__heading">Hyper Pig</h2>
           <div class="rules__divider"></div>
           <p class="rules__text">
             This mode adds same options as <i>Big Pig</i> mode. Only the difference is the
-            player with higher score wins after timer is off. So whoever has the bigger score after 4 minutes wins!
+            player with higher score wins after timer is off. So whoever has the bigger score after 3 minutes wins!
           </p>
         </div>
 
@@ -238,21 +238,14 @@
               <button class="btn-grey--s btn--swap-yes hidden">
                 Yes
               </button>
-              
               <button class="btn-grey--s btn--swap-no click-sound hidden">
                 No
               </button>
 
-              <!-- These buttons works for JS robot deciding if swap. Always stays hidden -->
-              <!-- They're hidden because when swap btns shows up they're disabled for player 1 -->
-              <!-- As it's disabled robot can't click on swap btns -->
-              <!-- These btns are not disabled. That means robot can click on these btns -->
-              <button class="btn--swap-yes-invisible hidden">
-                Yes
-              </button>
-              <button class="btn--swap-no-invisible click-sound hidden">
-                No
-              </button>
+              <!-- IMPORTANT NOTE: Btns works for JS robot to be able to click. Always stays hidden -->
+              <!-- NOTE: Btns are hidden because there are visiable .btn--swap for PC & Tablet screen and             .btn--swap-bottom for Mobile. When btns swap shows up they're disabled for player 1 also for Robot. Order to make it work btn--swap-invisible are not disabled. Because of that Robot can click on these btns--swap-inivisble and handle the event swap -->
+              <button class="btn--swap-yes-invisible hidden"></button>
+              <button class="btn--swap-no-invisible click-sound hidden"></button>
             </div>
       
             <div class="game-bar__btns-container">
