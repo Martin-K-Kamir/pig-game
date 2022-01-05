@@ -1,6 +1,5 @@
-//////////////////////////
-//$ Main background styling for all sections
-///////////////////////////
+
+// SECTION: Main background styling for sections
 @mixin glossy-bg(
   $padding-value: null,
   $shadow-value: $clr-black-200,
@@ -34,18 +33,14 @@
   backdrop-filter: none !important;
 }
 
-//////////////////////////
-//$ Menu sections size rules for landscape
-///////////////////////////
+// SECTION: Menu sections size rules for landscape
 @mixin menus-landscape-size {
   padding: 2rem;
   @include size(65vh, 95vw);
   @include abs-center;
 }
 
-//////////////////////////
-//$ Main background styling for modals
-///////////////////////////
+// SECTION: Main background styling for modals
 @mixin modal-bg {
   position: absolute;
   height: 100%;
@@ -55,9 +50,9 @@
   user-select: none;
 }
 
-//////////////////////////
-//$ Z-index system
-///////////////////////////
+// SECTION: Z-index system
+// NOTE: The lower number position in array means the higher z-index it gets
+// NOTE: Modal is the highest in the order - default is the lowest in the order 
 $z-indexes: ('modal', 'navbar', 'win-bar', 'default');
 
 @function layer($name) {
@@ -69,9 +64,7 @@ $z-indexes: ('modal', 'navbar', 'win-bar', 'default');
   }
 }
 
-//////////////////////////
-//$ Divider
-///////////////////////////
+// SECTION: Divider
 @mixin divider(
   $margin-bottom: 0.6rem,
   $margin-top: null,

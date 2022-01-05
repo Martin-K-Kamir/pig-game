@@ -1,38 +1,9 @@
 
-// SECTION: Local variables
-$btn-w-full: 100%;
-$btn-w-tablet: 23vw;
-$btn-w-mobile: 43vw;
-$btn-w-landscape: 46vw;
-$btn-w-max: 20rem;
-$btn-w-b: 17rem;
-$btn-w-m: 16rem;
-$btn-w-s: 11rem;
-$btn-w-min: 8.5rem;
-
-$btn-p-max: 1.8rem;
-$btn-p-b: 1.7rem;
-$btn-p-m: 1.4rem;
-$btn-p-s: 1.3rem;
-$btn-p-min: 1.2rem;
-
-$btn-fs-max: 2rem;
-$btn-fs-b: 1.8rem;
-$btn-fs-m: 1.6rem;
-$btn-fs-min: 1.45rem;
-
+// SECTION: Btn local variables
 $btn-shadow: 0 1rem 1rem hsla(0, 0%, 0%, 0.1);
 $btn-shadow-clicked: 0 1rem 3rem hsla(0, 0%, 0%, 0.3);
-
 $btn-border-radius: 50rem;
 
-//$ Btn sizes mixin
-@mixin btn($w, $p, $fs, $h: null) {
-  width: $w;
-  padding: $p;
-  font-size: $fs;
-  height: $h;
-}
 
 // SECTION: Default btn styles
 %btn {
@@ -63,7 +34,7 @@ $btn-border-radius: 50rem;
 }
 
 
-// SECTION: Primary btn
+// SECTION: Primary btn (menu, playground, modes)
 .btn-primary {
   max-height: 6rem;
   width: 20rem;
@@ -92,7 +63,7 @@ $btn-border-radius: 50rem;
   }
 }
 
-// SECTION: Secondary btn
+// SECTION: Secondary btn (game)
 .btn-secondary {
   width: 17rem;
   padding: 1.8rem;
@@ -100,35 +71,9 @@ $btn-border-radius: 50rem;
   box-shadow: $btn-shadow;
   @include giv-color($clr-grey, $clr-white);
 
-  @include mq-max($tablet-min) {
-    width: 43vw;
-  }
-
-  // WORK HERE
-  @include mq-max($phone-max) {
-    @include btn($btn-w-mobile, $btn-p-b, $btn-fs-b);
-  }
-
-  @include mq-landscape(phone-max) {
-    @include btn($btn-w-landscape, $btn-p-m, $btn-fs-m);
-  }
-
   &:disabled,
   &[disabled]{
     @include giv-color($clr-grey-950, $clr-white-600);
-  }
-
-  &:disabled:hover .note {
-    opacity: 1;
-  }
-
-  & .note {
-    background-color: $clr-grey !important; // !important for dark theme
-    @include fs-up($fs-text-min, 0.4); // 1.4r
-    @include abs-center-X;
-    width: 23rem;
-    top: 15rem;
-    left: -2.9rem
   }
 
   &--grey {
@@ -137,17 +82,21 @@ $btn-border-radius: 50rem;
   }
 }
 
-//$ Opacity --------------------------------------------------
+// SECTION: Opacity btn (rules, credits)
 .btn-opacity {
-  @include btn($btn-w-m, $btn-p-min, $btn-fs-min);
+  width: 16rem;
+  padding: 1.2rem;
+  font-size: 1.45rem;
   @include giv-color($clr-white, $clr-white-300);
 
   &:hover {background-color: $clr-white-400}
 }
 
-//$ Grey --------------------------------------------------
+// SECTION: Grey btn (swap, victory, leaving)
 .btn-grey {
-  @include btn($btn-w-s, $btn-p-m, $btn-fs-m);
+  width: 11rem;
+  padding: 1.4rem;
+  font-size: 1.6rem;
   @include giv-color($clr-white, $clr-grey);
 
   &:disabled,
@@ -170,15 +119,18 @@ $btn-border-radius: 50rem;
   }
 
   &--b {
-    width: $btn-w-m;
+    width: 16rem;
   }
 
   &--s {
-    @include btn($btn-w-min, 0, $btn-fs-min, 4.4rem);
+    height: 4.4rem;
+    width: 8.5rem;
+    padding: 0;
+    font-size: 1.2rem;
   }
 }
 
-//$ Round --------------------------------------------------
+// SECTION: Round btn (navbar)
 .btn-round {
   background-color: $clr-white-200;
   border-radius: $border-radius-circle;

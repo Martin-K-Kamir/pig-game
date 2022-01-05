@@ -28,6 +28,7 @@
     @include reset-glossy-bg;
   }
 
+  // SECTION: Start note
   &__start {
     transition: $transition-fast;
 
@@ -35,7 +36,7 @@
       opacity: 1;
       width: 35rem;
       font-weight: $fw-max;
-      background-color: $clr-grey !important; // !important for dark theme
+      background-color: $clr-grey !important; // for dark theme
       @include flex-center;
       @include fs-up($fs-text-min, 1); // 2r
       @include abs-center;

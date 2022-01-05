@@ -20,7 +20,7 @@
     border-radius: 0;
   }
 
-  //$ Active class --------------------------------------------------
+// SECTION: Active class
   &--active,
   &--winner {
     & .player__name {
@@ -44,7 +44,7 @@
     background-color: $clr-white;
   }
 
-  //$ Wrapper --------------------------------------------------
+// SECTION: Wrapper
   &__wrapper {
     @include flex-col-center(2.4rem);
 
@@ -58,7 +58,7 @@
     text-align: center;
   }
 
-  //$ Name --------------------------------------------------
+// SECTION: Name
   &__name {
     position: relative;
     letter-spacing: 0.1rem;
@@ -76,7 +76,7 @@
     @include mq-landscape(phone-max) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
   }
   
-  //$ Playing & Winner --------------------------------------------------
+// SECTION: Player & Winner
   &__playing,
   &__winner {
     animation: pulsing 1s linear infinite alternate;
@@ -94,7 +94,7 @@
     height: 2.7rem;
   }
   
-  //$ Score --------------------------------------------------
+// SECTION: Score
   &__score {
     $l-fs-score: 12rem;
 

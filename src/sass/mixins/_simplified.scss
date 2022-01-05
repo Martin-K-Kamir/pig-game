@@ -1,6 +1,5 @@
-//////////////////////////
-//$ Width & height
-///////////////////////////
+
+// SECTION: Width & Height
 @mixin size($height, $width) {
   height: $height;
   width: $width;
@@ -11,9 +10,7 @@
   width: $size;
 }
 
-//////////////////////////
-//$ Animation
-///////////////////////////
+// SECTION: Animation
 @mixin animation(
   $animation-name,
   $animation-duration: 0.2s,
@@ -24,17 +21,15 @@
     $animation-mode;
 }
 
-//////////////////////////
-//$ Color & background color
-///////////////////////////
+
+// SECTION: Color & Background-color
 @mixin giv-color($clr, $clr-bg) {
   color: $clr;
   background-color: $clr-bg;
 }
 
-//////////////////////////
-//$ Calc font-size
-///////////////////////////
+
+// SECTION: Calc font-size
 @mixin fs-up($fs, $value) {
   font-size: calc(#{$fs} + #{$value}rem);
 }
@@ -43,9 +38,7 @@
   font-size: calc(#{$fs} - #{$value}rem);
 }
 
-//////////////////////////
-//$ Border radius
-///////////////////////////
+// SECTION: Border radius
 @mixin border-radius-top($value) {
   border-radius: $value $value 0 0;
 }

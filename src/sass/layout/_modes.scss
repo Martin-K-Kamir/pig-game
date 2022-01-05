@@ -27,7 +27,7 @@
     @include menus-landscape-size;
   }
 
-  //$ Heading --------------------------------------------------
+// SECTION: Heading
   &__heading {
     letter-spacing: 0.7rem;
     text-transform: uppercase;
@@ -62,7 +62,7 @@
     @include divider(2.2rem);
   }
 
-  //$ Btns container --------------------------------------------------
+// SECTION: Btns container
   &__btns-container {
     @include flex-justify-center(5rem);
 
@@ -79,10 +79,9 @@
       width: 100%;
     }
 
-    //* For phone screen to have full width
     & .btn-primary {
       @include mq-max($phone-max) {
-        width: $btn-w-full;
+        width: 100%;
       }
     }
   }

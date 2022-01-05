@@ -1,6 +1,8 @@
+// NOTE: Modes & Playgounrd are the same
 .playground {
   @extend .modes;
 
+  // SECTION: Heading
   &__heading {
     @extend .modes__heading;
 
@@ -20,13 +22,13 @@
     @extend .modes__divider;
   }
 
+  // SECTION: Btns container
   &__btns-container {
     @extend .modes__btns-container;
 
-    //* For phone screen to have full width
     & .btn-primary {
       @include mq-max($phone-max) {
-        width: $btn-w-full;
+        width: 100%;
       }
     }
 
@@ -39,7 +41,7 @@
     }
 
     & .btn--online .note {
-      background-color: $clr-grey !important; // !important for dark theme
+      background-color: $clr-grey !important; // for dark theme
       @include fs-up($fs-text-min, 0.4); // 1.4r
       @include abs-center;
       top: 6rem;

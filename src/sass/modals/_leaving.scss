@@ -30,7 +30,7 @@
     }
   }
 
-  //$ Heading --------------------------------------------------
+// SECTION: Heading
   &__heading {
     margin-bottom: 3rem;
     text-align: center;
@@ -52,7 +52,7 @@
     }
   }
 
-  //$ Text --------------------------------------------------
+// SECTION: Text
   &__text {
     margin-bottom: 4rem;
     color: $clr-grey;
@@ -69,7 +69,7 @@
     }
   }
 
-  //$ Btns container --------------------------------------------------
+// SECTION: Btns container
   &__btns-container {
     @include flex-split(2rem);
   }

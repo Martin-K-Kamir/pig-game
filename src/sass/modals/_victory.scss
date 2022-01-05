@@ -33,7 +33,7 @@
     padding: 4rem 6rem;
   }
 
-  //$ Heading --------------------------------------------------
+// SECTION: Heading
   &__heading {
     margin-bottom: 3rem;
     color: $clr-grey;
@@ -54,7 +54,7 @@
     }
   }
 
-  //$ Btns container --------------------------------------------------
+// SECTION: Btns container
   &__btns-container {
     @include flex-me(flex-start, center, 2rem);
 

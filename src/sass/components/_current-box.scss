@@ -42,7 +42,7 @@
     height: $l-height-min;
   }
 
-  //$ Label --------------------------------------------------
+// SECTION: Label
   &__label {
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -63,7 +63,7 @@
     }
   }
 
-  //$ Score --------------------------------------------------
+// SECTION: Score
   &__score {
     font-size: $l-fs-score-max;
 

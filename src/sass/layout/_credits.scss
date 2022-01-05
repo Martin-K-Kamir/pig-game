@@ -13,7 +13,7 @@
     @include menus-landscape-size;
   }
 
-  //$ Heading --------------------------------------------------
+// SECTION: Heading
   &__heading {
     text-transform: uppercase;
     text-align: center;
@@ -28,7 +28,7 @@
     }
   }
 
-  //$ Creators --------------------------------------------------
+// SECTION: Creators
   &__creators-container {
     list-style: none;
     padding: 0;
@@ -59,7 +59,7 @@
     }
   }
 
-  //$ Btn --------------------------------------------------
+// SECTION: Btn
   & .btn-opacity {
     justify-self: center;
     @include margin-top(3rem);

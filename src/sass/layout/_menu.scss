@@ -15,7 +15,7 @@
     @include menus-landscape-size;
   }
 
-  //$ Logo --------------------------------------------------
+// SECTION: Logo
   &__logo {
     @include flex-align-center(2.5rem);
     
@@ -60,7 +60,7 @@
     }
   }
 
-  //$ Btns container --------------------------------------------------
+// SECTION: Btns container
   &__btns-container {
     width: 100%;
     @include flex-col-center(3rem);

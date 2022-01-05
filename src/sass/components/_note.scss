@@ -10,5 +10,4 @@
 
   @include mq-max($phone-max) {@include fs-up($fs-text-min, 0.25)} // 1.25r
   @include mq-max($phone-b) {@include fs-up($fs-text-min, 0.35)} // 1.35r
-  
 }

@@ -6,7 +6,7 @@
   @include animation(fade-in);
   @include abs-center;
 
-  //$ Btn --------------------------------------------------
+// SECTION: Btn
   &__btn {
     @include flex-col-center;
 
@@ -16,7 +16,7 @@
     }
   }
 
-  //$ Icon & Text --------------------------------------------------
+// SECTION: Icon & Text
   &__icon,
   &__text {
     color: $clr-white;

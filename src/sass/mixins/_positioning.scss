@@ -1,6 +1,5 @@
-//////////////////////////
-//$ Flexbox
-///////////////////////////
+
+// SECTION: Flexbox
 @mixin flex-me($justify: center, $align: center, $gap: null) {
   display: flex;
   justify-content: $justify;
@@ -40,9 +39,7 @@
   gap: $gap;
 }
 
-//////////////////////////
-//$ Translate
-///////////////////////////
+// SECTION: Translate
 @mixin pos-Y($y) {
   transform: translateY($y);
 }
@@ -55,9 +52,8 @@
   transform: translate($x, $y);
 }
 
-///////////////////////////
-//$ Absolute
-///////////////////////////
+
+// SECTION: Absolute
 @mixin abs($t: null, $r: null, $b: null, $l: null) {
   position: absolute;
   top: $t;
