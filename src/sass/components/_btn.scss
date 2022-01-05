@@ -1,5 +1,5 @@
 
-//$ BTN variables
+// SECTION: Local variables
 $btn-w-full: 100%;
 $btn-w-tablet: 23vw;
 $btn-w-mobile: 43vw;
@@ -34,10 +34,10 @@ $btn-border-radius: 50rem;
   height: $h;
 }
 
-//$ Default properties for BTN
+// SECTION: Default btn styles
 %btn {
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: $fw-max;
   transition: $transition-fast;
   border-radius: $btn-border-radius;
 
@@ -48,12 +48,6 @@ $btn-border-radius: 50rem;
   }
 }
 
-//$ Utility class for JS
-.clicked {
-  @include pos-Y(0.4rem);
-  box-shadow: $btn-shadow-clicked !important;
-}
-
 .btn-primary,
 .btn-secondary,
 .btn-grey,
@@ -61,43 +55,56 @@ $btn-border-radius: 50rem;
   @extend %btn;
 }
 
+// SECTION: Utility class
+// NOTE: Only purpose for JS. Animations for Robot when clicks the btn
+.clicked {
+  @include pos-Y(0.4rem);
+  box-shadow: $btn-shadow-clicked !important;
+}
 
-//$ Primary --------------------------------------------------
+
+// SECTION: Primary btn
 .btn-primary {
   max-height: 6rem;
-  font-weight: 900;
-  border-radius: $border-radius-default;
-  border: 0.3rem solid $clr-white;
+  width: 20rem;
+  padding: 1.3rem;
   box-shadow: 0 0 0 0.4rem $clr-primary-800;
-  @include btn($btn-w-b, $btn-p-s, $btn-fs-max);
-  @include font-size($btn-fs-max);
+  border: 0.3rem solid $clr-white;
+  border-radius: $border-radius-default;
+  font-weight: 900;
+  @include font-size(2rem);
   @include giv-color($clr-primary-600, $clr-white-900);
 
-  @include mq-max($phone-m) {max-height: 14vw}
-  @include mq-landscape(phone-min) {font-size: 1.7rem} // For iPhone 4
+  @include mq-max($phone-m) {
+    padding: 1.1rem;
+  }
+
+  @include mq-landscape(phone-min) {
+    padding: 1.1rem;
+    font-size: 1.7rem;
+  }
 
   &:hover {transform: scale(110%)}
 
-  //* Big & small btns
-  &--full,
-  &--b,
-  &--s {@extend .btn-primary}
-  
-  &--full {width: $btn-w-full}
-  &--b {width: $btn-w-max}
-  &--s {width: $btn-w-min}
+  &--full {
+    @extend .btn-primary;
+    width: 100%;
+  }
 }
 
-//$ Secondary --------------------------------------------------
+// SECTION: Secondary btn
 .btn-secondary {
+  width: 17rem;
+  padding: 1.8rem;
+  font-size: 1.6rem;
   box-shadow: $btn-shadow;
-  @include btn($btn-w-b, $btn-p-max, $btn-fs-m);
   @include giv-color($clr-grey, $clr-white);
 
   @include mq-max($tablet-min) {
-    width: $btn-w-tablet;
+    width: 43vw;
   }
 
+  // WORK HERE
   @include mq-max($phone-max) {
     @include btn($btn-w-mobile, $btn-p-b, $btn-fs-b);
   }

@@ -1,4 +1,4 @@
-//$ Colors -------------------------------------
+// SECTION: Colors
 $clr-black: hsl(0, 0%, 0%);
 $clr-black-800: hsla(0, 0%, 0%, 0.8);
 $clr-black-500: hsla(0, 0%, 0%, 0.5);
@@ -36,20 +36,19 @@ $clr-secondary-600: hsl(45, 97%, 60%);
 $clr-secondary-400: hsl(45, 97%, 40%);
 $clr-secondary-300: hsl(45, 97%, 30%);
 
-//$ Fonts -------------------------------------
-
-//* Font family ------------
+// SECTION: Fonts
 $font-default: 'Nunito', sans-serif;
 
-//* Font weights ------------
+//* weights ------------
+$fw-default: 400;
+
 $fw-max: 800;
 $fw-b: 600;
 $fw-m: 500;
-$fw-s: 400;
-$fw-sm: 300;
+$fw-s: 300;
 $fw-min: 200;
 
-//* Font sizes ------------
+//* sizes ------------
 $fs-default: 1.7rem;
 
 $fs-heading-max: 5.5rem;
@@ -64,11 +63,11 @@ $fs-text-m: 1.5rem;
 $fs-text-s: 1.3rem;
 $fs-text-min: 1rem;
 
-//$ Border radius -------------------------------------
+// SECTION: Border radius
 $border-radius-default: 1rem;
 $border-radius-circle: 50%;
 
-//$ Paddings -------------------------------------
+// SECTION: Padding
 $p-max: 10rem;
 $p-b: 8rem;
 $p-m: 6rem;
@@ -81,19 +80,19 @@ $p-fluid-m: 8%;
 $p-fluid-s: 4%;
 $p-fluid-min: 2%;
 
-//$ Widths -------------------------------------
+// SECTION: Width
 $w-fluid-max: 95vw;
 $w-fluid-b: 80vw;
 $w-fluid-m: 60vw;
 $w-fluid-s: 40vw;
 $w-fluid-min: 30vw;
 
-//$ Transitions -------------------------------------
+// SECTION: Transition
 $transition-slow: all 0.75s linear;
 $transition-medium: all 0.3s linear;
 $transition-fast: all 0.15s linear;
 
-//$ Box shadows -------------------------------------
+// SECTION: Box shadow
 $box-shadow-darkest: 0 0 5rem $clr-black-800;
 $box-shadow-dark: 0 0 5rem $clr-black-500;
 $box-shadow-medium: 0 0 5rem $clr-black-200;

@@ -24,11 +24,9 @@ p, li {
   min-height: 100vh;
   font-family: $font-default;
   font-size: $fs-default;
-  font-weight: $fw-s;
+  font-weight: $fw-default;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
-  color: $clr-white;
-  background-color: $clr-primary;
   overflow: hidden;
   @include giv-color($clr-white, $clr-primary);
   @include flex-col-center;

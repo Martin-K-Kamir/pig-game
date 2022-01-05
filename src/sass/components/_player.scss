@@ -65,7 +65,7 @@
     word-spacing: 0.2rem;
     text-transform: uppercase;
     color: $clr-grey;
-    font-weight: $fw-s;
+    font-weight: $fw-default;
     font-size: $fs-heading-m;
     
     @include mq-max($phone-max) {@include fs-up($fs-heading-m, 0.3)} // 4.3r
