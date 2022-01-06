@@ -18,6 +18,7 @@ class ThemesView extends View {
   localStorageName = 'dark-theme';
   _preferedOsTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
+  // NOTE: if user has selected dark theme load dark theme or if user already clicked on btn load dark theme
   addHandlerLoad(handler) {
     window.addEventListener(
       'load',
@@ -28,6 +29,7 @@ class ThemesView extends View {
     );
   }
 
+  // NOTE: Sets to in user local storage dark/light theme and toggle class .dark-theme on body 
   toggleThemes() {
     this.setTheme = this.setTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
     this.body.classList.toggle('dark-theme');

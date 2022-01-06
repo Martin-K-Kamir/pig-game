@@ -27,7 +27,7 @@
         @include animation(icon-rotate);
 
         @include mq-max($phone-m) {width: 27vw}
-        @include mq-landscape(phone-max) {width: 12vw}
+        @include mq-landscape(phone-max) {width: 14vw}
         @include mq-landscape(phone-s) {width: 13vw}
         @include mq-landscape(phone-min) {width: 15vw}
       }
@@ -46,8 +46,8 @@
       }
 
       @include mq-landscape(phone-max) {
-        font-size: 4.5vw;
-        line-height: 6vw;
+        font-size: 5.5vw;
+        line-height: 7vw;
       }
 
       &-top {

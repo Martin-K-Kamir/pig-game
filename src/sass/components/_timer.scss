@@ -1,5 +1,5 @@
 .timer {
-  z-index: -1;
+  z-index: calc(layer('default') - 2); // To be behind game
   background-color: $clr-white-090;
   @include border-radius-top($border-radius-default);
   @include size(13%, 22.5rem);
@@ -17,6 +17,7 @@
   }
 
   @include mq-max($phone-max) {
+    z-index: layer('default');
     background-color: transparent; // Hide bg for phone screens
     margin-left: 1rem;
     width: 100%;

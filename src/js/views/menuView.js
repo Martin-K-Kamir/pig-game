@@ -51,8 +51,9 @@ class MenuView extends View {
 
         if (btn.classList.contains('btn--robot')) {
           model.state.playingVsRobot = SELECTED;
-          gameView.changePlayerNameForRobot();
+          gameView.changePlayerNameForRobot(); // NOTE: Changes names for player1/2 to 'You' & 'Robot'
         }
+        
         this._displayModesWindow();
       }.bind(this)
     );
@@ -65,12 +66,12 @@ class MenuView extends View {
         const btn = e.target.closest('.btn--mode');
         if (!btn) return;
 
+        // NOTE: This func sets to the gameModes obj which mode is true based on btn clicked. Also handles the handler 
         if (btn.classList.contains('pig-mode')) model.gameModes.pig = SELECTED;
         if (btn.classList.contains('big-pig-mode'))
           model.gameModes.big = SELECTED;
         if (btn.classList.contains('run-pig-mode'))
           model.gameModes.run = SELECTED;
-        console.log(model.gameModes);
         handler();
         this._displayGameWindow();
       }.bind(this)

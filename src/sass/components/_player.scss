@@ -12,7 +12,7 @@
 
   @include mq-max($phone-max) {
     padding: 0;
-    border-radius: 0;
+    border-radius: 0 !important;
   }
 
   @include mq-landscape(phone-max) {
@@ -74,6 +74,7 @@
     @include mq-max-w-h($phone-m, $screen-h-max) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
     @include mq-max-w-h($phone-min, $screen-h-s) {@include fs-down($fs-heading-m, 1)} // 3r
     @include mq-landscape(phone-max) {@include fs-down($fs-heading-m, 0.4)} // 3.6r
+    @include mq-landscape(phone-min) {@include fs-down($fs-heading-m, 0.7)} // 3.3r
   }
   
 // SECTION: Player & Winner

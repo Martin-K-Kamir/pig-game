@@ -48,6 +48,10 @@
       margin-bottom: 2rem;
     }
 
+    & > * {
+      white-space: nowrap;
+    }
+
     &--span-main {
       text-transform: uppercase;
       color: $clr-primary;

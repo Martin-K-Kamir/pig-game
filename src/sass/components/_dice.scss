@@ -14,11 +14,11 @@
 
   @include mq-max($tablet-b) {width: $l-width-b}
   @include mq-max($tablet-min) {width: $l-width-min}
-
   @include mq-max($phone-max) {width: $l-width-max}
   @include mq-max($phone-min) {width: $l-width-m}
-  
   @include mq-landscape(phone-max) {width: $l-width-b}
   @include mq-landscape(phone-s) {width: $l-width-m}
-  @include mq-landscape(phone-min) {width: $l-width-s}
+
+  @include mq-max($phone-max) {padding: 1.5rem}
+  @include mq-landscape(phone-max) {padding: 1.5rem}
 }

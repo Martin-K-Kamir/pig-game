@@ -34,13 +34,13 @@ class SoundsView extends View {
         const btn = e.target.closest('button');
         if (!btn) return;
 
-        // On every button with class click-sound play sound click
+        // NOTE: On every btn with class .click-sound play sound click
         if (btn.classList.contains('click-sound'))
           return this.play(this.soundClick);
       }.bind(this)
     );
   }
-
+  // NOTE: if user selected audio off call for handler() func. Which shuts all sounds. If not true sounds will work
   addHandlerLoad(handler) {
     window.addEventListener('load', function () {
       if (localStorage.getItem('audio-volume') === 'off') handler();

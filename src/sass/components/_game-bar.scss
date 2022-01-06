@@ -29,12 +29,26 @@
     }
 
     &__btns-container {
-     height: 100%;
-     @include flex-center(3rem);
+      height: 100%;
+      @include flex-center(3rem);
 
-     @include mq-landscape(phone-s) {
-      gap: 1.8rem;
-     }
+      @include mq-landscape(phone-s) {
+        gap: 1.8rem;
+      }
+
+      & .btn-secondary {
+        @include mq-max($phone-max) {
+          width: 43vw;
+          padding: 1.7rem;
+          font-size: 1.8rem;
+        }
+
+        @include mq-landscape(phone-max) {
+          width: 46vw;
+          padding: 1.4rem;
+          font-size: 1.6rem;
+        }
+      }
     }
   }
 
@@ -53,18 +67,6 @@
     & .btn-secondary {
       @include mq-max($tablet-min) {
         width: 23vw;
-      }
-
-      @include mq-max($phone-max) {
-        width: 43vw;
-        padding: 1.7rem;
-        font-size: 1.8rem;
-      }
-
-      @include mq-landscape(phone-max) {
-        width: 46vw;
-        padding: 1.4rem;
-        font-size: 1.6rem;
       }
     }
   }

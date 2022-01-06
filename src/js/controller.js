@@ -427,7 +427,12 @@ const controlLeavingYes = function () {
   // 2) Display menu window and hide game window
   gameView.displayMenuWindow();
 
-  // 2) Restart game to the state
+  // 3) Hide timer
+  if (model.gameModes.run) {
+    gameView.addClass(gameView.timerBox);
+  }
+
+  // 4) Restart game to the state
   controlResettingTheGame();
 };
 
@@ -494,14 +499,15 @@ const init = function () {
   gameView.addHandlerClick(controlRollingDice, gameView.btnRollBt);
   gameView.addHandlerClick(controlHoldingScore, gameView.btnHold);
   gameView.addHandlerClick(controlHoldingScore, gameView.btnHoldBt);
-  gameView.addHandlerClick(controlResettingTheGame, gameView.btnBack);
   leavingView.addHandlerClick(controlLeaving);
   leavingView.addHandlerClick(controlLeavingNo, leavingView.btnNo);
   leavingView.addHandlerClick(controlLeavingYes, leavingView.btnYes);
-
-  gameView.addHandlerInitGameTimer(controlGameTimeout);
+  
+  gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRoll);
+  gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRollBt);
   menuView.addHandlerModesSelecting(controlSetGameMode);
-
+  
+  gameView.handleVictoryBar(controlResettingTheGame);
   // Moved to controlRollingDice func & controlHoldingScore func
   // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRoll);
   // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRollBt);

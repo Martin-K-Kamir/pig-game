@@ -81,7 +81,7 @@ class GameView extends View {
   constructor() {
     super();
     this._handleSwapping();
-    this._handleVictoryBar();
+    this.handleVictoryBar();
   }
 
   _handleSwapping() {
@@ -129,7 +129,8 @@ class GameView extends View {
     }
   }
 
-  _handleVictoryBar() {
+  // REFACTOR INTO CONTROLLER
+  handleVictoryBar(handler) {
     this.body.addEventListener(
       'click',
       function (e) {
@@ -148,15 +149,16 @@ class GameView extends View {
         // Display menu window and hide game window
         if (btn.classList.contains('btn--back')) {
           this.displayMenuWindow();
-          // In the controller is handled the resetting function
+          this.addClass(this.timerBox);
+          handler()
         }
       }.bind(this)
     );
   }
 
   // At the start of the game let start gameTimer but after disable this fun. So the gameTimer wont restart everytime when btnRoll is clicked
-  addHandlerInitGameTimer(handler) {
-    this.btnRoll.addEventListener(
+  addHandlerInitGameTimer(handler, btn) {
+    btn.addEventListener(
       'click',
       function () {
         if (this.clickGameTimerOnce === CLICK_AVAILABLE) {
@@ -179,6 +181,8 @@ class GameView extends View {
     this.removeClass(this._victoryBar, 'bounce-in--first');
     this.addClass(this._victoryBar, 'bounce-out--first');
 
+    this.clickGameTimerOnce = CLICK_AVAILABLE;
+
     this.btnRoll.disabled = BTN_WOKRING;
     this.btnHold.disabled = BTN_DISABLED;
     this.btnRollBt.disabled = BTN_WOKRING;
@@ -195,7 +199,7 @@ class GameView extends View {
     this._timerNums.textContent = '04:00';
     this._playerName0.textContent = 'Player 1';
     this._playerName1.textContent = 'Player 2';
-    
+
     this.removeClass(this.gameStartPopup);
     this.removeClass(this._playing0);
     this.removeClass(this._curScoreBox0);
@@ -210,10 +214,6 @@ class GameView extends View {
     this.addClass(this._player0, 'player--active');
     this.addClass(this._diceLight, 'opacity-zero');
     this.addClass(this._victoryBar, 'opacity-zero');
-
-    if(model.state.playingVsRobot) {
-      this.changePlayerNameForRobot();
-    }
 
     setTimeout(() => {
       this.removeClass(this._victoryBar, 'bounce-out--first');
@@ -286,18 +286,18 @@ class GameView extends View {
       this._victoryHeadingEnd.textContent = `you won!`;
     }
 
-    if (draw && playingVsRobot) {
+    if (draw || playingVsRobot) {
       this._victoryHeadingStart.textContent = `No one wins,`;
       this._victoryHeadingMain.textContent = `it's a draw :(`;
     }
 
-    if (playingVsRobot) {
+    if (!draw && playingVsRobot) {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
-       document
-         .querySelector(`.player__winner--${activePlayer}`)
-         .classList.remove('hidden');
+      document
+        .querySelector(`.player__winner--${activePlayer}`)
+        .classList.remove('hidden');
       if (model.state.scores[0] > model.state.scores[1]) {
         this._victoryHeadingStart.textContent = `Congratulations`;
         this._victoryHeadingMain.textContent = `you won!`;
@@ -424,8 +424,6 @@ class GameView extends View {
       this.elToggleClass(this.btnHoldBt, 'clicked');
     }, 100);
   }
-
-  
 }
 
 export default new GameView();
