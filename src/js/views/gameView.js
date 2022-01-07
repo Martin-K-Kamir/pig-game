@@ -12,7 +12,7 @@ import {
   SECS_GAME_TIMER,
   SECS_FOR_PLAYER_TIMER,
   CLICK_AVAILABLE,
-  CLICK_DISABLED,
+  CLICK_UNAVAILABLE,
   PLAYER,
   ROBOT,
   ONE_MILISEC
@@ -151,7 +151,7 @@ class GameView extends View {
       function () {
         if (this._clickOnce) {
           handler();
-          this._clickOnce = CLICK_DISABLED;
+          this._clickOnce = CLICK_UNAVAILABLE;
         }
       }.bind(this)
     );
@@ -212,7 +212,7 @@ class GameView extends View {
 
   displaySwapBtns(showBtns) {
     if (showBtns) {
-      this.disabledBtns(BTN_DISABLED);
+      this.disabledBtnss(BTN_DISABLED, this.gameBtns);
       this.addClass(this.btnRollPhone);
       this.addClass(this.btnHoldPhone);
       this.removeClass(this._btnYes);
@@ -224,7 +224,7 @@ class GameView extends View {
       this.addClass(this._btnYesPhone, 'bounce-in--first');
       this.addClass(this._btnNoPhone, 'bounce-in--second');
     } else {
-      this.disabledBtns(BTN_WOKRING);
+      this.disabledBtnss(BTN_WOKRING, this.gameBtns);
       this.removeClass(this._btnYes, 'bounce-in--first');
       this.removeClass(this._btnNo, 'bounce-in--second');
       this.addClass(this._btnYes, 'bounce-out--first');
@@ -345,9 +345,15 @@ class GameView extends View {
   }
 
   holdGameTimer() {
+    // 1) Stores the printed number in html
     const savedTime = this._timerNums.innerHTML;
+
+    // 2) Slices the mins and secs
     const mins = savedTime.slice(1, 2);
     const secs = savedTime.slice(3, 5);
+
+    // 3) Stores secs as number
+    // Ex: 2(mins) * 60(secs) + 41(secs) = 120(secs) + 41(secs) = 161 secs
     this._gameTimerNum = mins * SIXTY_SEC + +secs;
   }
 
@@ -355,42 +361,14 @@ class GameView extends View {
     clearInterval(this.gameTimer);
     clearInterval(this.playerTimer);
     clearInterval(this.playerTimerEnded);
-    clearInterval(this.runTimeoutID);
+    clearInterval(this.gameTimerEnded);
   }
 
   resetTimers(...timers) {
     timers.forEach(curTimer => clearInterval(curTimer));
   }
 
-  disabledBtns(isDisabled) {
-    if (isDisabled) {
-      this.btnRoll.disabled = BTN_DISABLED;
-      this.btnHold.disabled = BTN_DISABLED;
-      this.btnRollPhone.disabled = BTN_DISABLED;
-      this.btnHoldPhone.disabled = BTN_DISABLED;
-    } else {
-      this.btnRoll.disabled = BTN_WOKRING;
-      this.btnHold.disabled = BTN_WOKRING;
-      this.btnRollPhone.disabled = BTN_WOKRING;
-      this.btnHoldPhone.disabled = BTN_WOKRING;
-    }
-  }
-
-  disabledSwapBtns(isDisabled) {
-    if (isDisabled) {
-      this._btnYes.disabled = BTN_DISABLED;
-      this._btnNo.disabled = BTN_DISABLED;
-      this._btnYesPhone.disabled = BTN_DISABLED;
-      this._btnNoPhone.disabled = BTN_DISABLED;
-    } else {
-      this._btnYes.disabled = BTN_WOKRING;
-      this._btnNo.disabled = BTN_WOKRING;
-      this._btnYesPhone.disabled = BTN_WOKRING;
-      this._btnNoPhone.disabled = BTN_WOKRING;
-    }
-  }
-
-  disabledBtn(isDisabled, btnsArr) {
+  disabledBtns(isDisabled, btnsArr) {
     btnsArr.forEach(curBtn => curBtn.disabled = isDisabled);
   }
 

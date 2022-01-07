@@ -1,37 +1,30 @@
+import {
+  AUDIO_ON, BIG_DICE, BIG_LIMIT, BTN_DISABLED,
+  BTN_WOKRING, DICE_1,
+  DICE_7, LOOSING_LIMIT, LOSE_CURSCORE, ONE_SEC, PERCENT_100, PERCENT_50,
+  PERCENT_90, PIG_DICE, PIG_LIMIT, PLAYER, PRIZE_CHANCES, ROBOT, RUN_DICE, RUN_LIMIT, SECS_FOR_INACTIVE_TIMER,
+  SECS_GAME_TIMER, SHOW_BTNS, THEME_LIGHT
+} from './config.js';
 import * as model from './model.js';
-import themesView from './views/themesView.js';
 import gameView from './views/gameView.js';
-import pauseView from './views/pauseView.js';
-import soundsView from './views/soundsView.js';
 import leavingView from './views/leavingView.js';
 import menuView from './views/menuView.js';
-import View from './views/View.js';
+import pauseView from './views/pauseView.js';
+import soundsView from './views/soundsView.js';
+import themesView from './views/themesView.js';
 
 import {
-  AUDIO_ON,
-  THEME_LIGHT,
-  SHOW_BTNS,
-  LOOSING_LIMIT,
   PIG_DICE,
-  BIG_DICE,
-  RUN_DICE,
   PIG_LIMIT,
-  BIG_LIMIT,
+  PLAYER,
+  PRIZE_CHANCES,
+  ROBOT,
+  RUN_DICE,
   RUN_LIMIT,
-  ONE_SEC,
   SECS_FOR_INACTIVE_TIMER,
   SECS_GAME_TIMER,
-  LOSE_CURSCORE,
-  DICE_1,
-  DICE_7,
-  PERCENT_50,
-  PERCENT_90,
-  PERCENT_100,
-  PRIZE_CHANCES,
-  BTN_DISABLED,
-  BTN_WOKRING,
-  PLAYER,
-  ROBOT
+  SHOW_BTNS,
+  THEME_LIGHT,
 } from './config.js';
 
 const controlThemesDarkLight = function () {
@@ -115,7 +108,6 @@ const controlSetGameMode = function () {
   }
 };
 
-
 // NOTE: Only for run pig mode start the timer
 const controlGameTimeout = function () {
   if (model.gameModes.run) {
@@ -144,7 +136,10 @@ const controlGameTimeout = function () {
     };
 
     // 4) Init timeout for game timer
-    gameView.gameTimerEnded = setTimeout(runModeTimer, SECS_GAME_TIMER * ONE_SEC);
+    gameView.gameTimerEnded = setTimeout(
+      runModeTimer,
+      SECS_GAME_TIMER * ONE_SEC
+    );
   }
 };
 
@@ -198,7 +193,6 @@ const controlPlayerInactive = function () {
 };
 
 const controlRollingDice = function () {
-
   // 0) Generate dice roll
   model.generateDiceRoll(model.state.diceSides);
 
@@ -229,8 +223,7 @@ const controlRollingDice = function () {
 
     // 1.7) If playing vs robot undisable btns to work
     if (model.state.playingVsRobot) {
-      // gameView.disabledBtns(BTN_WOKRING);
-      gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
+      gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
     }
   }
 
@@ -281,8 +274,7 @@ const controlRollingDice = function () {
         clearInterval(model.state.rollingSequence);
 
         // Disable swap btns
-        //gameView.disabledSwapBtns(BTN_DISABLED);
-        gameView.disabledBtn(BTN_DISABLED, gameView.swapBtns)
+        gameView.disabledBtns(BTN_DISABLED, gameView.swapBtns);
 
         setTimeout(() => {
           // Decide if is it worth to swap or not
@@ -296,8 +288,7 @@ const controlRollingDice = function () {
           controllPlayingVsRobot();
 
           // Undisable swap btns
-          //gameView.disabledSwapBtns(BTN_WOKRING);
-          gameView.disabledBtn(BTN_WOKRING, gameView.swapBtns);
+          gameView.disabledBtns(BTN_WOKRING, gameView.swapBtns);
         }, 1000);
       }
     }
@@ -317,7 +308,7 @@ const controlRollingDice = function () {
   controlPlayerInactive();
 
   // 7) Make hold btn to work
-  gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
+  gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
 
   // 8) Hide game__start popup
   gameView.addClass(gameView.startMsg);
@@ -343,7 +334,7 @@ const controlHoldingScore = function () {
 
   // 4) If playing vs robot undisable btns
   if (model.state.playingVsRobot) {
-    gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
+    gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
   }
 
   // 5) Check if player won game
@@ -402,7 +393,7 @@ const controlResettingTheGame = function () {
   clearInterval(model.state.rollingSequence);
 
   // 4) Undisable btns
-  gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
+  gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
 };
 
 const controlLeaving = function () {
@@ -452,7 +443,7 @@ const controllPlayingVsRobot = function () {
   // Dunno why but wihnout interval it doesn't work
   setInterval(() => {
     if (model.state.activePlayer === 1 && model.state.playingVsRobot) {
-      gameView.disabledBtn(BTN_DISABLED, gameView.gameBtns);
+      gameView.disabledBtns(BTN_DISABLED, gameView.gameBtns);
     }
   }, 0);
 
@@ -512,11 +503,11 @@ const init = function () {
   leavingView.addHandlerClick(controlLeaving);
   leavingView.addHandlerClick(controlLeavingNo, leavingView.btnNo);
   leavingView.addHandlerClick(controlLeavingYes, leavingView.btnYes);
-  
+
   gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRoll);
   gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRollPhone);
   menuView.addHandlerModesSelecting(controlSetGameMode);
-  
+
   gameView.handleVictoryBar(controlResettingTheGame);
   // Moved to controlRollingDice func & controlHoldingScore func
   // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRoll);

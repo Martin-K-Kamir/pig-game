@@ -29,7 +29,7 @@ export const SECS_GAME_TIMER = 10;
 export const SECS_FOR_PLAYER_TIMER = 5;
 
 export const CLICK_AVAILABLE = true;
-export const CLICK_DISABLED = false;
+export const CLICK_UNAVAILABLE = false;
 
 export const LOSE_CURSCORE = 0;
 export const DICE_1 = 1;
