@@ -9,40 +9,52 @@ import {
   HIDE_BTNS,
   BTN_WOKRING,
   BTN_DISABLED,
-  SECS_FOR_GAME_TIMER,
+  SECS_GAME_TIMER,
   SECS_FOR_PLAYER_TIMER,
   CLICK_AVAILABLE,
   CLICK_DISABLED,
+  PLAYER,
+  ROBOT,
+  ONE_MILISEC
 } from '../config.js';
 
+
 class GameView extends View {
-  timeoutID; // timeout for gameTimer
-  inactiveTimerID; // timeout for playerTimer
-  playerTimerID;
-  gameTimerID;
-  timeleftPlayerTimer;
-  timeleftGameTimer = SECS_FOR_GAME_TIMER;
-  clickGameTimerOnce = CLICK_AVAILABLE;
+  // NOTE: These timers func() works behind and are not visible. Stores what may happen after the timer is finished
+  gameTimerEnded;
+  playerTimerEnded;
+  // NOTE: These timers func() works on front and are visible. Stores showen timer on screen
+  gameTimer;
+  playerTimer;
+  // NOTE: Stores showen number displayed on gameTimer/playerTimer
+  _playerTimerNum; // 5 secs
+  _gameTimerNum = SECS_GAME_TIMER; // 2 mins
+
   timerBox = document.querySelector('.timer');
   _timerNums = document.querySelector('.timer__counter');
 
-  gameStartPopup = document.querySelector('.game__start');
+  _clickOnce = CLICK_AVAILABLE;
+
+  startMsg = document.querySelector('.game__start');
 
   _diceLight = document.querySelector('.dice--light');
   _diceDark = document.querySelector('.dice--dark');
 
   btnRoll = document.querySelector('.btn--roll');
   btnHold = document.querySelector('.btn--hold');
-  btnBack = document.querySelector('.btn--back');
   _btnYes = document.querySelector('.btn--swap-yes');
   _btnNo = document.querySelector('.btn--swap-no');
-  btnRollBt = document.querySelector('.btn--roll-bottom');
-  btnHoldBt = document.querySelector('.btn--hold-bottom');
-  _btnYesBt = document.querySelector('.btn--swap-yes-bottom');
-  _btnNoBt = document.querySelector('.btn--swap-no-bottom');
-  _btnYesInvisible = document.querySelector('.btn--swap-yes-invisible');
-  _btnNoInvisible = document.querySelector('.btn--swap-no-invisible');
+  btnRollPhone = document.querySelector('.btn--roll-phone');
+  btnHoldPhone = document.querySelector('.btn--hold-phone');
+  _btnYesPhone = document.querySelector('.btn--swap-yes-phone');
+  _btnNoPhone = document.querySelector('.btn--swap-no-phone');
+  btnYesInvisible = document.querySelector('.btn--swap-yes-invisible');
+  btnNoInvisible = document.querySelector('.btn--swap-no-invisible');
   _btnAgain = document.querySelector('.btn--again');
+  btnBack = document.querySelector('.btn--back');
+
+  gameBtns = [this.btnRoll, this.btnHold, this.btnRollPhone, this.btnHoldPhone];
+  swapBtns = [this._btnYes, this._btnNo, this._btnYesPhone, this._btnNoPhone];
 
   _score0 = document.querySelector('.player__score--0');
   _score1 = document.querySelector('.player__score--1');
@@ -68,15 +80,9 @@ class GameView extends View {
   _winner1 = document.querySelector('.player__winner--1');
   _victoryBar = document.querySelector('.victory-bar');
   _victoryHeading = document.querySelector('.victory-bar__heading');
-  _victoryHeadingStart = document.querySelector(
-    '.victory-bar__heading--span-start'
-  );
-  _victoryHeadingEnd = document.querySelector(
-    '.victory-bar__heading--span-end'
-  );
-  _victoryHeadingMain = document.querySelector(
-    '.victory-bar__heading--span-main'
-  );
+  _victoryHeadingStart = document.querySelector('.victory-bar__heading--start');
+  _victoryHeadingEnd = document.querySelector('.victory-bar__heading--end');
+  _victoryHeadingMain = document.querySelector('.victory-bar__heading--main');
 
   constructor() {
     super();
@@ -91,25 +97,22 @@ class GameView extends View {
         const btn = e.target.closest('button');
         if (!btn) return;
 
-        // If btn--swap-yes were clicked
-        // Call for swapping scores in state obj, hide displayed btns,
-        // update swapped scores and play swapped sound
+        // NOTE: if click happend on btn--swap-yes, call for swapping func(), hide btns, update in state obj scores, play sound
         if (
           btn.classList.contains('btn--swap-yes') ||
-          btn.classList.contains('btn--swap-yes-bottom') ||
+          btn.classList.contains('btn--swap-yes-phone') ||
           btn.classList.contains('btn--swap-yes-invisible')
         ) {
           model.swapScores();
-          this.displaySwapBtns(HIDE_BTNS);
           this._updateSwappedScores(...model.state.scores);
+          this.displaySwapBtns(HIDE_BTNS);
           soundsView.play(soundsView.soundSwapped);
         }
 
-        // If btn--swap-no were clicked
-        // Hide displayed btns
+        // NOTE: if click happend on btn--swap-no, hide btns
         if (
           btn.classList.contains('btn--swap-no') ||
-          btn.classList.contains('btn--swap-no-bottom') ||
+          btn.classList.contains('btn--swap-no-phone') ||
           btn.classList.contains('btn--swap-no-invisible')
         ) {
           this.displaySwapBtns(HIDE_BTNS);
@@ -118,18 +121,6 @@ class GameView extends View {
     );
   }
 
-  // Robot decides if it's worth to swap
-  decideSwap() {
-    if (model.state.scores[0] > model.state.scores[1]) {
-      this._btnYesInvisible.click();
-      console.log('yes');
-    } else {
-      console.log('no');
-      this._btnNoInvisible.click();
-    }
-  }
-
-  // REFACTOR INTO CONTROLLER
   handleVictoryBar(handler) {
     this.body.addEventListener(
       'click',
@@ -137,70 +128,59 @@ class GameView extends View {
         const btn = e.target.closest('button');
         if (!btn) return;
 
-        // If btn--again were clicked
-        // Reset all game elements also reset state obj,
-        // but keep diceSides and scoreLimit for current mode
+        // NOTE: if click happend on btn--again, reset all game els, reset state obj, game mode stays as it is selected
         if (btn.classList.contains('btn--again')) {
           this.resetGameEls();
           model.resetState();
         }
 
-        // If  btn--back were clicked
-        // Display menu window and hide game window
+        // NOTE: if click happend on btn--back, display menu, hide timer, run handler()
         if (btn.classList.contains('btn--back')) {
-          this.displayMenuWindow();
+          menuView.displayMenuWindow();
           this.addClass(this.timerBox);
-          handler()
+          handler(); // BUG: Opened dev tools in chrome returns undefined
         }
       }.bind(this)
     );
   }
 
-  // At the start of the game let start gameTimer but after disable this fun. So the gameTimer wont restart everytime when btnRoll is clicked
   addHandlerInitGameTimer(handler, btn) {
+    // NOTE: Only for hyper/runnig pig mode. On click btn(btnRoll) run handler() only once, after click disable that click, so the gameTimer won't reset every time there is click on btnRoll
     btn.addEventListener(
       'click',
       function () {
-        if (this.clickGameTimerOnce === CLICK_AVAILABLE) {
+        if (this._clickOnce) {
           handler();
-
-          this.clickGameTimerOnce = CLICK_DISABLED;
+          this._clickOnce = CLICK_DISABLED;
         }
       }.bind(this)
     );
-  }
-
-  displayMenuWindow() {
-    this.addClass(menuView.btnLeave);
-    this.addClass(menuView.btnPause);
-    this.addClass(this.gameWindow);
-    this.removeClass(this.menuWindow);
   }
 
   resetGameEls() {
     this.removeClass(this._victoryBar, 'bounce-in--first');
     this.addClass(this._victoryBar, 'bounce-out--first');
 
-    this.clickGameTimerOnce = CLICK_AVAILABLE;
+    this._clickOnce = CLICK_AVAILABLE;
 
     this.btnRoll.disabled = BTN_WOKRING;
     this.btnHold.disabled = BTN_DISABLED;
-    this.btnRollBt.disabled = BTN_WOKRING;
-    this.btnHoldBt.disabled = BTN_DISABLED;
+    this.btnRollPhone.disabled = BTN_WOKRING;
+    this.btnHoldPhone.disabled = BTN_DISABLED;
 
     this._playing0.textContent = '';
     this._curScoreNum0.textContent = 0;
     this._curScoreNum1.textContent = 0;
     this._score0.textContent = 0;
     this._score1.textContent = 0;
-    this.clickGameTimerOnce = CLICK_AVAILABLE;
-    this.timeleftGameTimer = SECS_FOR_GAME_TIMER;
-    this.timeleftPlayerTimer = SECS_FOR_PLAYER_TIMER;
+    this._clickOnce = CLICK_AVAILABLE;
+    this._gameTimerNum = SECS_GAME_TIMER;
+    this._playerTimerNum = SECS_FOR_PLAYER_TIMER;
     this._timerNums.textContent = '04:00';
     this._playerName0.textContent = 'Player 1';
     this._playerName1.textContent = 'Player 2';
 
-    this.removeClass(this.gameStartPopup);
+    this.removeClass(this.startMsg);
     this.removeClass(this._playing0);
     this.removeClass(this._curScoreBox0);
     this.removeClass(this._curScoreBox1);
@@ -233,47 +213,49 @@ class GameView extends View {
   displaySwapBtns(showBtns) {
     if (showBtns) {
       this.disabledBtns(BTN_DISABLED);
-      this.addClass(this.btnRollBt);
-      this.addClass(this.btnHoldBt);
+      this.addClass(this.btnRollPhone);
+      this.addClass(this.btnHoldPhone);
       this.removeClass(this._btnYes);
       this.removeClass(this._btnNo);
       this.addClass(this._btnYes, 'bounce-in--first');
       this.addClass(this._btnNo, 'bounce-in--second');
-      this.removeClass(this._btnYesBt);
-      this.removeClass(this._btnNoBt);
-      this.addClass(this._btnYesBt, 'bounce-in--first');
-      this.addClass(this._btnNoBt, 'bounce-in--second');
+      this.removeClass(this._btnYesPhone);
+      this.removeClass(this._btnNoPhone);
+      this.addClass(this._btnYesPhone, 'bounce-in--first');
+      this.addClass(this._btnNoPhone, 'bounce-in--second');
     } else {
       this.disabledBtns(BTN_WOKRING);
       this.removeClass(this._btnYes, 'bounce-in--first');
       this.removeClass(this._btnNo, 'bounce-in--second');
       this.addClass(this._btnYes, 'bounce-out--first');
       this.addClass(this._btnNo, 'bounce-out--second');
-      this.removeClass(this._btnYesBt, 'bounce-in--first');
-      this.removeClass(this._btnNoBt, 'bounce-in--second');
-      this.addClass(this._btnYesBt, 'bounce-out--first');
-      this.addClass(this._btnNoBt, 'bounce-out--second');
+      this.removeClass(this._btnYesPhone, 'bounce-in--first');
+      this.removeClass(this._btnNoPhone, 'bounce-in--second');
+      this.addClass(this._btnYesPhone, 'bounce-out--first');
+      this.addClass(this._btnNoPhone, 'bounce-out--second');
 
       setTimeout(() => {
-        this.removeClass(this.btnRollBt);
-        this.removeClass(this.btnHoldBt);
+        this.removeClass(this.btnRollPhone);
+        this.removeClass(this.btnHoldPhone);
         this.addClass(this._btnYes);
         this.addClass(this._btnNo);
         this.removeClass(this._btnYes, 'bounce-out--first');
         this.removeClass(this._btnNo, 'bounce-out--second');
-        this.addClass(this._btnYesBt);
-        this.addClass(this._btnNoBt);
-        this.removeClass(this._btnYesBt, 'bounce-out--first');
-        this.removeClass(this._btnNoBt, 'bounce-out--second');
+        this.addClass(this._btnYesPhone);
+        this.addClass(this._btnNoPhone);
+        this.removeClass(this._btnYesPhone, 'bounce-out--first');
+        this.removeClass(this._btnNoPhone, 'bounce-out--second');
       }, 700);
     }
   }
 
   displayWinner(activePlayer, draw, playingVsRobot) {
+    // Resets html content
     this._victoryHeadingStart.textContent = '';
     this._victoryHeadingMain.textContent = '';
     this._victoryHeadingEnd.textContent = '';
 
+    // 1) For playing 2 players
     if (!draw && !playingVsRobot) {
       document
         .querySelector(`.player--${activePlayer}`)
@@ -286,11 +268,13 @@ class GameView extends View {
       this._victoryHeadingEnd.textContent = `you won!`;
     }
 
+    // 2) For hyper/running pig mode after gameTimerEnded if it's a draw
     if (draw || playingVsRobot) {
       this._victoryHeadingStart.textContent = `No one wins,`;
       this._victoryHeadingMain.textContent = `it's a draw :(`;
     }
 
+    // 3) For playing vs Robot
     if (!draw && playingVsRobot) {
       document
         .querySelector(`.player--${activePlayer}`)
@@ -298,7 +282,7 @@ class GameView extends View {
       document
         .querySelector(`.player__winner--${activePlayer}`)
         .classList.remove('hidden');
-      if (model.state.scores[0] > model.state.scores[1]) {
+      if (model.state.scores[PLAYER] > model.state.scores[ROBOT]) {
         this._victoryHeadingStart.textContent = `Congratulations`;
         this._victoryHeadingMain.textContent = `you won!`;
       } else {
@@ -308,6 +292,7 @@ class GameView extends View {
       }
     }
 
+    // Manipulate these els
     this.addClass(this._playing0);
     this.addClass(this._playing1);
     this.addClass(this._diceLight, 'opacity-zero');
@@ -334,60 +319,60 @@ class GameView extends View {
   }
 
   initPlayerTimer(activePlayer) {
-    this.timeleftPlayerTimer = 5; // number is here so the func doesnt break at start
+    this._playerTimerNum = 5; // 5 secs
 
     const updatePlayerTimer = () => {
       document.querySelector(
         `.player__playing--${activePlayer}`
-      ).textContent = `playing for ${this.timeleftPlayerTimer} sec`;
-      this.timeleftPlayerTimer--;
+      ).textContent = `playing for ${this._playerTimerNum} sec`;
+      this._playerTimerNum--;
     };
-    updatePlayerTimer();
-    this.playerTimerID = setInterval(updatePlayerTimer, ONE_SEC);
+    updatePlayerTimer(); // Immediately run the func() so there is no delay
+    this.playerTimer = setInterval(updatePlayerTimer, ONE_SEC);
   }
 
   initGameTimer() {
     const updateGameTimer = () => {
-      const mins = Math.floor(this.timeleftGameTimer / 60);
-      let secs = this.timeleftGameTimer % 60;
+      const mins = Math.floor(this._gameTimerNum / 60);
+      let secs = this._gameTimerNum % 60;
       secs = secs < 10 ? '0' + secs : secs;
 
       this._timerNums.textContent = `0${mins}:${secs}`;
-      this.timeleftGameTimer--;
+      this._gameTimerNum--;
     };
-    updateGameTimer();
-    this.gameTimerID = setInterval(updateGameTimer, ONE_SEC);
+    updateGameTimer(); // Immediately run the func() so there is no delay
+    this.gameTimer = setInterval(updateGameTimer, ONE_SEC);
   }
 
   holdGameTimer() {
     const savedTime = this._timerNums.innerHTML;
     const mins = savedTime.slice(1, 2);
     const secs = savedTime.slice(3, 5);
-    this.timeleftGameTimer = mins * SIXTY_SEC + +secs;
+    this._gameTimerNum = mins * SIXTY_SEC + +secs;
   }
 
-  clearAllTimers() {
-    clearInterval(this.gameTimerID);
-    clearInterval(this.playerTimerID);
-    clearInterval(this.inactiveTimerID);
+  resetAllTimers() {
+    clearInterval(this.gameTimer);
+    clearInterval(this.playerTimer);
+    clearInterval(this.playerTimerEnded);
     clearInterval(this.runTimeoutID);
   }
 
-  clearTimers(...timersID) {
-    timersID.forEach(curTimer => clearInterval(curTimer));
+  resetTimers(...timers) {
+    timers.forEach(curTimer => clearInterval(curTimer));
   }
 
   disabledBtns(isDisabled) {
     if (isDisabled) {
       this.btnRoll.disabled = BTN_DISABLED;
       this.btnHold.disabled = BTN_DISABLED;
-      this.btnRollBt.disabled = BTN_DISABLED;
-      this.btnHoldBt.disabled = BTN_DISABLED;
+      this.btnRollPhone.disabled = BTN_DISABLED;
+      this.btnHoldPhone.disabled = BTN_DISABLED;
     } else {
       this.btnRoll.disabled = BTN_WOKRING;
       this.btnHold.disabled = BTN_WOKRING;
-      this.btnRollBt.disabled = BTN_WOKRING;
-      this.btnHoldBt.disabled = BTN_WOKRING;
+      this.btnRollPhone.disabled = BTN_WOKRING;
+      this.btnHoldPhone.disabled = BTN_WOKRING;
     }
   }
 
@@ -395,34 +380,25 @@ class GameView extends View {
     if (isDisabled) {
       this._btnYes.disabled = BTN_DISABLED;
       this._btnNo.disabled = BTN_DISABLED;
-      this._btnYesBt.disabled = BTN_DISABLED;
-      this._btnNoBt.disabled = BTN_DISABLED;
+      this._btnYesPhone.disabled = BTN_DISABLED;
+      this._btnNoPhone.disabled = BTN_DISABLED;
     } else {
       this._btnYes.disabled = BTN_WOKRING;
       this._btnNo.disabled = BTN_WOKRING;
-      this._btnYesBt.disabled = BTN_WOKRING;
-      this._btnNoBt.disabled = BTN_WOKRING;
+      this._btnYesPhone.disabled = BTN_WOKRING;
+      this._btnNoPhone.disabled = BTN_WOKRING;
     }
   }
 
-  clickedRollBtn() {
-    this.elToggleClass(this.btnRoll, 'clicked');
-    this.elToggleClass(this.btnRollBt, 'clicked');
-
-    setTimeout(() => {
-      this.elToggleClass(this.btnRoll, 'clicked');
-      this.elToggleClass(this.btnRollBt, 'clicked');
-    }, 100);
+  disabledBtn(isDisabled, btnsArr) {
+    btnsArr.forEach(curBtn => curBtn.disabled = isDisabled);
   }
 
-  clickedHoldBtn() {
-    this.elToggleClass(this.btnHold, 'clicked');
-    this.elToggleClass(this.btnHoldBt, 'clicked');
-
-    setTimeout(() => {
-      this.elToggleClass(this.btnHold, 'clicked');
-      this.elToggleClass(this.btnHoldBt, 'clicked');
-    }, 100);
+  clickedAnimation(...btns) {
+    btns.forEach(curBtn => {
+      this.elToggleClass(curBtn, 'clicked');
+      setTimeout(() => this.elToggleClass(curBtn, 'clicked'), ONE_MILISEC);
+    });
   }
 }
 

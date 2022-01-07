@@ -20,7 +20,7 @@ import {
   RUN_LIMIT,
   ONE_SEC,
   SECS_FOR_INACTIVE_TIMER,
-  SECS_FOR_GAME_TIMER,
+  SECS_GAME_TIMER,
   LOSE_CURSCORE,
   DICE_1,
   DICE_7,
@@ -30,6 +30,8 @@ import {
   PRIZE_CHANCES,
   BTN_DISABLED,
   BTN_WOKRING,
+  PLAYER,
+  ROBOT
 } from './config.js';
 
 const controlThemesDarkLight = function () {
@@ -73,10 +75,10 @@ const controlPause = function () {
   gameView.holdGameTimer();
 
   // 3) Clear timers
-  gameView.clearTimers(
-    gameView.gameTimerID,
-    gameView.playerTimerID,
-    gameView.inactiveTimerID
+  gameView.resetTimers(
+    gameView.gameTimer,
+    gameView.playerTimer,
+    gameView.playerTimerEnded
   );
 
   // 3.1) Reset robot interval
@@ -113,13 +115,14 @@ const controlSetGameMode = function () {
   }
 };
 
+
+// NOTE: Only for run pig mode start the timer
 const controlGameTimeout = function () {
-  // Only for run pig mode start the timer
   if (model.gameModes.run) {
     // 1) Init game timer
     gameView.initGameTimer();
 
-    const runTimeout = () => {
+    const runModeTimer = () => {
       // 2.1) Decide who's the winner or if it's a draw
       model.decideWinner();
 
@@ -134,20 +137,20 @@ const controlGameTimeout = function () {
       soundsView.play(soundsView.soundVictory);
 
       // 3.4) Clear all timers
-      gameView.clearAllTimers();
+      gameView.resetAllTimers();
 
       // 3.5) Reset robot interval
       clearInterval(model.state.rollingSequence);
     };
 
     // 4) Init timeout for game timer
-    gameView.timeoutID = setTimeout(runTimeout, SECS_FOR_GAME_TIMER * ONE_SEC);
+    gameView.gameTimerEnded = setTimeout(runModeTimer, SECS_GAME_TIMER * ONE_SEC);
   }
 };
 
 const controlPlayerInactive = function () {
   // 1) Clear timers
-  gameView.clearTimers(gameView.playerTimerID, gameView.inactiveTimerID);
+  gameView.resetTimers(gameView.playerTimer, gameView.playerTimerEnded);
 
   // 2) Init player timer
   gameView.initPlayerTimer(model.state.activePlayer);
@@ -174,13 +177,13 @@ const controlPlayerInactive = function () {
     soundsView.play(soundsView.soundWhoosh);
 
     // 3.6) Clear timers
-    gameView.clearTimers(gameView.playerTimerID, gameView.inactiveTimerID);
+    gameView.resetTimers(gameView.playerTimer, gameView.playerTimerEnded);
 
     // 3.7) Init player timer again
     gameView.initPlayerTimer(model.state.activePlayer);
 
     // 3.8) Init inactive timer again
-    gameView.inactiveTimerID = setInterval(
+    gameView.playerTimerEnded = setInterval(
       gameView.initInactiveTimer,
       SECS_FOR_INACTIVE_TIMER
     );
@@ -188,7 +191,7 @@ const controlPlayerInactive = function () {
 
   // 4) Init inactive timer func above
   // This func runs after the interval is finished. After interval is done player changes and interval resets (step .3)
-  gameView.inactiveTimerID = setInterval(
+  gameView.playerTimerEnded = setInterval(
     gameView.initInactiveTimer,
     SECS_FOR_INACTIVE_TIMER
   );
@@ -221,12 +224,13 @@ const controlRollingDice = function () {
     soundsView.play(soundsView.soundWhoosh);
 
     // 1.6) Clear player's timer and re-start
-    gameView.clearTimers(gameView.playerTimerID);
+    gameView.resetTimers(gameView.playerTimer);
     gameView.initPlayerTimer(model.state.activePlayer);
 
     // 1.7) If playing vs robot undisable btns to work
     if (model.state.playingVsRobot) {
-      gameView.disabledBtns(BTN_WOKRING);
+      // gameView.disabledBtns(BTN_WOKRING);
+      gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
     }
   }
 
@@ -277,17 +281,23 @@ const controlRollingDice = function () {
         clearInterval(model.state.rollingSequence);
 
         // Disable swap btns
-        gameView.disabledSwapBtns(BTN_DISABLED);
+        //gameView.disabledSwapBtns(BTN_DISABLED);
+        gameView.disabledBtn(BTN_DISABLED, gameView.swapBtns)
 
         setTimeout(() => {
           // Decide if is it worth to swap or not
-          gameView.decideSwap();
+          if (model.state.scores[PLAYER] > model.state.scores[ROBOT]) {
+            gameView.btnYesInvisible.click();
+          } else {
+            gameView.btnNoInvisible.click();
+          }
 
           // Run robot
           controllPlayingVsRobot();
 
           // Undisable swap btns
-          gameView.disabledSwapBtns(BTN_WOKRING);
+          //gameView.disabledSwapBtns(BTN_WOKRING);
+          gameView.disabledBtn(BTN_WOKRING, gameView.swapBtns);
         }, 1000);
       }
     }
@@ -307,10 +317,10 @@ const controlRollingDice = function () {
   controlPlayerInactive();
 
   // 7) Make hold btn to work
-  gameView.disabledBtns(BTN_WOKRING);
+  gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
 
   // 8) Hide game__start popup
-  gameView.addClass(gameView.gameStartPopup);
+  gameView.addClass(gameView.startMsg);
 };
 
 const controlHoldingScore = function () {
@@ -333,7 +343,7 @@ const controlHoldingScore = function () {
 
   // 4) If playing vs robot undisable btns
   if (model.state.playingVsRobot) {
-    gameView.disabledBtns(BTN_WOKRING);
+    gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
   }
 
   // 5) Check if player won game
@@ -345,7 +355,7 @@ const controlHoldingScore = function () {
       model.state.playingVsRobot
     );
     soundsView.play(soundsView.soundVictory);
-    gameView.clearAllTimers();
+    gameView.resetAllTimers();
     //
     //
     // 6) Check if player's score is less then -50
@@ -354,7 +364,7 @@ const controlHoldingScore = function () {
     model.switchActivePlayer();
     gameView.displayWinner(model.state.activePlayer);
     soundsView.play(soundsView.soundVictory);
-    gameView.clearAllTimers();
+    gameView.resetAllTimers();
     //
     //
     // 7) If none of that is true
@@ -372,7 +382,7 @@ const controlHoldingScore = function () {
     soundsView.play(soundsView.soundWhoosh);
 
     // 7.5) Clear player's timer and re-start
-    gameView.clearTimers(gameView.playerTimerID);
+    gameView.resetTimers(gameView.playerTimer);
     gameView.initPlayerTimer(model.state.activePlayer);
   }
 };
@@ -386,13 +396,13 @@ const controlResettingTheGame = function () {
   gameView.resetGameEls();
 
   // 3) Reset all timers
-  gameView.clearAllTimers();
+  gameView.resetAllTimers();
 
   // 3.1) Reset robot interval
   clearInterval(model.state.rollingSequence);
 
   // 4) Undisable btns
-  gameView.disabledBtns(BTN_WOKRING);
+  gameView.disabledBtn(BTN_WOKRING, gameView.gameBtns);
 };
 
 const controlLeaving = function () {
@@ -403,10 +413,10 @@ const controlLeaving = function () {
   gameView.holdGameTimer();
 
   // 3) Clear timers
-  gameView.clearTimers(
-    gameView.gameTimerID,
-    gameView.playerTimerID,
-    gameView.inactiveTimerID
+  gameView.resetTimers(
+    gameView.gameTimer,
+    gameView.playerTimer,
+    gameView.playerTimerEnded
   );
 };
 
@@ -425,7 +435,7 @@ const controlLeavingYes = function () {
   leavingView.elToggleClass(leavingView.leavingModal);
 
   // 2) Display menu window and hide game window
-  gameView.displayMenuWindow();
+  menuView.displayMenuWindow();
 
   // 3) Hide timer
   if (model.gameModes.run) {
@@ -442,7 +452,7 @@ const controllPlayingVsRobot = function () {
   // Dunno why but wihnout interval it doesn't work
   setInterval(() => {
     if (model.state.activePlayer === 1 && model.state.playingVsRobot) {
-      gameView.disabledBtns(BTN_DISABLED);
+      gameView.disabledBtn(BTN_DISABLED, gameView.gameBtns);
     }
   }, 0);
 
@@ -453,7 +463,7 @@ const controllPlayingVsRobot = function () {
 
       // 1) If game is won stop all timers
       if (model.state.scores[1] >= model.state.scoreLimit) {
-        gameView.clearAllTimers();
+        gameView.resetAllTimers();
         clearInterval(model.state.rollingSequence);
         return;
       }
@@ -463,7 +473,7 @@ const controllPlayingVsRobot = function () {
         if (model.state.activePlayer !== 1) return;
         if (model.state.scores[1] >= model.state.scoreLimit) return;
         soundsView.play(soundsView.soundClick);
-        gameView.clickedRollBtn();
+        gameView.clickedAnimation(gameView.btnRoll, gameView.btnRollPhone);
         controlRollingDice();
       }, 0);
 
@@ -476,7 +486,7 @@ const controllPlayingVsRobot = function () {
         model.state.curScore + model.state.scores[1] >= model.state.scoreLimit
       ) {
         soundsView.play(soundsView.soundWhoosh);
-        gameView.clickedHoldBtn();
+        gameView.clickedAnimation(gameView.btnHold, gameView.btnHoldPhone);
         controlHoldingScore();
       }
     }
@@ -492,24 +502,24 @@ const init = function () {
   pauseView.addHandlerClick(controlPause, pauseView.btnPause);
   pauseView.addHandlerClick(controlUnpause, pauseView.btnUnpause);
   gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnRoll);
-  gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnRollBt);
+  gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnRollPhone);
   gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnHold);
-  gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnHoldBt);
+  gameView.addHandlerClick(controllPlayingVsRobot, gameView.btnHoldPhone);
   gameView.addHandlerClick(controlRollingDice, gameView.btnRoll);
-  gameView.addHandlerClick(controlRollingDice, gameView.btnRollBt);
+  gameView.addHandlerClick(controlRollingDice, gameView.btnRollPhone);
   gameView.addHandlerClick(controlHoldingScore, gameView.btnHold);
-  gameView.addHandlerClick(controlHoldingScore, gameView.btnHoldBt);
+  gameView.addHandlerClick(controlHoldingScore, gameView.btnHoldPhone);
   leavingView.addHandlerClick(controlLeaving);
   leavingView.addHandlerClick(controlLeavingNo, leavingView.btnNo);
   leavingView.addHandlerClick(controlLeavingYes, leavingView.btnYes);
   
   gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRoll);
-  gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRollBt);
+  gameView.addHandlerInitGameTimer(controlGameTimeout, gameView.btnRollPhone);
   menuView.addHandlerModesSelecting(controlSetGameMode);
   
   gameView.handleVictoryBar(controlResettingTheGame);
   // Moved to controlRollingDice func & controlHoldingScore func
   // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRoll);
-  // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRollBt);
+  // gameView.addHandlerClick(controlPlayerInactive, gameView.btnRollPhone);
 };
 init();

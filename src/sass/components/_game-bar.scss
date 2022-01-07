@@ -9,8 +9,8 @@
   @include mq-landscape(phone-max) {top: 7rem}
   @include mq-landscape(phone-s) {top: 6rem}
 
-// SECTION: Bottom
-  &-bottom {
+// SECTION: Phone
+  &-phone {
     display: none; // hidden for pc & tablet screens
     background-color: $clr-primary;
 
@@ -60,7 +60,7 @@
     @include mq-max($tablet-b) {@include pos-Y(14.6rem)}
     @include mq-max($tablet-min) {@include pos-Y(16.2rem)}
 
-    // Hide for phone screen btns show in .game-bar-bottom class
+    // Hide for phone screen btns show in .game-bar-phone class
     @include mq-max($phone-max) {display: none}
     @include mq-landscape(phone-max) {display: none}
 
@@ -79,7 +79,7 @@
     
     @include mq-max($tablet-min) {gap: 2rem}
 
-    // Hide for phone screen btns show in .game-bar-bottom class
+    // Hide for phone screen btns show in .game-bar-phone class
     @include mq-max($phone-max) {display: none}
     @include mq-landscape(phone-max) {display: none}
   }

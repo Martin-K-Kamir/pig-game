@@ -17,14 +17,15 @@ export const SELECTED = true;
 export const PIG_DICE = 6;
 export const BIG_DICE = 7;
 export const RUN_DICE = 7;
-export const PIG_LIMIT = 100;
-export const BIG_LIMIT = 200;
+export const PIG_LIMIT = 10;
+export const BIG_LIMIT = 10;
 export const RUN_LIMIT = 999999;
 
+export const ONE_MILISEC = 100;
 export const ONE_SEC = 1000;
 export const SIXTY_SEC = 60;
 export const SECS_FOR_INACTIVE_TIMER = 6000;
-export const SECS_FOR_GAME_TIMER = 120;
+export const SECS_GAME_TIMER = 10;
 export const SECS_FOR_PLAYER_TIMER = 5;
 
 export const CLICK_AVAILABLE = true;
@@ -39,3 +40,8 @@ export const PERCENT_90 = 90;
 export const PERCENT_100 = 100;
 
 export const PRIZE_CHANCES = 3;
+
+export const PLAYER = 0;
+export const PLAYER_1 = 0;
+export const ROBOT = 1;
+export const PLAYER_2 = 1;

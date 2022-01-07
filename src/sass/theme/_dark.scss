@@ -32,8 +32,8 @@
 
   // fix for h2
   & .leaving-modal__heading,
-  & .victory-bar__heading--span-start,
-  & .victory-bar__heading--span-end {
+  & .victory-bar__heading--start,
+  & .victory-bar__heading--end {
     color: $clr-grey;
   }
 
@@ -58,7 +58,7 @@
     color: $clr-white-900;
   }
 
-  & .game-bar-bottom {
+  & .game-bar-phone {
     background-color: $clr-grey;
   }
 
