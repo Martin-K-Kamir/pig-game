@@ -13,7 +13,8 @@
     "@parcel/transformer-sass": "^2.0.1",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.127",
-    "parcel": "^2.0.1"
+    "parcel": "^2.0.1",
+    "parcel-plugin-static-files-copy": "^2.6.0"
   },
   "dependencies": {
     "@swc/helpers": "^0.3.2",
