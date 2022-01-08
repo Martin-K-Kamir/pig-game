@@ -204,10 +204,10 @@ class GameView extends View {
 
   displayDice(diceRoll) {
     this.removeClass(this._diceLight, 'opacity-zero');
-    this._diceLight.src = `src/img/dice-light-${diceRoll}.png`;
+    this._diceLight.src = `dice-light-${diceRoll}.png`;
 
     this.removeClass(this._diceDark, 'opacity-zero');
-    this._diceDark.src = `src/img/dice-dark-${diceRoll}.png`;
+    this._diceDark.src = `dice-dark-${diceRoll}.png`;
   }
 
   displaySwapBtns(isAllowed) {
