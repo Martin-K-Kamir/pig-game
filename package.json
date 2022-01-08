@@ -12,6 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.127",
     "parcel": "^2.0.1"
   },
   "dependencies": {
