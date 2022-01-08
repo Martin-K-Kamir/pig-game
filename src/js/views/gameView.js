@@ -208,7 +208,7 @@ class GameView extends View {
       this._diceDark.src = `dice-dark-${diceRoll}.png`;
     } else {
       this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.png`;
+      this._diceLight.src = `dice-light-${diceRoll}.svg`;
     }
   }
 
