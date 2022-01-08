@@ -17,6 +17,7 @@
     "parcel": "^2.0.1"
   },
   "dependencies": {
+    "@swc/helpers": "^0.3.2",
     "rfs": "^9.0.6"
   }
 }
