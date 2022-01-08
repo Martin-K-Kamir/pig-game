@@ -10,6 +10,8 @@ export const HIDE_BTNS = false;
 export const BTN_WOKRING = false;
 export const BTN_DISABLED = true;
 
+export const ROBOT_CURSCORE_MIN_LIMIT = 10;
+export const ROBOT_CURSCORE_MAX_LIMIT = 25;
 export const LOOSING_LIMIT = -50;
 
 export const UNSELECTED = false;
@@ -17,15 +19,16 @@ export const SELECTED = true;
 export const PIG_DICE = 6;
 export const BIG_DICE = 7;
 export const RUN_DICE = 7;
-export const PIG_LIMIT = 10;
-export const BIG_LIMIT = 10;
+export const PIG_LIMIT = 100;
+export const BIG_LIMIT = 200;
 export const RUN_LIMIT = 999999;
 
 export const ONE_MILISEC = 100;
 export const ONE_SEC = 1000;
 export const SIXTY_SEC = 60;
+export const SECS_FOR_ROBOT_CLICKING = 800;
 export const SECS_FOR_INACTIVE_TIMER = 6000;
-export const SECS_GAME_TIMER = 10;
+export const SECS_GAME_TIMER = 120;
 export const SECS_FOR_PLAYER_TIMER = 5;
 
 export const CLICK_AVAILABLE = true;

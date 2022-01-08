@@ -28,7 +28,7 @@ class GameView extends View {
   playerTimer;
   // NOTE: Stores showen number displayed on gameTimer/playerTimer
   _playerTimerNum; // 5 secs
-  _gameTimerNum = SECS_GAME_TIMER; // 2 mins
+  gameTimerNum = SECS_GAME_TIMER; // 2 mins
 
   timerBox = document.querySelector('.timer');
   _timerNums = document.querySelector('.timer__counter');
@@ -174,7 +174,7 @@ class GameView extends View {
     this._score0.textContent = 0;
     this._score1.textContent = 0;
     this._clickOnce = CLICK_AVAILABLE;
-    this._gameTimerNum = SECS_GAME_TIMER;
+    this.gameTimerNum = SECS_GAME_TIMER;
     this._playerTimerNum = SECS_FOR_PLAYER_TIMER;
     this._timerNums.textContent = '04:00';
     this._playerName0.textContent = 'Player 1';
@@ -199,7 +199,7 @@ class GameView extends View {
       this.removeClass(this._victoryBar, 'bounce-out--first');
       this.removeClass(this._victoryBar, 'opacity-zero');
       this.addClass(this._victoryBar);
-    }, 300);
+    }, ONE_MILISEC * 3);
   }
 
   displayDice(diceRoll) {
@@ -210,9 +210,9 @@ class GameView extends View {
     this._diceDark.src = `src/img/dice-dark-${diceRoll}.png`;
   }
 
-  displaySwapBtns(showBtns) {
-    if (showBtns) {
-      this.disabledBtnss(BTN_DISABLED, this.gameBtns);
+  displaySwapBtns(isAllowed) {
+    if (isAllowed) {
+      this.disabledBtns(BTN_DISABLED, this.gameBtns);
       this.addClass(this.btnRollPhone);
       this.addClass(this.btnHoldPhone);
       this.removeClass(this._btnYes);
@@ -224,7 +224,7 @@ class GameView extends View {
       this.addClass(this._btnYesPhone, 'bounce-in--first');
       this.addClass(this._btnNoPhone, 'bounce-in--second');
     } else {
-      this.disabledBtnss(BTN_WOKRING, this.gameBtns);
+      this.disabledBtns(BTN_WOKRING, this.gameBtns);
       this.removeClass(this._btnYes, 'bounce-in--first');
       this.removeClass(this._btnNo, 'bounce-in--second');
       this.addClass(this._btnYes, 'bounce-out--first');
@@ -245,7 +245,7 @@ class GameView extends View {
         this.addClass(this._btnNoPhone);
         this.removeClass(this._btnYesPhone, 'bounce-out--first');
         this.removeClass(this._btnNoPhone, 'bounce-out--second');
-      }, 700);
+      }, ONE_MILISEC * 7);
     }
   }
 
@@ -254,6 +254,7 @@ class GameView extends View {
     this._victoryHeadingStart.textContent = '';
     this._victoryHeadingMain.textContent = '';
     this._victoryHeadingEnd.textContent = '';
+
 
     // 1) For playing 2 players
     if (!draw && !playingVsRobot) {
@@ -318,7 +319,7 @@ class GameView extends View {
     this._score1.textContent = scorePlayer1;
   }
 
-  initPlayerTimer(activePlayer) {
+  playerTimerCounting(activePlayer) {
     this._playerTimerNum = 5; // 5 secs
 
     const updatePlayerTimer = () => {
@@ -331,14 +332,14 @@ class GameView extends View {
     this.playerTimer = setInterval(updatePlayerTimer, ONE_SEC);
   }
 
-  initGameTimer() {
+  gameTimerCounting() {
     const updateGameTimer = () => {
-      const mins = Math.floor(this._gameTimerNum / 60);
-      let secs = this._gameTimerNum % 60;
+      const mins = Math.floor(this.gameTimerNum / 60);
+      let secs = this.gameTimerNum % 60;
       secs = secs < 10 ? '0' + secs : secs;
 
       this._timerNums.textContent = `0${mins}:${secs}`;
-      this._gameTimerNum--;
+      this.gameTimerNum--;
     };
     updateGameTimer(); // Immediately run the func() so there is no delay
     this.gameTimer = setInterval(updateGameTimer, ONE_SEC);
@@ -353,15 +354,15 @@ class GameView extends View {
     const secs = savedTime.slice(3, 5);
 
     // 3) Stores secs as number
-    // Ex: 2(mins) * 60(secs) + 41(secs) = 120(secs) + 41(secs) = 161 secs
-    this._gameTimerNum = mins * SIXTY_SEC + +secs;
+    // Ex: 2(mins) * 60(secs) + 41(secs) = 120(secs) + 41(secs) = 161 secs = 02:41
+    this.gameTimerNum = mins * SIXTY_SEC + +secs;
   }
 
   resetAllTimers() {
     clearInterval(this.gameTimer);
     clearInterval(this.playerTimer);
     clearInterval(this.playerTimerEnded);
-    clearInterval(this.gameTimerEnded);
+    clearTimeout(this.gameTimerEnded);
   }
 
   resetTimers(...timers) {
@@ -372,6 +373,7 @@ class GameView extends View {
     btnsArr.forEach(curBtn => curBtn.disabled = isDisabled);
   }
 
+  // For Robot when he rolls dice so there is an animation on btnRoll
   clickedAnimation(...btns) {
     btns.forEach(curBtn => {
       this.elToggleClass(curBtn, 'clicked');

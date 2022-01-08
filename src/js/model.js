@@ -1,16 +1,16 @@
 export const state = {};
 
 export const initState = function (diceSides, scoreLimit) {
-  state.diceSides = diceSides;
-  state.scoreLimit = scoreLimit;
-  state.scores = [0, 0];
+  state.diceSides = diceSides; // How many sides have the dice. 6 sides for Pig mode, 7 sides for Big/Hyper mode
+  state.scoreLimit = scoreLimit; // Num limitations to win the game
+  state.scores = [0, 0]; // Scores for player 1 and player 2/Robot
   state.curScore = 0;
-  state.activePlayer = 0;
-  state.diceRoll = 0;
-  state.percentages = 0;
-  state.prizeChances = 0;
-  state.decisionRange = 0;
-  state.rollingSequence = null;
+  state.activePlayer = 0; // Which player is currently playing
+  state.diceRoll = 0; // Num of the dice rolled
+  state.percentages = 0; // To decide if there will be gaining curScore, losing score, swapping
+  state.prizeChances = 0; // To decide how much player will gain/lose
+  state.decisionRange = 0; // For Robot at which point he should hold
+  state.rollingSequence = null; // Interval for Robot to roll dice
 };
 
 export const resetState = function () {
@@ -56,7 +56,7 @@ export const generateDecisionRange = function (num) {
 
 export const switchActivePlayer = function () {
   state.curScore = 0;
-  state.activePlayer = state.activePlayer === 0 ? 1 : 0;
+  state.activePlayer = state.activePlayer === 0 ? 1 : 0; // if playerActive is 1 switch to 0 and the other way
 };
 
 export const addCurScore = function () {
@@ -83,7 +83,7 @@ export const takeScore = function () {
 };
 
 export const diceRollSwap = function () {
-  state.diceRoll = `swap`;
+  state.diceRoll = `swap`; // just to display swap img on dice
 };
 
 export const swapScores = function () {
