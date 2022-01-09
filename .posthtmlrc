@@ -1,2 +1,4 @@
-{ "recognizeSelfClosing": true, "lowerCaseAttributeNames": false }
-
+{
+"recognizeSelfClosing": true,
+"lowerCaseAttributeNames": false
+}
