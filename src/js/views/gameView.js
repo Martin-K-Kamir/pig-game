@@ -322,7 +322,7 @@ class GameView extends View {
   }
 
   playerTimerCounting(activePlayer) {
-    this._playerTimerNum = 5; // 5 secs
+    this._playerTimerNum = 10; // 10 secs
 
     const updatePlayerTimer = () => {
       document.querySelector(

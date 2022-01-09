@@ -27,9 +27,9 @@ export const ONE_MILISEC = 100;
 export const ONE_SEC = 1000;
 export const SIXTY_SEC = 60;
 export const SECS_FOR_ROBOT_CLICKING = 800;
-export const SECS_FOR_INACTIVE_TIMER = 6000;
+export const SECS_FOR_INACTIVE_TIMER = 10000;
 export const SECS_GAME_TIMER = 120;
-export const SECS_FOR_PLAYER_TIMER = 5;
+export const SECS_FOR_PLAYER_TIMER = 10;
 
 export const CLICK_AVAILABLE = true;
 export const CLICK_UNAVAILABLE = false;
