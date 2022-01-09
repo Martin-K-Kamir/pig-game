@@ -205,10 +205,10 @@ class GameView extends View {
   displayDice(diceRoll) {
     if(this.body.classList.contains('dark-theme')) {
       this.removeClass(this._diceDark, 'opacity-zero');
-      this._diceDark.src = `dice-dark-${diceRoll}.svg`;
+      this._diceDark.src = `dice-dark-${diceRoll}.png`;
     } else {
       this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.svg`;
+      this._diceLight.src = `dice-light-${diceRoll}.png`;
     }
   }
 
