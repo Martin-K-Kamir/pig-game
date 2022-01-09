@@ -23,7 +23,7 @@
       @include animation(icon-throw);
       @include mq-max($phone-max) {
         animation-play-state: paused;
-        transform: translate(15rem, 2rem) !important;
+        transform: translate(0, 0) !important;
       }
 
       & img {
@@ -64,9 +64,9 @@
         @include animation(text-slide, 0.3s, 0.001s, backwards);
         @include mq-max($phone-max) {
           opacity: 1 !important;
-          animation-play-state: paused !important;
+          animation-play-state: paused;
+          transform: translateX(0) !important;
         }
-
       }
 
       &-bottom {
@@ -74,7 +74,7 @@
         @include mq-max($phone-max) {
           opacity: 1 !important;
           animation-play-state: paused;
-          transform: translateX(-2rem) !important;
+          transform: translateX(0) !important;
         }
       }
     }
