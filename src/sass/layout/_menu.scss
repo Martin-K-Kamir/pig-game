@@ -21,12 +21,18 @@
     
     &--icon {
       @include animation(icon-throw);
-      @include mq-max($phone-max) {animation-play-state: paused}
+      @include mq-max($phone-max) {
+        opacity: 1;
+        animation-play-state: paused
+      }
 
       & img {
         width: 12.5rem;
         @include animation(icon-rotate);
-        @include mq-max($phone-max) {animation-play-state: paused}
+        @include mq-max($phone-max) {
+          opacity: 1;
+          animation-play-state: paused
+        }
 
         @include mq-max($phone-m) {width: 27vw}
         @include mq-landscape(phone-max) {width: 14vw}
@@ -55,14 +61,19 @@
 
       &-top {
         @include animation(text-slide, 0.3s, 0.001s, backwards);
-        @include mq-max($phone-max) {animation-play-state: paused}
+        @include mq-max($phone-max) {
+          opacity: 1;
+          animation-play-state: paused
+        }
 
       }
 
       &-bottom {
         @include animation(text-slide, 0.2s, 0.15s, backwards);
-        @include mq-max($phone-max) {animation-play-state: paused}
-
+        @include mq-max($phone-max) {
+          opacity: 1;
+          animation-play-state: paused
+        }
       }
     }
   }
