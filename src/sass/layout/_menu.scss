@@ -22,16 +22,17 @@
     &--icon {
       @include animation(icon-throw);
       @include mq-max($phone-max) {
-        opacity: 1 !important;
         animation-play-state: paused;
+        transform: translate(15rem, 2rem) !important;
       }
 
       & img {
         width: 12.5rem;
         @include animation(icon-rotate);
         @include mq-max($phone-max) {
-          opacity: 1;
-          animation-play-state: paused
+          opacity: 1 !important;
+          animation-play-state: paused;
+          transform: rotate(0deg) !important;
         }
 
         @include mq-max($phone-m) {width: 27vw}
@@ -63,7 +64,7 @@
         @include animation(text-slide, 0.3s, 0.001s, backwards);
         @include mq-max($phone-max) {
           opacity: 1 !important;
-          animation-play-state: paused;
+          animation-play-state: paused !important;
         }
 
       }
@@ -73,6 +74,7 @@
         @include mq-max($phone-max) {
           opacity: 1 !important;
           animation-play-state: paused;
+          transform: translateX(-2rem) !important;
         }
       }
     }
@@ -90,7 +92,6 @@
 
 @keyframes icon-throw {
   0% {
-    opacity: 0;
     transform: translate(-15rem, -2rem);
   }
 }
