@@ -22,8 +22,8 @@
     &--icon {
       @include animation(icon-throw);
       @include mq-max($phone-max) {
-        opacity: 1;
-        animation-play-state: paused
+        opacity: 1 !important;
+        animation-play-state: paused;
       }
 
       & img {
@@ -62,8 +62,8 @@
       &-top {
         @include animation(text-slide, 0.3s, 0.001s, backwards);
         @include mq-max($phone-max) {
-          opacity: 1;
-          animation-play-state: paused
+          opacity: 1 !important;
+          animation-play-state: paused;
         }
 
       }
@@ -71,8 +71,8 @@
       &-bottom {
         @include animation(text-slide, 0.2s, 0.15s, backwards);
         @include mq-max($phone-max) {
-          opacity: 1;
-          animation-play-state: paused
+          opacity: 1 !important;
+          animation-play-state: paused;
         }
       }
     }
@@ -90,6 +90,7 @@
 
 @keyframes icon-throw {
   0% {
+    opacity: 0;
     transform: translate(-15rem, -2rem);
   }
 }
