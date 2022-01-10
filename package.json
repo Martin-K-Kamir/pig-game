@@ -16,6 +16,17 @@
     "parcel": "^2.0.1",
     "parcel-plugin-static-files-copy": "^2.6.0"
   },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "overrideBrowserslist": [
+          "> 1%",
+          "last 4 versions",
+          "ie >= 9"
+        ]
+      }
+    }
+  },
   "dependencies": {
     "@swc/helpers": "^0.3.2",
     "rfs": "^9.0.6"
