@@ -15,6 +15,11 @@
     @include menus-landscape-size;
   }
 
+  // for IE
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    display: none;
+  }
+
 // SECTION: Logo
   &__logo {
     @include flex-align-center(2.5rem);

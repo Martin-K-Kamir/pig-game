@@ -1,0 +1,15 @@
+.not-supported-modal {
+    display: none;
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    display: block;
+    z-index: layer('modal');
+    @include modal-bg;
+    @include abs-center;
+  }
+
+  &__heading {
+    color: $clr-white;
+    font-size: $fs-heading-max;
+  }
+}
