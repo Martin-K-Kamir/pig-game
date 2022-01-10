@@ -2,7 +2,7 @@
   "name": "pig-game",
   "version": "1.0.0",
   "description": "dice game",
-  "browserslist": "> 0.5%, last 5 versions, not dead",
+  "browserslist": "> 0.1%, last 5 versions, not dead",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
