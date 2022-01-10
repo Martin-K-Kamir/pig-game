@@ -31,6 +31,10 @@ p, li {
   @include giv-color($clr-white, $clr-primary);
   @include flex-col-center;
   @include mq-landscape(phone-max) {display: block;}
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  background-color: red !important;  
+  }
 }
 
 
