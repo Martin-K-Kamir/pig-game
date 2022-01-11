@@ -39,6 +39,9 @@ import {
 } from './config.js';
 
 const controlThemesDarkLight = function () {
+  gameView.updateDice(model.state.diceRoll);
+
+
   // 1) Toggle dark/light themes classes on body and in setTheme
   themesView.toggleThemes();
 

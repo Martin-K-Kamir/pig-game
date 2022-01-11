@@ -477,6 +477,7 @@ var _viewJs = require("./views/View.js");
 var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
 var _configJs = require("./config.js");
 const controlThemesDarkLight = function() {
+    _gameViewJsDefault.default.updateDice(_modelJs.state.diceRoll);
     // 1) Toggle dark/light themes classes on body and in setTheme
     _themesViewJsDefault.default.toggleThemes();
     // 2) Toggle icon and note els on btn
@@ -1346,6 +1347,13 @@ class GameView extends _viewJsDefault.default {
             this.removeClass(this._diceLight, 'opacity-zero');
             this._diceLight.src = `dice-light-${diceRoll}.png`;
         }
+    }
+    // refactor with displayDice()
+    updateDice(diceRoll1) {
+        this.removeClass(this._diceDark, 'opacity-zero');
+        this._diceDark.src = `dice-dark-${diceRoll1}.png`;
+        this.removeClass(this._diceLight, 'opacity-zero');
+        this._diceLight.src = `dice-light-${diceRoll1}.png`;
     }
     displaySwapBtns(isAllowed) {
         if (isAllowed) {

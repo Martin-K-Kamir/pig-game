@@ -203,13 +203,24 @@ class GameView extends View {
   }
 
   displayDice(diceRoll) {
-    if(this.body.classList.contains('dark-theme')) {
+    if (this.body.classList.contains('dark-theme')) {
       this.removeClass(this._diceDark, 'opacity-zero');
       this._diceDark.src = `dice-dark-${diceRoll}.png`;
     } else {
       this.removeClass(this._diceLight, 'opacity-zero');
       this._diceLight.src = `dice-light-${diceRoll}.png`;
     }
+  }
+
+  // refactor with displayDice()
+  updateDice(diceRoll) {
+    
+      this.removeClass(this._diceDark, 'opacity-zero');
+      this._diceDark.src = `dice-dark-${diceRoll}.png`;
+
+      this.removeClass(this._diceLight, 'opacity-zero');
+      this._diceLight.src = `dice-light-${diceRoll}.png`;
+
   }
 
   displaySwapBtns(isAllowed) {
@@ -256,7 +267,6 @@ class GameView extends View {
     this._victoryHeadingStart.textContent = '';
     this._victoryHeadingMain.textContent = '';
     this._victoryHeadingEnd.textContent = '';
-
 
     // 1) For playing 2 players
     if (!draw && !playingVsRobot) {
@@ -372,7 +382,7 @@ class GameView extends View {
   }
 
   disabledBtns(isDisabled, btnsArr) {
-    btnsArr.forEach(curBtn => curBtn.disabled = isDisabled);
+    btnsArr.forEach(curBtn => (curBtn.disabled = isDisabled));
   }
 
   // For Robot when he rolls dice so there is an animation on btnRoll
