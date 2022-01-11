@@ -66,6 +66,7 @@
       }
 
       &-top {
+        
         @include animation(text-slide, 0.3s, 0.001s, backwards);
         @include mq-max($phone-max) {
           opacity: 1 !important;

@@ -10,6 +10,10 @@
   @include mq-max($phone-max) {@include abs($t: 1rem, $r: 1.2rem)}
   @include mq-landscape(phone-max) {@include abs($t: 1rem, $r: 2rem)}
 
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      display: none;
+  }
+
   // For smaller phone screens break in half btns
   & .btn-round:first-child {
     margin-left: auto;
@@ -96,12 +100,15 @@
 //// 3. Run some html, css, js tests
 //// 4. Deploy testing version on netlify
 // 5. Try all browsers
-//   a) IE add prefixes and try support IE if not make some modal 
+////   a) IE add prefixes and try support IE if not make some modal 
 //   b) mackbook safari
-//   c) fix for firefox logo color
-//   d) 
+////   c) fix for firefox logo color
 // 6. Try older versions
-// 7. Phones, Notebooks
-// 8. Check again HTML, SCSS, JS 
+// 7. Add favicon
+// 8. Phones, Notebooks
+// 9. Check again HTML, SCSS, JS 
+// - JS check bug for not hiding game start msg on click and not starting the timer
+// - Add func() for dice when changing themes
+// - refactor/clean scss
 // => READY TO DEPLOY 
 // => PROJECT IS FINISHED

@@ -30,6 +30,12 @@
     color: $clr-primary-800;
   }
 
+  // & .menu__logo--text {
+  //   @-moz-document url-prefix() {
+  //     color: $clr-white;
+  //   }
+  // }
+
   // fix for h2
   & .leaving-modal__heading,
   & .victory-bar__heading--start,
@@ -46,6 +52,10 @@
   & .menu__logo--icon img {
     filter: invert(75%) sepia(3%) saturate(3990%) hue-rotate(300deg)
       brightness(300%) contrast(89%);
+
+    @-moz-document url-prefix() {
+      filter: invert(75.2%) sepia(3%) saturate(3482%) hue-rotate(343deg) brightness(300.6%) contrast(89%);
+    }
   }
 
   & .player__score,

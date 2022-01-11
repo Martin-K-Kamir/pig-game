@@ -1,17 +1,50 @@
 .not-supported-modal {
-    display: none;
+  display: none;
+
+  z-index: layer('modal');
+  padding: $p-m;
+  border-radius: $border-radius-default;
+  background-color: $clr-white;
+  box-shadow: $box-shadow-medium;
+  width: 80rem;
+  @include abs-center;
 
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     display: block;
-    z-index: layer('modal');@include modal-bg;@include abs-center;
+   
+  }
+
+  &__warning {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    
+    &-icon {
+      fill: $clr-grey;
+      @include size-same(5rem);
+    }
   }
 
   &__heading {
-    display: none;
+    color: $clr-grey;
+    font-size: $fs-heading-s;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-      color: $clr-white;
-      font-size: $fs-heading-max;
-    }
+  &__divider {
+    @include divider(1rem);
+    background-color: $clr-grey;
+  }
+
+  &__text {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    font-weight: $fw-m;
+    color: $clr-black-500;
   }
 }

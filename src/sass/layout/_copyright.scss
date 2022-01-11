@@ -7,6 +7,10 @@
     display: none;
   }
 
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      display: none;
+  }
+
   &__text {
     width: 45ch;
     text-align: center;
