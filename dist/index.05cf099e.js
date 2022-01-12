@@ -476,8 +476,7 @@ var _menuViewJsDefault = parcelHelpers.interopDefault(_menuViewJs);
 var _viewJs = require("./views/View.js");
 var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
 var _configJs = require("./config.js");
-const controlThemesDarkLight = function() {
-    _gameViewJsDefault.default.updateDice(_modelJs.state.diceRoll);
+const controlThemes = function() {
     // 1) Toggle dark/light themes classes on body and in setTheme
     _themesViewJsDefault.default.toggleThemes();
     // 2) Toggle icon and note els on btn
@@ -486,6 +485,8 @@ const controlThemesDarkLight = function() {
     _themesViewJsDefault.default.arrToggleClass(_themesViewJsDefault.default.diceEls);
     // 4) Set to localStorage if dark-theme is on/off
     _modelJs.setLocalStorage(_themesViewJsDefault.default.localStorageName, _themesViewJsDefault.default.setTheme, _configJs.THEME_LIGHT);
+    // 5) Update dice only if game is running
+    if (_modelJs.state.gameIsRunning) _gameViewJsDefault.default.displayDice(_modelJs.state.diceRoll, _configJs.UPDATE_DICE);
 };
 const controlSoundsOnOff = function() {
     // 1) Toggle icon and note elements on btn
@@ -667,6 +668,8 @@ const controlRollingDice = function() {
     }
     // 8) Hide .game__start msg
     _gameViewJsDefault.default.addClass(_gameViewJsDefault.default.startMsg);
+    // 9) Sets to the state obj that game is running
+    _modelJs.state.gameIsRunning = true;
 };
 const controlHoldingScore = function() {
     // 1) Update curScore to 0 for active player
@@ -800,9 +803,9 @@ const controllPlayingVsRobot = function() {
     }, _configJs.SECS_FOR_ROBOT_CLICKING);
 };
 const init = function() {
-    _themesViewJsDefault.default.addHandlerLoad(controlThemesDarkLight);
+    _themesViewJsDefault.default.addHandlerLoad(controlThemes);
     _soundsViewJsDefault.default.addHandlerLoad(controlSoundsOnOff);
-    _themesViewJsDefault.default.addHandlerClick(controlThemesDarkLight);
+    _themesViewJsDefault.default.addHandlerClick(controlThemes);
     _soundsViewJsDefault.default.addHandlerClick(controlSoundsOnOff);
     _pauseViewJsDefault.default.addHandlerClick(controlPause, _pauseViewJsDefault.default.btnPause);
     _pauseViewJsDefault.default.addHandlerClick(controlUnpause, _pauseViewJsDefault.default.btnUnpause);
@@ -879,6 +882,7 @@ const initState = function(diceSides, scoreLimit) {
     state.prizeChances = 0; // To decide how much player will gain/lose
     state.decisionRange = 0; // For Robot at which point he should hold
     state.rollingSequence = null; // Interval for Robot to roll dice
+    state.gameIsRunning = 0;
 };
 const resetState = function() {
     state.scores = [
@@ -890,6 +894,7 @@ const resetState = function() {
     state.diceRoll = 0;
     state.percentages = 0;
     state.prizeChances = 0;
+    state.gameIsRunning = 0;
 };
 const gameModes = {
     pig: false,
@@ -1073,6 +1078,8 @@ parcelHelpers.export(exports, "BTN_WOKRING", ()=>BTN_WOKRING
 );
 parcelHelpers.export(exports, "BTN_DISABLED", ()=>BTN_DISABLED
 );
+parcelHelpers.export(exports, "UPDATE_DICE", ()=>UPDATE_DICE
+);
 parcelHelpers.export(exports, "ROBOT_CURSCORE_MIN_LIMIT", ()=>ROBOT_CURSCORE_MIN_LIMIT
 );
 parcelHelpers.export(exports, "ROBOT_CURSCORE_MAX_LIMIT", ()=>ROBOT_CURSCORE_MAX_LIMIT
@@ -1143,6 +1150,7 @@ const SHOW_BTNS = true;
 const HIDE_BTNS = false;
 const BTN_WOKRING = false;
 const BTN_DISABLED = true;
+const UPDATE_DICE = true;
 const ROBOT_CURSCORE_MIN_LIMIT = 10;
 const ROBOT_CURSCORE_MAX_LIMIT = 25;
 const LOOSING_LIMIT = -50;
@@ -1339,21 +1347,20 @@ class GameView extends _viewJsDefault.default {
             this.addClass(this._victoryBar);
         }, _configJs.ONE_MILISEC * 3);
     }
-    displayDice(diceRoll) {
-        if (this.body.classList.contains('dark-theme')) {
-            this.removeClass(this._diceDark, 'opacity-zero');
-            this._diceDark.src = `dice-dark-${diceRoll}.png`;
-        } else {
-            this.removeClass(this._diceLight, 'opacity-zero');
-            this._diceLight.src = `dice-light-${diceRoll}.png`;
-        }
-    }
-    // refactor with displayDice()
-    updateDice(diceRoll1) {
+    _renderDiceDark(diceRoll) {
         this.removeClass(this._diceDark, 'opacity-zero');
-        this._diceDark.src = `dice-dark-${diceRoll1}.png`;
+        this._diceDark.src = `dice-dark-${diceRoll}.png`;
+    }
+    _renderDiceLight(diceRoll1) {
         this.removeClass(this._diceLight, 'opacity-zero');
         this._diceLight.src = `dice-light-${diceRoll1}.png`;
+    }
+    displayDice(diceRoll2, updateDice) {
+        if (this.body.classList.contains('dark-theme')) this._renderDiceDark(diceRoll2);
+        else if (updateDice) {
+            this._renderDiceDark(diceRoll2);
+            this._renderDiceLight(diceRoll2);
+        } else this._renderDiceLight(diceRoll2);
     }
     displaySwapBtns(isAllowed) {
         if (isAllowed) {

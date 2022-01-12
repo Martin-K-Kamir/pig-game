@@ -202,25 +202,25 @@ class GameView extends View {
     }, ONE_MILISEC * 3);
   }
 
-  displayDice(diceRoll) {
-    if (this.body.classList.contains('dark-theme')) {
-      this.removeClass(this._diceDark, 'opacity-zero');
-      this._diceDark.src = `dice-dark-${diceRoll}.png`;
-    } else {
-      this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.png`;
-    }
+  _renderDiceDark(diceRoll) {
+    this.removeClass(this._diceDark, 'opacity-zero');
+    this._diceDark.src = `dice-dark-${diceRoll}.png`;
   }
 
-  // refactor with displayDice()
-  updateDice(diceRoll) {
-    
-      this.removeClass(this._diceDark, 'opacity-zero');
-      this._diceDark.src = `dice-dark-${diceRoll}.png`;
+  _renderDiceLight(diceRoll) {
+    this.removeClass(this._diceLight, 'opacity-zero');
+    this._diceLight.src = `dice-light-${diceRoll}.png`;
+  }
 
-      this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.png`;
-
+  displayDice(diceRoll, updateDice) {
+    if (this.body.classList.contains('dark-theme')) {
+      this._renderDiceDark(diceRoll);
+    } else if (updateDice) {
+      this._renderDiceDark(diceRoll);
+      this._renderDiceLight(diceRoll);
+    } else {
+      this._renderDiceLight(diceRoll);
+    }
   }
 
   displaySwapBtns(isAllowed) {
