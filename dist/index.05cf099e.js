@@ -80,11 +80,13 @@
     return cache[name].exports;
 
     function localRequire(x) {
-      return newRequire(localRequire.resolve(x));
+      var res = localRequire.resolve(x);
+      return res === false ? {} : newRequire(res);
     }
 
     function resolve(x) {
-      return modules[name][1][x] || x;
+      var id = modules[name][1][x];
+      return id != null ? id : x;
     }
   }
 
@@ -140,13 +142,25 @@
       this[globalName] = mainExports;
     }
   }
-})({"kS06O":[function(require,module,exports) {
+})({"19Ls1":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
 module.bundle.HMR_BUNDLE_ID = "51cf58d705cf099e";
 "use strict";
+function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _iterableToArray(iter) {
+    if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
     if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
@@ -406,6 +420,16 @@ function hmrApply(bundle, asset) {
     else if (asset.type === 'js') {
         var deps = asset.depsByBundle[bundle.HMR_BUNDLE_ID];
         if (deps) {
+            if (modules[asset.id]) {
+                // Remove dependencies that are removed and will become orphaned.
+                // This is necessary so that if the asset is added back again, the cache is gone, and we prevent a full page reload.
+                var oldDeps = modules[asset.id][1];
+                for(var dep in oldDeps)if (!deps[dep] || deps[dep] !== oldDeps[dep]) {
+                    var id = oldDeps[dep];
+                    var parents = getParents(module.bundle.root, id);
+                    if (parents.length === 1) hmrDelete(module.bundle.root, id);
+                }
+            }
             var fn = new Function('require', 'module', 'exports', asset.output);
             modules[asset.id] = [
                 fn,
@@ -414,7 +438,48 @@ function hmrApply(bundle, asset) {
         } else if (bundle.parent) hmrApply(bundle.parent, asset);
     }
 }
+function hmrDelete(bundle, id1) {
+    var modules = bundle.modules;
+    if (!modules) return;
+    if (modules[id1]) {
+        // Collect dependencies that will become orphaned when this module is deleted.
+        var deps = modules[id1][1];
+        var orphans = [];
+        for(var dep in deps){
+            var parents = getParents(module.bundle.root, deps[dep]);
+            if (parents.length === 1) orphans.push(deps[dep]);
+        } // Delete the module. This must be done before deleting dependencies in case of circular dependencies.
+        delete modules[id1];
+        delete bundle.cache[id1]; // Now delete the orphans.
+        orphans.forEach(function(id) {
+            hmrDelete(module.bundle.root, id);
+        });
+    } else if (bundle.parent) hmrDelete(bundle.parent, id1);
+}
 function hmrAcceptCheck(bundle, id, depsByBundle) {
+    if (hmrAcceptCheckOne(bundle, id, depsByBundle)) return true;
+     // Traverse parents breadth first. All possible ancestries must accept the HMR update, or we'll reload.
+    var parents = getParents(module.bundle.root, id);
+    var accepted = false;
+    while(parents.length > 0){
+        var v = parents.shift();
+        var a = hmrAcceptCheckOne(v[0], v[1], null);
+        if (a) // If this parent accepts, stop traversing upward, but still consider siblings.
+        accepted = true;
+        else {
+            // Otherwise, queue the parents in the next level upward.
+            var p = getParents(module.bundle.root, v[1]);
+            if (p.length === 0) {
+                // If there are no parents, then we've reached an entry without accepting. Reload.
+                accepted = false;
+                break;
+            }
+            parents.push.apply(parents, _toConsumableArray(p));
+        }
+    }
+    return accepted;
+}
+function hmrAcceptCheckOne(bundle, id, depsByBundle) {
     var modules = bundle.modules;
     if (!modules) return;
     if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
@@ -430,12 +495,7 @@ function hmrAcceptCheck(bundle, id, depsByBundle) {
         bundle,
         id
     ]);
-    if (cached && cached.hot && cached.hot._acceptCallbacks.length) return true;
-    var parents = getParents(module.bundle.root, id); // If no parents, the asset is new. Prevent reloading the page.
-    if (!parents.length) return true;
-    return parents.some(function(v) {
-        return hmrAcceptCheck(v[0], v[1], null);
-    });
+    if (!cached || cached.hot && cached.hot._acceptCallbacks.length) return true;
 }
 function hmrAcceptRun(bundle, id) {
     var cached = bundle.cache[id];
@@ -1047,14 +1107,14 @@ class View {
             curEl.classList.toggle(className);
         });
     }
-    elToggleClass(el, className1 = 'hidden') {
-        el.classList.toggle(className1);
+    elToggleClass(el, className = 'hidden') {
+        el.classList.toggle(className);
     }
-    addClass(el1, className2 = 'hidden') {
-        el1.classList.add(className2);
+    addClass(el, className = 'hidden') {
+        el.classList.add(className);
     }
-    removeClass(el2, className3 = 'hidden') {
-        el2.classList.remove(className3);
+    removeClass(el, className = 'hidden') {
+        el.classList.remove(className);
     }
 }
 exports.default = View;
@@ -1300,11 +1360,11 @@ class GameView extends _viewJsDefault.default {
             }
         }).bind(this));
     }
-    addHandlerInitGameTimer(handler1, btn) {
+    addHandlerInitGameTimer(handler, btn) {
         // NOTE: Only for hyper/runnig pig mode. On click btn(btnRoll) run handler() only once, after click disable that click, so the gameTimer won't reset every time there is click on btnRoll
         btn.addEventListener('click', (function() {
             if (this._clickOnce) {
-                handler1();
+                handler();
                 this._clickOnce = _configJs.CLICK_UNAVAILABLE;
             }
         }).bind(this));
@@ -1351,16 +1411,16 @@ class GameView extends _viewJsDefault.default {
         this.removeClass(this._diceDark, 'opacity-zero');
         this._diceDark.src = `dice-dark-${diceRoll}.png`;
     }
-    _renderDiceLight(diceRoll1) {
+    _renderDiceLight(diceRoll) {
         this.removeClass(this._diceLight, 'opacity-zero');
-        this._diceLight.src = `dice-light-${diceRoll1}.png`;
+        this._diceLight.src = `dice-light-${diceRoll}.png`;
     }
-    displayDice(diceRoll2, updateDice) {
-        if (this.body.classList.contains('dark-theme')) this._renderDiceDark(diceRoll2);
+    displayDice(diceRoll, updateDice) {
+        if (this.body.classList.contains('dark-theme')) this._renderDiceDark(diceRoll);
         else if (updateDice) {
-            this._renderDiceDark(diceRoll2);
-            this._renderDiceLight(diceRoll2);
-        } else this._renderDiceLight(diceRoll2);
+            this._renderDiceDark(diceRoll);
+            this._renderDiceLight(diceRoll);
+        } else this._renderDiceLight(diceRoll);
     }
     displaySwapBtns(isAllowed) {
         if (isAllowed) {
@@ -1451,10 +1511,10 @@ class GameView extends _viewJsDefault.default {
         this._score0.textContent = scorePlayer0;
         this._score1.textContent = scorePlayer1;
     }
-    playerTimerCounting(activePlayer1) {
+    playerTimerCounting(activePlayer) {
         this._playerTimerNum = 10; // 10 secs
         const updatePlayerTimer = ()=>{
-            document.querySelector(`.player__playing--${activePlayer1}`).textContent = `playing for ${this._playerTimerNum} sec`;
+            document.querySelector(`.player__playing--${activePlayer}`).textContent = `playing for ${this._playerTimerNum} sec`;
             this._playerTimerNum--;
         };
         updatePlayerTimer(); // Immediately run the func() so there is no delay
@@ -1671,6 +1731,6 @@ class LeavingView extends _viewJsDefault.default {
 }
 exports.default = new LeavingView();
 
-},{"./View.js":"9dvKv","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["kS06O","lA0Es"], "lA0Es", "parcelRequire0426")
+},{"./View.js":"9dvKv","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["19Ls1","lA0Es"], "lA0Es", "parcelRequire0426")
 
 //# sourceMappingURL=index.05cf099e.js.map
