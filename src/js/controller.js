@@ -36,10 +36,12 @@ import {
   ROBOT_CURSCORE_MIN_LIMIT,
   SECS_FOR_ROBOT_CLICKING,
   CLICK_UNAVAILABLE,
-  UPDATE_DICE,
 } from './config.js';
 
-const controlThemes = function () {
+const controlThemesDarkLight = function () {
+  gameView.updateDice(model.state.diceRoll);
+
+
   // 1) Toggle dark/light themes classes on body and in setTheme
   themesView.toggleThemes();
 
@@ -55,9 +57,6 @@ const controlThemes = function () {
     themesView.setTheme,
     THEME_LIGHT
   );
-
-  // 5) Update dice only if game is running
-  if (model.state.gameIsRunning) gameView.displayDice(model.state.diceRoll, UPDATE_DICE);
 };
 
 const controlSoundsOnOff = function () {
@@ -338,9 +337,6 @@ const controlRollingDice = function () {
 
   // 8) Hide .game__start msg
   gameView.addClass(gameView.startMsg);
-
-  // 9) Sets to the state obj that game is running
-  model.state.gameIsRunning = true;
 };
 
 const controlHoldingScore = function () {
@@ -533,10 +529,10 @@ const controllPlayingVsRobot = function () {
 };
 
 const init = function () {
-  themesView.addHandlerLoad(controlThemes);
+  themesView.addHandlerLoad(controlThemesDarkLight);
   soundsView.addHandlerLoad(controlSoundsOnOff);
 
-  themesView.addHandlerClick(controlThemes);
+  themesView.addHandlerClick(controlThemesDarkLight);
   soundsView.addHandlerClick(controlSoundsOnOff);
   pauseView.addHandlerClick(controlPause, pauseView.btnPause);
   pauseView.addHandlerClick(controlUnpause, pauseView.btnUnpause);

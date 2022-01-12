@@ -46,19 +46,5 @@
     text-align: center;
     font-weight: $fw-m;
     color: $clr-black-500;
-
-    &-error {
-      @extend .not-supported-modal__text;
-      margin-top: 6rem;
-
-      & a {
-        color: $clr-grey;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 }

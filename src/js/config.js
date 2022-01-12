@@ -10,8 +10,6 @@ export const HIDE_BTNS = false;
 export const BTN_WOKRING = false;
 export const BTN_DISABLED = true;
 
-export const UPDATE_DICE = true;
-
 export const ROBOT_CURSCORE_MIN_LIMIT = 10;
 export const ROBOT_CURSCORE_MAX_LIMIT = 25;
 export const LOOSING_LIMIT = -50;
