@@ -1408,13 +1408,27 @@ class GameView extends _viewJsDefault.default {
             this._diceLight.src = `dice-light-${diceRoll}.png`;
         }
     }
+<<<<<<< HEAD
+    _renderDiceLight(diceRoll) {
+=======
     // refactor with displayDice()
-    updateDice(diceRoll) {
+    updateDice(diceRoll1) {
         this.removeClass(this._diceDark, 'opacity-zero');
-        this._diceDark.src = `dice-dark-${diceRoll}.png`;
+        this._diceDark.src = `dice-dark-${diceRoll1}.png`;
+>>>>>>> parent of 1fa917e (adding favicon)
         this.removeClass(this._diceLight, 'opacity-zero');
         this._diceLight.src = `dice-light-${diceRoll}.png`;
     }
+<<<<<<< HEAD
+    displayDice(diceRoll, updateDice) {
+        if (this.body.classList.contains('dark-theme')) this._renderDiceDark(diceRoll);
+        else if (updateDice) {
+            this._renderDiceDark(diceRoll);
+            this._renderDiceLight(diceRoll);
+        } else this._renderDiceLight(diceRoll);
+    }
+=======
+>>>>>>> parent of 1fa917e (adding favicon)
     displaySwapBtns(isAllowed) {
         if (isAllowed) {
             this.disabledBtns(_configJs.BTN_DISABLED, this.gameBtns);
