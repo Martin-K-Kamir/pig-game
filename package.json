@@ -10,7 +10,7 @@
   "author": "Martin Kamír",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.1",
+    "@parcel/transformer-sass": "^2.2.0",
     "@parcel/transformer-webmanifest": "^2.2.0",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.127",
