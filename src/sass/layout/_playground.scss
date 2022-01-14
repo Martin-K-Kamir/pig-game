@@ -22,6 +22,8 @@
     @extend .modes__btns-container;
 
     & .btn-primary {
+      position: relative; // for note
+
       @include mq-max($phone-max) {
         width: 100%;
       }

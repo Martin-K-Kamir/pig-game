@@ -52,3 +52,7 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+.menu_::-webkit-full-page-media, _:future, :root .safari_only {
+  outline: none;
+}
