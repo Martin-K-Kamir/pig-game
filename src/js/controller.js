@@ -408,7 +408,7 @@ const controlHoldingScore = function () {
   }
 };
 
-const controlResettingTheGame = function () {
+export const controlResettingTheGame = function () {
   // 1) Reset state obj and gameModes obj
   model.resetState();
   model.resetModes();
@@ -461,7 +461,7 @@ const controlLeavingNo = function () {
   if (model.state.playingVsRobot) controllPlayingVsRobot();
 };
 
-export const controlLeavingYes = function () {
+const controlLeavingYes = function () {
   // 1) Hide modal
   leavingView.elToggleClass(leavingView.leavingModal);
 
