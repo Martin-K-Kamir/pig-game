@@ -30,9 +30,7 @@ p, li {
   overflow: hidden;
   @include giv-color($clr-white, $clr-primary);
   @include flex-col-center;
-  @include mq-landscape(phone-max) {display: block;}
-
-  
+  @include mq-landscape(phone-max) {display: $SHOW}
 }
 
 

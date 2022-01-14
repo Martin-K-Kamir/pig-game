@@ -7,12 +7,9 @@
 @import 'mixins/simplified';
 @import 'mixins/positioning';
 
-// rfs config
-$rfs-unit: rem;
-$rfs-breakpoint: $tablet-max;
-$rfs-breakpoint-unit: em;
+@import './rfs-config';
 @import '../../node_modules/rfs/scss.scss';
-$rfs-rem-value: 9.5;
+$rfs-rem-value: 9.5; // Need to be here 
 
 @import 'base/animations';
 @import 'base/base';

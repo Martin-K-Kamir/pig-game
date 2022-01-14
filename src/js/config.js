@@ -10,6 +10,8 @@ export const HIDE_BTNS = false;
 export const BTN_WOKRING = false;
 export const BTN_DISABLED = true;
 
+export const UPDATE_DICE = true;
+
 export const ROBOT_CURSCORE_MIN_LIMIT = 10;
 export const ROBOT_CURSCORE_MAX_LIMIT = 25;
 export const LOOSING_LIMIT = -50;
@@ -19,7 +21,7 @@ export const SELECTED = true;
 export const PIG_DICE = 6;
 export const BIG_DICE = 7;
 export const RUN_DICE = 7;
-export const PIG_LIMIT = 100;
+export const PIG_LIMIT = 10;
 export const BIG_LIMIT = 200;
 export const RUN_LIMIT = 999999;
 

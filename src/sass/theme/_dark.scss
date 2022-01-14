@@ -30,20 +30,14 @@
     color: $clr-primary-800;
   }
 
-  // & .menu__logo--text {
-  //   @-moz-document url-prefix() {
-  //     color: $clr-white;
-  //   }
-  // }
 
-  // fix for h2
   & .leaving-modal__heading,
   & .victory-bar__heading--start,
   & .victory-bar__heading--end {
     color: $clr-grey;
   }
 
-  // fix for h2
+
   & .paused-modal__text {
     color: $clr-white;
   }
@@ -53,7 +47,8 @@
     filter: invert(75%) sepia(3%) saturate(3990%) hue-rotate(300deg)
       brightness(300%) contrast(89%);
 
-    @-moz-document url-prefix() {
+      // Mozilla renders diffirent colors. So the filter have diffirent setting
+      @-moz-document url-prefix() {
       filter: invert(75.2%) sepia(3%) saturate(3482%) hue-rotate(343deg) brightness(300.6%) contrast(89%);
     }
   }

@@ -8,13 +8,8 @@
 
     & span {
       // breaking text into two lines
-      @include mq-max($phone-max) {
-        display: block;
-      }
-
-      @include mq-landscape(phone-s) {
-        display: inline;
-      }
+      @include mq-max($phone-max) {display: block}
+      @include mq-landscape(phone-s) {display: inline}
     }
   }
 

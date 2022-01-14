@@ -22,7 +22,7 @@
   &__divider {
     @include divider;
 
-    // Make divider not full width
+    // Make divider not full width of container
     @include mq-max($phone-b) {
       width: calc(100% - 8vw);
     }

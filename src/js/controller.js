@@ -36,12 +36,10 @@ import {
   ROBOT_CURSCORE_MIN_LIMIT,
   SECS_FOR_ROBOT_CLICKING,
   CLICK_UNAVAILABLE,
+  UPDATE_DICE,
 } from './config.js';
 
-const controlThemesDarkLight = function () {
-  gameView.updateDice(model.state.diceRoll);
-
-
+const controlThemes = function () {
   // 1) Toggle dark/light themes classes on body and in setTheme
   themesView.toggleThemes();
 
@@ -57,6 +55,9 @@ const controlThemesDarkLight = function () {
     themesView.setTheme,
     THEME_LIGHT
   );
+
+  // 5) Update dice only if game is running
+  if (model.state.gameIsRunning) gameView.displayDice(model.state.diceRoll, UPDATE_DICE);
 };
 
 const controlSoundsOnOff = function () {
@@ -337,6 +338,9 @@ const controlRollingDice = function () {
 
   // 8) Hide .game__start msg
   gameView.addClass(gameView.startMsg);
+
+  // 9) Sets to the state obj that game is running
+  model.state.gameIsRunning = true;
 };
 
 const controlHoldingScore = function () {
@@ -457,7 +461,7 @@ const controlLeavingNo = function () {
   if (model.state.playingVsRobot) controllPlayingVsRobot();
 };
 
-const controlLeavingYes = function () {
+export const controlLeavingYes = function () {
   // 1) Hide modal
   leavingView.elToggleClass(leavingView.leavingModal);
 
@@ -529,10 +533,10 @@ const controllPlayingVsRobot = function () {
 };
 
 const init = function () {
-  themesView.addHandlerLoad(controlThemesDarkLight);
+  themesView.addHandlerLoad(controlThemes);
   soundsView.addHandlerLoad(controlSoundsOnOff);
 
-  themesView.addHandlerClick(controlThemesDarkLight);
+  themesView.addHandlerClick(controlThemes);
   soundsView.addHandlerClick(controlSoundsOnOff);
   pauseView.addHandlerClick(controlPause, pauseView.btnPause);
   pauseView.addHandlerClick(controlUnpause, pauseView.btnUnpause);
@@ -547,11 +551,12 @@ const init = function () {
   leavingView.addHandlerClick(controlLeaving);
   leavingView.addHandlerClick(controlLeavingNo, leavingView.btnNo);
   leavingView.addHandlerClick(controlLeavingYes, leavingView.btnYes);
-  
+
   gameView.addHandlerInitGameTimer(controlGameTimer, gameView.btnRoll);
   gameView.addHandlerInitGameTimer(controlGameTimer, gameView.btnRollPhone);
   menuView.addHandlerModesSelecting(controlSetGameMode);
-  
-  gameView.handleVictoryBar(controlResettingTheGame);
+
+  // BUG: Handler returns undefined if dev tools are opened. To fix the error there is imported to gameView controlResettingTheGame()
+  //gameView.handleVictoryBar(controlResettingTheGame);
 };
 init();

@@ -17,17 +17,9 @@
     background-color: $clr-white;
     box-shadow: $box-shadow-medium;
 
-    @include mq-max($phone-max) {
-      padding: $l-p-fluid-max;
-    }
-
-    @include mq-max($phone-min) {
-      padding: $l-p-fluid-m;
-    }
-
-    @include mq-landscape(phone-max) {
-      padding: $l-p-fluid-min;
-    }
+    @include mq-max($phone-max) {padding: $l-p-fluid-max}
+    @include mq-max($phone-min) {padding: $l-p-fluid-m}
+    @include mq-landscape(phone-max) {padding: $l-p-fluid-min}
   }
 
 // SECTION: Heading

@@ -4,17 +4,15 @@
   width: calc(100% - 2.5rem);
   @include abs($t: 2rem, $r: 3rem);
   @include flex-me($justify: flex-end, $gap: 1rem);
+  @include hide-for-IE($HIDE_CONTENT);
 
   @include mq-1280x720 {@include abs($t: 0.8rem, $r: 1rem)}
   @include mq-max($tablet-max) {@include abs($t: 1rem, $r: 2rem)}
   @include mq-max($phone-max) {@include abs($t: 1rem, $r: 1.2rem)}
   @include mq-landscape(phone-max) {@include abs($t: 1rem, $r: 2rem)}
 
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-      display: none;
-  }
 
-  // For smaller phone screens break in half btns
+  // For smaller phone screens break in half(two btns are on left side and two btns on right side
   & .btn-round:first-child {
     margin-left: auto;
 
@@ -28,6 +26,7 @@
       margin-right: auto;
     }
   }
+  // ends here ///////////////////////////////////
 
   & .btn-round {
     position: relative;
@@ -103,13 +102,13 @@
 ////   a) IE add prefixes and try support IE if not make some modal 
 //   b) mackbook safari
 ////   c) fix for firefox logo color
-// 6. Try older versions
-// 7. Add favicon
+//// 6. Try older versions
+//// 7. Add favicon
 // 8. Phones, Notebooks
 // 9. Check again HTML, SCSS (clean IE msg, add new mixins), JS 
-// - JS check bug for not hiding game start msg on click and not starting the timer
-// - Add func() for dice when changing themes -> add to state if game is runing after that update dice
+//// - JS check bug for not hiding game start msg on click and not starting the timer
+//// - Add func() for dice when changing themes -> add to state if game is runing after that update dice
 // - refactor/clean scss
-// - Change func() name for controlldarkthemelightdark
+//// - Change func() name for controlldarkthemelightdark
 // => READY TO DEPLOY 
 // => PROJECT IS FINISHED

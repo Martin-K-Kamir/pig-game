@@ -80,3 +80,31 @@ $z-indexes: ('modal', 'navbar', 'win-bar', 'default');
   background-color: $color;
   border-radius: 10rem;
 }
+
+// SECTION: IE
+@mixin hide-for-IE($boolean) {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @if($boolean) {
+      display: $SHOW;
+    } @else {
+      display: $HIDE;
+    }
+  }
+}
+
+// SECTION: Stop animations at breakpoint
+@mixin reset-animations {
+  transform: translate(0, 0) rotate(0deg) !important;
+  opacity: 1 !important;
+  animation-play-state: paused;
+}
+
+@mixin mq-stop-animations($breakpoint-portrait, $breakpoint-landscape) {
+  @include mq-max($breakpoint-portrait) {
+    @include reset-animations;
+  }
+  
+  @include mq-landscape($breakpoint-landscape) {
+    @include reset-animations;
+  }
+}

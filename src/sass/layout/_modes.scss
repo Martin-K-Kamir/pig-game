@@ -34,21 +34,13 @@
     text-align: center;
     @include font-size($fs-heading-m);
 
-    @include mq-max($phone-max) {
-      @include font-size($fs-heading-m);
-    }
-
-    @include mq-max($phone-min) {
-      @include font-size($fs-heading-m);
-    }
-
-    @include mq-landscape(phone-min) {
-      @include font-size($fs-heading-m);
-    }
+    @include mq-max($phone-max) {@include font-size($fs-heading-m)}
+    @include mq-max($phone-min) {@include font-size($fs-heading-m)}
+    @include mq-landscape(phone-min) {@include font-size($fs-heading-m)}
 
     & span {
-      // breaking text into two lines
       @include mq-max($phone-max) {
+        // breaking text into two lines/rows
         display: block;
       }
 

@@ -1,7 +1,8 @@
-import View from './View.js';
-import * as model from '../model.js';
-import soundsView from './soundsView.js';
-import menuView from './menuView.js';
+import View from './View';
+import * as model from '../model';
+import soundsView from './soundsView';
+import menuView from './menuView';
+import { controlResettingTheGame } from '../controller';
 
 import {
   ONE_SEC,
@@ -138,7 +139,8 @@ class GameView extends View {
         if (btn.classList.contains('btn--back')) {
           menuView.displayMenuWindow();
           this.addClass(this.timerBox);
-          handler(); // BUG: Opened dev tools in chrome returns undefined
+          //handler(); // BUG: Opened dev tools in chrome returns undefined
+          controlResettingTheGame() // Fixes the error
         }
       }.bind(this)
     );
@@ -202,25 +204,25 @@ class GameView extends View {
     }, ONE_MILISEC * 3);
   }
 
-  displayDice(diceRoll) {
-    if (this.body.classList.contains('dark-theme')) {
-      this.removeClass(this._diceDark, 'opacity-zero');
-      this._diceDark.src = `dice-dark-${diceRoll}.png`;
-    } else {
-      this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.png`;
-    }
+  _renderDiceDark(diceRoll) {
+    this.removeClass(this._diceDark, 'opacity-zero');
+    this._diceDark.src = `dice-dark-${diceRoll}.png`;
   }
 
-  // refactor with displayDice()
-  updateDice(diceRoll) {
-    
-      this.removeClass(this._diceDark, 'opacity-zero');
-      this._diceDark.src = `dice-dark-${diceRoll}.png`;
+  _renderDiceLight(diceRoll) {
+    this.removeClass(this._diceLight, 'opacity-zero');
+    this._diceLight.src = `dice-light-${diceRoll}.png`;
+  }
 
-      this.removeClass(this._diceLight, 'opacity-zero');
-      this._diceLight.src = `dice-light-${diceRoll}.png`;
-
+  displayDice(diceRoll, updateDice) {
+    if (this.body.classList.contains('dark-theme')) {
+      this._renderDiceDark(diceRoll);
+    } else if (updateDice) {
+      this._renderDiceDark(diceRoll);
+      this._renderDiceLight(diceRoll);
+    } else {
+      this._renderDiceLight(diceRoll);
+    }
   }
 
   displaySwapBtns(isAllowed) {

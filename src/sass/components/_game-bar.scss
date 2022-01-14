@@ -11,11 +11,11 @@
 
 // SECTION: Phone
   &-phone {
-    display: none; // hidden for pc & tablet screens
+    display: $HIDE; // hidden for pc & tablet screens
     background-color: $clr-primary;
 
     @include mq-max($phone-max) {
-     display: block;
+     display: $SHOW; // show for phones
      @include size(10rem, 100%);
     }
 
@@ -24,7 +24,7 @@
     }
 
     @include mq-landscape(phone-max) {
-     display: block;
+     display: $SHOW; // show for phones
      @include size(17.8vh, 100%);
     }
 
@@ -61,8 +61,8 @@
     @include mq-max($tablet-min) {@include pos-Y(16.2rem)}
 
     // Hide for phone screen btns show in .game-bar-phone class
-    @include mq-max($phone-max) {display: none}
-    @include mq-landscape(phone-max) {display: none}
+    @include mq-max($phone-max) {display: $HIDE}
+    @include mq-landscape(phone-max) {display: $HIDE}
 
     & .btn-secondary {
       @include mq-max($tablet-min) {
@@ -80,7 +80,7 @@
     @include mq-max($tablet-min) {gap: 2rem}
 
     // Hide for phone screen btns show in .game-bar-phone class
-    @include mq-max($phone-max) {display: none}
-    @include mq-landscape(phone-max) {display: none}
+    @include mq-max($phone-max) {display: $HIDE}
+    @include mq-landscape(phone-max) {display: $HIDE}
   }
 }

@@ -1,14 +1,11 @@
 .copyright {
   @include flex-col-center;
   @include abs($b: 1rem);
+  @include hide-for-IE($HIDE_CONTENT);
 
   // Hide for smaller screens
   @media only screen and (max-width: 580px), (max-height: 800px) {
-    display: none;
-  }
-
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-      display: none;
+    display: $HIDE;
   }
 
   &__text {

@@ -11,6 +11,7 @@ export const initState = function (diceSides, scoreLimit) {
   state.prizeChances = 0; // To decide how much player will gain/lose
   state.decisionRange = 0; // For Robot at which point he should hold
   state.rollingSequence = null; // Interval for Robot to roll dice
+  state.gameIsRunning = 0;
 };
 
 export const resetState = function () {
@@ -20,6 +21,7 @@ export const resetState = function () {
   state.diceRoll = 0;
   state.percentages = 0;
   state.prizeChances = 0;
+  state.gameIsRunning = 0;
 };
 
 export const gameModes = {

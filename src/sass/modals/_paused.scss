@@ -26,40 +26,22 @@
   &__icon {
     @include size-same(30rem);
 
-    @include mq-max($phone-max) {
-      @include size-same(22rem);
-    }
-
-    @include mq-max-w-h($phone-s, $screen-h-min) {
-      @include size-same(16rem);
-    }
-
-    @include mq-landscape(phone-max) {
-      @include size-same(16rem);
-    }
+    @include mq-max($phone-max) {@include size-same(22rem)}
+    @include mq-max-w-h($phone-s, $screen-h-min) {@include size-same(16rem)}
+    @include mq-landscape(phone-max) {@include size-same(16rem)}
   }
 
   &__text {
     font-size: $fs-heading-b;
     text-transform: uppercase;
 
-    @include mq-max-w-h($phone-s, $screen-h-min) {
-      font-size: $fs-heading-s;
-    }
-
-    @include mq-landscape(phone-max) {
-      font-size: $fs-heading-s;
-    }
+    @include mq-max-w-h($phone-s, $screen-h-min) {font-size: $fs-heading-s}
+    @include mq-landscape(phone-max) {font-size: $fs-heading-s}
 
     & span {
       // break text into two lines/rows
-      @include mq-max($phone-max) {
-        display: block;
-      }
-
-      @include mq-landscape(phone-max) {
-        display: block;
-      }
+      @include mq-max($phone-max) {display: block}
+      @include mq-landscape(phone-max) {display: block}
     }
   }
 }

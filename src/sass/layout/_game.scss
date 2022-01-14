@@ -17,7 +17,7 @@
     @include reset-glossy-bg;
   }
 
-  // For small screens (iPhone 4)
+  // for small screens (iPhone 4)
   @include mq-max-w-h($phone-min, $screen-h-m) {
     height: 83vh;
   }
