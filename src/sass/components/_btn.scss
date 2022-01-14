@@ -134,8 +134,9 @@ $btn-border-radius: 50rem;
 .btn-round {
   background-color: $clr-white-200;
   border-radius: $border-radius-circle;
-  @include flex-me(center, center);
   @include size-same(3.2rem);
+  display: grid;
+  align-items: center;
 
   @include mq-max($phone-max) {
     @include size-same(3.4rem);
