@@ -21,7 +21,7 @@ export const SELECTED = true;
 export const PIG_DICE = 6;
 export const BIG_DICE = 7;
 export const RUN_DICE = 7;
-export const PIG_LIMIT = 10;
+export const PIG_LIMIT = 100;
 export const BIG_LIMIT = 200;
 export const RUN_LIMIT = 999999;
 
