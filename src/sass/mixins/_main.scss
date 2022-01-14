@@ -10,7 +10,6 @@
     padding: $padding-value;
     background-color: $bg-color;
     border: 0.5rem solid $clr-primary-700;
-    //outline: 0.2rem solid $clr-primary-700;
     box-shadow: 0 0 4rem $shadow-value;
     border-radius: $border-radius-default;
     backdrop-filter: blur(10rem);
@@ -28,7 +27,6 @@
 @mixin reset-glossy-bg {
   padding: 0 !important;
   border: none !important;
-  outline: none !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
 }

@@ -52,13 +52,3 @@ button {
     scroll-behavior: auto !important;
   }
 }
-
-
-
-@media not all and (min-resolution:.001dpcm)
-{ @supports (-webkit-appearance:none) {
-
-    .menu { 
-      outline: none !important;
-    }
-}}
