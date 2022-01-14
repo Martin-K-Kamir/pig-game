@@ -53,9 +53,7 @@ button {
   }
 }
 
-_::-webkit-full-page-media, _:future, :root .menu {
-  outline: none !important;
-}
+
 
 @media not all and (min-resolution:.001dpcm)
 { @supports (-webkit-appearance:none) {
