@@ -136,8 +136,6 @@ $btn-border-radius: 50rem;
   border-radius: $border-radius-circle;
   @include flex-me(center, center);
   @include size-same(3.2rem);
-  display: grid;
-  align-items: grid;
 
   @include mq-max($phone-max) {
     @include size-same(3.4rem);
