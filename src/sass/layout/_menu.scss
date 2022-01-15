@@ -21,19 +21,14 @@
     @include flex-align-center(2.5rem);
     
     &--icon {
-      //@include animation(icon-throw);
-      //@include mq-stop-animations($phone-max, phone-max);
 
       & img {
         width: 12.5rem;
-        //@include animation(icon-rotate);
-        //@include mq-stop-animations($phone-max, phone-max);
 
         @include mq-max($phone-m) {width: 27vw}
         @include mq-landscape(phone-max) {width: 14vw}
         @include mq-landscape(phone-s) {width: 13vw}
         @include mq-landscape(phone-min) {width: 15vw}
-
       }
     }
 
@@ -53,19 +48,6 @@
         font-size: 5.5vw;
         line-height: 7vw;
       }
-
-      &-top {
-        //@include animation(text-slide, 0.3s, 0.001s, backwards);
-      }
-
-      &-bottom {
-        //@include animation(text-slide, 0.2s, 0.15s, backwards);
-      }
-
-      &-top,
-      &-bottom {
-        //@include mq-stop-animations($phone-max, phone-max);
-      }
     }
   }
 
@@ -78,23 +60,3 @@
     @include mq-landscape(phone-s) {gap: 2rem}
   }
 }
-
-// @keyframes icon-throw {
-//   0% {
-//     transform: translate(-15rem, -2rem);
-//   }
-// }
-
-// @keyframes icon-rotate {
-//   0% {
-//     opacity: 0;
-//     transform: rotate(50deg);
-//   }
-// }
-
-// @keyframes text-slide {
-//   0% {
-//     opacity: 0;
-//     transform: translateX(-2rem);
-//   }
-// }
