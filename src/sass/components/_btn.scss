@@ -153,5 +153,6 @@ $btn-border-radius: 50rem;
 
   & .icon {
     color: $clr-white;
+    @include size-same(2rem);
   }
 }
