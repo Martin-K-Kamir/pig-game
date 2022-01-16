@@ -35,6 +35,7 @@ import {
   ROBOT_CURSCORE_MAX_LIMIT,
   ROBOT_CURSCORE_MIN_LIMIT,
   SECS_FOR_ROBOT_CLICKING,
+  CLICK_AVAILABLE,
   CLICK_UNAVAILABLE,
   UPDATE_DICE,
 } from './config.js';
@@ -331,9 +332,9 @@ const controlRollingDice = function () {
   controlPlayerTimer();
 
   // 7) Make btnHold to work. At the start of the game btnHold is disabled
-  if (gameView._clickOnce) {
+  if (gameView.clickOnce) {
     gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
-    this._clickOnce = CLICK_UNAVAILABLE;
+    this.clickOnce = CLICK_UNAVAILABLE;
   } 
 
   // 8) Hide .game__start msg
