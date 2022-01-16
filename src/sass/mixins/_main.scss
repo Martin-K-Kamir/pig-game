@@ -6,20 +6,18 @@
   $bg-color: $clr-white-090,
   $light-theme: true
 ) {
+  padding: $padding-value;
+  backdrop-filter: blur(10rem);
+  border-radius: $border-radius-default;
+
   @if $light-theme {
-    padding: $padding-value;
     background-color: $bg-color;
     border: 0.5rem solid $clr-primary-700;
     box-shadow: 0 0 4rem $shadow-value;
-    border-radius: $border-radius-default;
-    backdrop-filter: blur(10rem);
   } @else {
-    padding: $padding-value;
     background-color: $bg-color;
-    border: 0.5rem solid $clr-grey-100;
+    border: 0.5rem solid $clr-grey-050;
     box-shadow: 0 0 2.5rem $shadow-value;
-    border-radius: $border-radius-default;
-    backdrop-filter: blur(10rem);
   }
 }
 
