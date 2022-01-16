@@ -334,7 +334,7 @@ const controlRollingDice = function () {
   // 7) Make btnHold to work. At the start of the game btnHold is disabled
   if (gameView.clickOnce) {
     gameView.disabledBtns(BTN_WOKRING, gameView.gameBtns);
-    this.clickOnce = false;
+    gameView.clickOnce = CLICK_UNAVAILABLE;
   } 
 
   // 8) Hide .game__start msg
