@@ -37,6 +37,6 @@
   }
 
   & .btn-round .note {
-    @include abs($t: 3.5rem);
+    @include abs($t: 3.5rem, $l: -2rem);
   }
 }
