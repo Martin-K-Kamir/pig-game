@@ -16,8 +16,7 @@
   } @else {
     padding: $padding-value;
     background-color: $bg-color;
-    border: 0.3rem solid $clr-grey-100;
-    outline: 0.2rem solid $clr-grey-100;
+    border: 0.5rem solid $clr-grey-100;
     box-shadow: 0 0 2.5rem $shadow-value;
     border-radius: $border-radius-default;
     backdrop-filter: blur(10rem);
