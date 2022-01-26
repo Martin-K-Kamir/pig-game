@@ -35,6 +35,7 @@ class GameView extends View {
   _timerNums = document.querySelector('.timer__counter');
 
   clickOnce = CLICK_AVAILABLE;
+  startTimerOnce = CLICK_AVAILABLE;
 
   startMsg = document.querySelector('.game__start');
 
@@ -151,9 +152,10 @@ class GameView extends View {
     btn.addEventListener(
       'click',
       function () {
-        if (this.clickOnce) {
+
+        if (this.startTimerOnce) {
           handler();
-          this.clickOnce = CLICK_UNAVAILABLE;
+          this.startTimerOnce = CLICK_UNAVAILABLE;
         }
       }.bind(this)
     );
@@ -164,6 +166,7 @@ class GameView extends View {
     this.addClass(this._victoryBar, 'bounce-out--first');
 
     this.clickOnce = CLICK_AVAILABLE;
+    this.startTimerOnce = CLICK_AVAILABLE;
 
     this.btnRoll.disabled = BTN_WOKRING;
     this.btnHold.disabled = BTN_DISABLED;
@@ -175,10 +178,9 @@ class GameView extends View {
     this._curScoreNum1.textContent = 0;
     this._score0.textContent = 0;
     this._score1.textContent = 0;
-    this.clickOnce = CLICK_AVAILABLE;
     this.gameTimerNum = SECS_GAME_TIMER;
     this._playerTimerNum = SECS_FOR_PLAYER_TIMER;
-    this._timerNums.textContent = '04:00';
+    this._timerNums.textContent = '02:00';
     this._playerName0.textContent = 'Player 1';
     this._playerName1.textContent = 'Player 2';
 
