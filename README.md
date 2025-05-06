@@ -18,5 +18,5 @@ The first player to reach **100 points** or more wins the game.
 his repository contains Version 2 of the Pig Dice Game, featuring new game modes and customizable dice to make gameplay more dynamic and engaging.
 
 ## 🌐 Links
-- Pig Game: [pig-game-mkk.netlify.app](https://pig-game-mkk.netlify.app/)
 - Pig Game V2: [pig-game-mkk-v2.netlify.app](https://pig-game-mkk-v2.netlify.app/)
+- Pig Game: [pig-game-mkk.netlify.app](https://pig-game-mkk.netlify.app/)
