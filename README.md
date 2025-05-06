@@ -1,4 +1,4 @@
-## 🐷 Pig Game
+## 🐷 Pig Game 
 
 Pig is a simple, fun, turn-based dice game for two or more players. The goal is to be the first to reach 100 points.
 
